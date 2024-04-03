@@ -4,10 +4,9 @@ import style from './ErrorPage.module.scss';
 
 export function ErrorPage() {
   const error = useRouteError();
-  const errorMessage =
-    typeof error === 'string' || error instanceof Error
-      ? error.toString()
-      : 'An unexpected error occurred';
+  const errorMessage = typeof error === 'string' || error instanceof Error
+    ? error.toString()
+    : 'An unexpected error occurred';
 
   return (
     <div className={style.app}>
