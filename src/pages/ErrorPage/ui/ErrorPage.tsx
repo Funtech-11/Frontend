@@ -1,13 +1,13 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError } from 'react-router-dom';
 
-import style from "./ErrorPage.module.scss";
+import style from './ErrorPage.module.scss';
 
 export function ErrorPage() {
   const error = useRouteError();
   const errorMessage =
-    typeof error === "string" || error instanceof Error
+    typeof error === 'string' || error instanceof Error
       ? error.toString()
-      : "An unexpected error occurred";
+      : 'An unexpected error occurred';
 
   return (
     <div className={style.app}>

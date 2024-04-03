@@ -1,13 +1,13 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { Provider } from "react-redux";
-import { RouterProvider } from "react-router-dom";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { RouterProvider } from 'react-router-dom';
 
-import { store, router } from "./app/index";
+import { store, router } from 'src/app/index';
 
-import "../src/app/styles/index.scss";
+import 'src/app/styles/index.scss';
 
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 
 if (container) {
   const root = createRoot(container);
