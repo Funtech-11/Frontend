@@ -1,4 +1,4 @@
-// @import './fonts/fonts.css';
+@import './fonts.scss';
 @import './variables.scss';
 
 // * {
@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: $baseBgLightGrey;
+  background-color: $colorBgLightGrey;
 }
 
 // code {
