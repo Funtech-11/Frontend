@@ -1,0 +1,39 @@
+@import 'src/app/styles/variables.scss';
+
+.footer {
+  max-width: 100%;
+  background-color: $baseBgLightGrey;
+}
+
+.outterContainer {
+  max-width: 100%;
+  background-color: $baseColorLightGrey;
+  padding: 12px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: $baseColorWhiteSecondary;
+  border-radius: 20px;
+}
+.textWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.text {
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logoLink {
+  text-decoration: none;
+  cursor: pointer;
+}
