@@ -2,7 +2,7 @@ import style from './Header.module.scss';
 
 const Header = () => (
   <header className={style.header}>
-    <h1>Яндекс. Ивенты</h1>
+    <h1 className={style.title}>Яндекс. Ивенты</h1>
     <div>Avatar</div>
   </header>
 );

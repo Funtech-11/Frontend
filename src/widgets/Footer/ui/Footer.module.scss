@@ -1,12 +1,12 @@
 @import 'src/app/styles/variables.scss';
 
 .footer {
-  background-color: $baseBgLightGrey;
+  background-color: $colorBgLightGrey;
 }
 
 .outterContainer {
   max-width: 100%;
-  background-color: $baseColorLightGrey;
+  background-color: $colorLightGrey;
   padding: 12px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: $baseColorWhiteSecondary;
+  background-color: $colorWhiteSecondary;
   border-radius: 20px;
 }
 .textWrapper {
@@ -24,8 +24,7 @@
   gap: 20px;
 }
 
-.text {
-}
+.text {}
 
 .link {
   text-decoration: none;
