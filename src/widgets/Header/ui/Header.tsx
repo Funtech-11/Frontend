@@ -8,7 +8,7 @@ const Header = () => (
       <h1 className={style.title}>Яндекс. Ивенты</h1>
     </NavLink>
     <div className={style.loginContainer}>
-      <NavLink className={style.loginLink} to="">
+      <NavLink className={style.loginLink} to="/login">
         Войти
       </NavLink>
       <button className={style.burgerBtn} type="button">
