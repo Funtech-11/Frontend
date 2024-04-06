@@ -1,7 +1,9 @@
 import { Header } from 'src/widgets/Header';
-import { EventAdressBlock } from 'src/widgets/EventAdressBlock';
+import { MainInfoEvent } from 'src/widgets/MainInfoEvent';
 import { AboutEvent } from 'src/widgets/AboutEvent';
 import { ProgrammList } from 'src/widgets/ProgrammList';
+import { EventAdressBlock } from 'src/widgets/EventAdressBlock';
+import { event } from 'src/widgets/ProgrammList/const/mockData';
 
 import style from './EventPage.module.scss';
 
@@ -11,6 +13,7 @@ const EventPage = () => {
     <div className={style.layout}>
       <Header />
       <div className={style.main}>
+        <MainInfoEvent eventInfo={event} />
         <AboutEvent />
         <ProgrammList />
         <EventAdressBlock />

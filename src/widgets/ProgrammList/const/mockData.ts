@@ -3,6 +3,8 @@ import avatar2 from 'src/assets/images/avatars/94a13d6d6dbce409c86842cd1ee0a9df.
 import avatar3 from 'src/assets/images/avatars/c6c924661cebf59c7ad44fc4c73ba77c.jpeg';
 import avatar4 from 'src/assets/images/avatars/c7e56b3d6a0f8ad4e6b4cf7512d26f21.jpeg';
 import avatar5 from 'src/assets/images/avatars/d5416a40d7827c291258f6bb352a2076.jpeg';
+import banner from 'src/assets/images/events/banner@2x.png';
+
 import type { TEvent } from '../types/type';
 
 export const event: TEvent = {
@@ -17,6 +19,7 @@ export const event: TEvent = {
   status: 'Статус мероприятия 1',
   activityStatus: 'Состояние мероприятия 1',
   themes: 'Разработка',
+  wallpaper: banner,
   location: [
     {
       city: 'Москва',
