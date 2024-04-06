@@ -1,13 +1,24 @@
-import { NavLink } from 'react-router-dom';
+import { Header } from 'src/widgets/Header';
+import { MyTicketsBlock } from 'src/widgets/MyTicketsBlock';
+import { PastEventsBlock } from 'src/widgets/PastEventsBlock';
+import { FilledRegistrationForm } from 'src/widgets/FilledRegistrationForm';
+
 import style from './UserAccountPage.module.scss';
 
 const UserAccountPage = () => {
   console.log('hello linter');
   return (
-    <section className={style.container}>
-      <div>UserAccountPage. Страница в разработке</div>
-      <NavLink to="/">Перейти на Главную</NavLink>
-    </section>
+    <div className={style.layout}>
+      <Header />
+      <div className={style.main}>
+        <section className={style.titleWrapper}>
+          <h2 className={style.pageTitle}>Личный кабинет</h2>
+        </section>
+        <MyTicketsBlock />
+        <FilledRegistrationForm />
+        <PastEventsBlock />
+      </div>
+    </div>
   );
 };
 
