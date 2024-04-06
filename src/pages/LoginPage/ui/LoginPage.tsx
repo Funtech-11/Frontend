@@ -9,6 +9,7 @@ const LoginPage = () => {
       <NavLink to="/">Перейти на Главную</NavLink>
       <NavLink to="/user-accaunt/1">Перейти в ЛК</NavLink>
       <NavLink to="/admin/1">Перейти в админку</NavLink>
+      <NavLink to="/event/1">Перейти в ивенты</NavLink>
     </section>
   );
 };
