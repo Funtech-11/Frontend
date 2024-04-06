@@ -1,5 +1,27 @@
-.container {
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.layout {
+  padding-bottom: 32px;
+}
+
+.main {
+  background-color: $colorLightGrey;
+  padding: 12px;
+  border-radius: 20px;
+  width: 894px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 12px;
+}
+.titleWrapper {
+  background-color: $colorWhiteSecondary;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.pageTitle {
+  @include reset-text;
+  @include text-header-h2;
 }
