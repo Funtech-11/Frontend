@@ -1,4 +1,5 @@
 @import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
 
 .footer {
   background-color: $colorBgLightGrey;
@@ -24,14 +25,16 @@
   gap: 20px;
 }
 
-.text {}
+.text {
+  @include text-regular-11;
+}
 
 .link {
-  text-decoration: none;
-  cursor: pointer;
+  @include reset-link;
+  @include text-regular-11;
 }
 
 .logoLink {
-  text-decoration: none;
-  cursor: pointer;
+  @include reset-link;
+  @include text-header-h4;
 }

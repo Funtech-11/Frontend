@@ -9,14 +9,18 @@ const Footer = () => (
           Яндекс.Ивенты
         </Link>
         <div className={style.textWrapper}>
-          <span className={style.text}>© 2001- 2024 Яндекс</span>
-          <Link to="/" className={style.link}>
+          <span className={style.text}>8 800 250-96-39</span>
+          <Link
+            to="https://yandex.ru/legal/confidential/"
+            className={style.link}
+          >
             Политика конфиденциальности
           </Link>
-          <Link to="/" className={style.link}>
+          <Link to="https://yandex.ru/legal/rules/" className={style.link}>
             Пользовательское соглашение
           </Link>
         </div>
+        <span className={style.text}>© 2001- 2024 Яндекс</span>
       </div>
     </div>
   </footer>
