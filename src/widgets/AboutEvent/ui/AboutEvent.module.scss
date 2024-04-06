@@ -1,0 +1,23 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: $colorBlack;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.title {
+  @include reset-text;
+  @include text-header-h2;
+  color: $colorWhitePrimary;
+}
+
+.text {
+  @include reset-text;
+  @include text-regular-14;
+  color: $colorWhitePrimary;
+  max-width: 630px;
+}
