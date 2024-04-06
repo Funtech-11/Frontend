@@ -43,6 +43,7 @@ type TEvent = {
   date: string; // Date and time of the event are represented in ISO 8601 string format
   numberOfParticipants: number;
   information: string;
+  wallpaper: string;
   type: string;
   format: string;
   status: string;
