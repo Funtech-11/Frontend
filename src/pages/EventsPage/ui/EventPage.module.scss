@@ -1,0 +1,18 @@
+@import 'src/app/styles/variables.scss';
+
+.layout {
+  padding-bottom: 32px;
+  width: 1336px;
+}
+
+.main {
+  background-color: $colorLightGrey;
+  padding: 12px;
+  border-radius: 20px;
+}
+
+.contentContainer {
+  padding: 20px;
+  background-color: $colorWhiteSecondary;
+  border-radius: 20px;
+}
