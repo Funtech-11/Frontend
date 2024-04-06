@@ -1,5 +1,6 @@
 import yandexTaxiIcon1x from 'src/assets/icons/yandexTaxi1x.png';
 import yandexTaxiIcon2x from 'src/assets/icons/yandexTaxi2x.png';
+import mapImg from 'src/assets/images/events/Map@2x.png';
 
 import style from './EventAdressBlock.module.scss';
 
@@ -33,7 +34,9 @@ const EventAdressBlock = () => {
           <div>Вызвать такси</div>
         </div>
       </div>
-      <div className={style.cardWrapper}>карта</div>
+      <div className={`${style.cardWrapper} ${style.mapCardWrapper}`}>
+        <img className={style.mapImg} src={mapImg} alt="карта" />
+      </div>
     </section>
   );
 };

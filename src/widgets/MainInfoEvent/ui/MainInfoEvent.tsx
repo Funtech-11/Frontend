@@ -44,6 +44,12 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
           src={eventInfo.wallpaper}
           alt="баннер"
         />
+        <div className={style.statusWrapper}>
+          <div className={style.statusDotActive} />
+          <p className={style.statusText}>
+            Регистрация открыта до 12.04.2024, 18:00
+          </p>
+        </div>
       </div>
     </section>
   );
