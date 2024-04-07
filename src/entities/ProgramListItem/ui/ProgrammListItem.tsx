@@ -10,9 +10,7 @@ type TProgramItemProps = {
 };
 
 const formatTime = (timeString: string) => {
-  // Извлекаем часы и минуты из строки времени
   const [hours, minutes] = timeString.slice(11, 16).split(':');
-  // Возвращаем отформатированную строку времени
   return `${hours}:${minutes}`;
 };
 
