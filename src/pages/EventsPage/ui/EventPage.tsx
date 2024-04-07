@@ -3,6 +3,8 @@ import { MainInfoEvent } from 'src/widgets/MainInfoEvent';
 import { AboutEvent } from 'src/widgets/AboutEvent';
 import { ProgrammList } from 'src/widgets/ProgrammList';
 import { EventAdressBlock } from 'src/widgets/EventAdressBlock';
+import { Carousel } from 'src/widgets/Carousel';
+
 import { event } from 'src/widgets/ProgrammList/const/mockData';
 
 import style from './EventPage.module.scss';
@@ -16,6 +18,7 @@ const EventPage = () => {
         <MainInfoEvent eventInfo={event} />
         <AboutEvent />
         <ProgrammList />
+        <Carousel />
         <EventAdressBlock />
       </div>
     </div>

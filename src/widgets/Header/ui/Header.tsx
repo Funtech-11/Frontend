@@ -5,7 +5,7 @@ import style from './Header.module.scss';
 const Header = () => (
   <header className={style.header}>
     <NavLink to="/" className={style.logoLink}>
-      <h1 className={style.title}>Яндекс. Ивенты</h1>
+      <h1 className={style.title}>Яндекс.Ивенты</h1>
     </NavLink>
     <div className={style.loginContainer}>
       <NavLink className={style.loginLink} to="/login">

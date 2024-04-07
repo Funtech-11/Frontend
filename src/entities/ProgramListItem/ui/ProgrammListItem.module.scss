@@ -6,7 +6,6 @@
   padding-bottom: 20px;
   border-top: 1px solid $colorLightGrey;
   display: flex;
-  justify-content: space-between;
 }
 
 .time {
@@ -21,11 +20,13 @@
 .title {
   @include text-header-h4;
   max-width: 208px;
+  margin-right: 30px;
 }
 
 .infoText {
   @include text-regular-14;
   max-width: 209px;
+  margin-right: 30px;
 }
 
 .speakerInfoWrapper {
@@ -60,9 +61,12 @@
 .job {
   @include reset-text;
   @include text-regular-14;
+  max-width: 313px;
 }
 
 .btnWrapper {
   display: flex;
   gap: 12px;
+  justify-content: flex-end;
+  min-width: 200px;
 }
