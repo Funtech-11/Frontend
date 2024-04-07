@@ -3,7 +3,7 @@ import { Dialog, DialogActions } from '@mui/material';
 import { FilledRegistrationForm } from 'src/widgets/FilledRegistrationForm';
 import closeBtnIcon from 'src/assets/icons/closeButton.svg';
 
-import style from './FilledFormModal.module.scss';
+import style from './FormModal.module.scss';
 
 type TFilledFormModalProps = {
   open: boolean;
