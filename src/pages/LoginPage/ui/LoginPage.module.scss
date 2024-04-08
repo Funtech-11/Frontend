@@ -1,5 +1,106 @@
+@import 'src/app/styles/mixins.scss';
+@import 'src/app/styles/variables';
+
 .container {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+.loginContainer {
+  background-color: $colorBlack;
+  width: 650px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  box-sizing: border-box;
+  margin-top: 20vh;
+  position: relative;
+}
+
+.backBtn {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+}
+
+.logoWrapper {
+  display: flex;
+  margin-bottom: 36px;
+  gap: 7px;
+}
+.cardTitle {
+  @include reset-text;
+  @include text-header-h3;
+  color: $colorWhitePrimary;
+}
+
+.cardSubtitle {
+  @include reset-text;
+  @include text-secondary-regular-20;
+  color: $colorWhitePrimary;
+  margin-bottom: 18px;
+}
+
+.cardText {
+  @include reset-text;
+  @include text-medium-16;
+  color: $colorWhitePrimary;
+  margin-bottom: 18px;
+}
+
+.userBox {
+  @include reset-link;
+  width: 350px;
+  display: flex;
+  border: 1px solid $colorWhitePrimary;
+  margin-bottom: 8px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.info {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.partnerLink {
+  @include reset-link;
+  @include text-secondary-regular-20;
+}
+
+.userName {
+  @include text-regular-16;
+  color: $colorWhitePrimary;
+}
+
+.infoText {
+  @include text-secondary-regular-20;
+}
+
+.btn {
+  @include reset-button;
+  @include text-medium-15;
+  width: 350px;
+  height: 48px;
+  border-radius: 4px;
+  background-color: $colorWhitePrimary;
 }
