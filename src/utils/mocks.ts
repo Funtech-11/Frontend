@@ -1,5 +1,18 @@
 import type { TCard } from 'src/widgets/Card/types/type';
 
+import cardImg1 from 'src/assets/images/mock/1.png';
+import cardImg2 from 'src/assets/images/mock/2.png';
+import cardImg3 from 'src/assets/images/mock/3.png';
+import cardImg4 from 'src/assets/images/mock/4.png';
+import cardImg5 from 'src/assets/images/mock/5.png';
+import cardImg6 from 'src/assets/images/mock/6.png';
+import cardImg7 from 'src/assets/images/mock/7.png';
+import cardImg8 from 'src/assets/images/mock/8.png';
+import cardImg9 from 'src/assets/images/mock/9.png';
+import cardImg10 from 'src/assets/images/mock/10.png';
+import cardImg11 from 'src/assets/images/mock/11.png';
+import cardImg12 from 'src/assets/images/mock/12.png';
+
 export const mockThemes = [
   'Маркетинг',
   'Разработка',
@@ -13,7 +26,7 @@ export const mockThemes = [
 export const mockCards: TCard[] = [
   {
     id: 1,
-    image: 'src/assets/images/mock/1.png',
+    image: cardImg1,
     status: 'Идёт регистрация',
     format: 'Конференция',
     theme: 'Разработка',
@@ -26,7 +39,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 2,
-    image: 'src/assets/images/mock/2.png',
+    image: cardImg2,
     status: 'Идёт регистрация',
     format: 'Митап',
     theme: 'Разработка',
@@ -38,7 +51,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 3,
-    image: 'src/assets/images/mock/3.png',
+    image: cardImg3,
     status: 'Идёт регистрация',
     format: 'Митап',
     theme: 'Разработка',
@@ -51,7 +64,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 4,
-    image: 'src/assets/images/mock/4.png',
+    image: cardImg4,
     status: 'Идёт регистрация',
     format: 'Экскурсия',
     theme: 'Другое',
@@ -64,7 +77,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 5,
-    image: 'src/assets/images/mock/5.png',
+    image: cardImg5,
     status: 'Идёт регистрация',
     format: 'Встреча',
     theme: 'Разработка',
@@ -77,7 +90,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 6,
-    image: 'src/assets/images/mock/6.png',
+    image: cardImg6,
     status: 'Идёт регистрация',
     format: 'Конфереция',
     theme: 'Маркетинг',
@@ -90,7 +103,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 7,
-    image: 'src/assets/images/mock/7.png',
+    image: cardImg7,
     status: 'Идёт регистрация',
     format: 'Конференция',
     theme: 'Менеджмент',
@@ -103,7 +116,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 8,
-    image: 'src/assets/images/mock/8.png',
+    image: cardImg8,
     status: 'Идёт регистрация',
     format: 'Встреча',
     theme: 'Дизайн',
@@ -116,7 +129,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 9,
-    image: 'src/assets/images/mock/9.png',
+    image: cardImg9,
     status: 'Ивент завершён',
     format: 'Конференция',
     theme: 'Разработка',
@@ -128,7 +141,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 10,
-    image: 'src/assets/images/mock/10.png',
+    image: cardImg10,
     status: 'Идёт регистрация',
     format: 'Встреча',
     theme: 'Аналитика',
@@ -141,7 +154,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 11,
-    image: 'src/assets/images/mock/11.png',
+    image: cardImg11,
     status: 'Идёт регистрация',
     format: 'Конференция',
     theme: 'Разработка',
@@ -154,7 +167,7 @@ export const mockCards: TCard[] = [
   },
   {
     id: 12,
-    image: 'src/assets/images/mock/12.png',
+    image: cardImg12,
     status: 'Идёт регистрация',
     format: 'Конференция',
     theme: 'Разработка',
