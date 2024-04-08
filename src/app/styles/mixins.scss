@@ -60,7 +60,7 @@
 }
 
 @mixin text-for-all {
-  color: $colorBlack;
+  color: inherit;
   font-family: $fontTextPrimary;
   font-weight: 400;
 }
@@ -137,4 +137,22 @@
 @mixin text-404-page {
   $f-size: 200px;
   @include header-for-all($f-size);
+}
+
+// mixin for active elements style such as chips, buttons etc
+
+@mixin active-style {
+  color: $colorWhitePrimary;
+  fill: $colorWhitePrimary;
+  background-color: $colorAccentPrimary;
+  border-color: transparent;
+}
+
+// mixins for forms of elements such as chips, buttons etc
+
+@mixin active-style {
+  color: $colorWhitePrimary;
+  fill: $colorWhitePrimary;
+  background-color: $colorAccentPrimary;
+  border-color: transparent;
 }

@@ -12,7 +12,7 @@ const Header = () => (
         Войти
       </NavLink>
       <button className={style.burgerBtn} type="button">
-        <img src={burgerIcon} alt="меню" />
+        <img src={burgerIcon} alt="Меню" />
       </button>
     </div>
   </header>
