@@ -34,6 +34,7 @@
 .logoWrapper {
   display: flex;
   margin-bottom: 36px;
+  gap: 7px;
 }
 .cardTitle {
   @include reset-text;
