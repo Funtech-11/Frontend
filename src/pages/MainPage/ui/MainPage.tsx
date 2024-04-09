@@ -1,18 +1,22 @@
-import { Footer } from 'src/widgets/Footer';
+import { useState } from 'react';
 import { Header } from 'src/widgets/Header';
+import { Menu } from 'src/widgets/Menu';
+import { Chips } from 'src/widgets/Chips';
+import { Card } from 'src/widgets/Card';
+import { Footer } from 'src/widgets/Footer';
 import style from './MainPage.module.scss';
 
 import { mockThemes, mockCards } from 'src/utils/mocks';
-import Chips from 'src/widgets/Chips/ui/Chips';
-import { Card } from 'src/widgets/Card';
 
 const MainPage = () => {
-  console.log('hello linter');
+  const [isMenuShown, setMenuShown] = useState(false);
+
   return (
     <div className={style.layout}>
-      <Header />
+      <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
+      <Menu isShown={isMenuShown} />
       <div className={style.main}>
-        <div className={style.contentContainer}>
+        <div className={style.contentBlock}>
           <Chips labels={mockThemes} />
         </div>
         <ul className={style.cards}>
