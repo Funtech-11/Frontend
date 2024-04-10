@@ -10,7 +10,7 @@ import type { TEvent } from '../../widgets/ProgrammList/types/type';
 export const event: TEvent = {
   id: 1,
   name: 'Infra Meetup',
-  date: '2024-04-05T12:30:45Z',
+  date: '2024-05-01T09:00:45Z',
   numberOfParticipants: 100,
   information:
     'Узнайте о последних инновациях и передовых стратегиях для создания мобильных приложений от ведущих экспертов Яндекса',
