@@ -4,9 +4,11 @@
 .container {
   display: flex;
   gap: 32px;
+  max-width: 1440px;
 }
 .sidebar {
   width: 319px;
+  margin-left: 64px;
 }
 
 .sidebarHeader {
@@ -14,6 +16,24 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+.mainNavList {
+  @include reset-list;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 45px;
+}
+
+.mainNavItem {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background-color: $colorLightGrey;
+  width: 100%;
+  border-radius: 20px;
+  padding: 12px 20px;
+  box-sizing: border-box;
 }
 
 .logoText {
@@ -82,14 +102,10 @@
   flex-direction: column;
 }
 
-.titleWrapper {
-  display: flex;
-  justify-content: space-between;
-}
-
 .title {
   @include reset-text;
   @include text-header-h2;
+  margin-bottom: 32px;
 }
 
 .tableWrapper {
@@ -97,12 +113,45 @@
   width: 100%;
 }
 
-.noDataMeaasgeBlock {
-  margin-top: 168px;
-  align-self: center;
-}
-
 .subtitle {
   @include reset-text;
   @include text-header-h4;
+  margin-bottom: 12px;
+}
+
+.infoNoDataContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.navTabsContainer {
+  padding: 8px;
+  background-color: $colorWhitePrimary;
+  width: fit-content;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.tabList {
+  @include reset-list;
+  display: flex;
+}
+
+.navItem {
+  @include reset-button;
+  padding: 14px 0;
+  width: 120px;
+  height: 48px;
+  border-radius: 4px;
+  @include text-medium-15;
+  background-color: transparent;
+
+  &.active {
+    background-color: $colorBlackSecondary;
+    color: $colorWhitePrimary;
+    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
+  }
 }
