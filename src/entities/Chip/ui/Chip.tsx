@@ -16,7 +16,7 @@ const Chip: FC<TChip> = ({ label, clickable = false, hasBorder = true }) => {
 
   return (
     <div
-      className={`${style.chip} ${hasBorder && style.chipBordered} ${isActive && style.chipActive}`}
+      className={`${style.chip} ${clickable && style.chipClickable} ${hasBorder && style.chipBordered} ${isActive && style.chipActive}`}
       onClick={handleClick}
     >
       <p className={style.title}>{label}</p>

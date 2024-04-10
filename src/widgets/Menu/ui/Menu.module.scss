@@ -1,0 +1,33 @@
+@import 'src/app/styles/mixins.scss';
+
+.menu {
+  min-height: 0px;
+  max-height: 0px;
+  margin-top: 0;
+  transition: max-height .5s cubic-bezier(0, 1, 0, 1);
+  transition: margin-top .5s;
+  overflow: hidden;
+
+  &Active {
+    min-height: 64px;
+    max-height: 640px;
+    margin-top: 12px;
+    transition: max-height .5s cubic-bezier(1, 0, 1, 0);
+    transition: margin-top .5s;
+  }
+}
+
+.list {
+  @include reset-list;
+  @include contentBlock;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+}
+
+.item {
+  @include text-secondary-regular-20;
+  cursor: pointer;
+}

@@ -1,5 +1,5 @@
 @import 'src/app/styles/mixins.scss';
-@import 'src/app/styles/variables';
+@import 'src/app/styles/variables.scss';
 
 .chip {
   width: fit-content;
@@ -7,8 +7,11 @@
   border: 1px solid transparent;
   border-radius: 8px;
   padding: 13px 23.5px;
-  background-color: $colorWhiteSecondary;
-  cursor: pointer;
+  background-color: $colorWhitePrimary;
+
+  &Clickable {
+    cursor: pointer;
+  }
 
   &Bordered {
     border-color: $colorBlackPrimary;

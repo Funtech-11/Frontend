@@ -11,12 +11,11 @@
   padding: 12px 12px 0px 12px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  margin-top: 32px;
 }
 
-.contentContainer {
-  padding: 20px;
-  background-color: $colorWhiteSecondary;
-  border-radius: 20px;
+.filterBlock {
+  @include contentBlock;
 }
 
 .cards {
@@ -29,4 +28,10 @@
   gap: 12px;
   box-sizing: border-box;
   padding: 12px 0;
+}
+
+.moreContentBlock {
+  @include contentBlock;
+  display: flex;
+  justify-content: center
 }

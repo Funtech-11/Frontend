@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Header } from 'src/widgets/Header';
-// import { Menu } from 'src/widgets/Menu';
+import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
 import { Card } from 'src/widgets/Card';
 import { Button } from 'src/entities/Button';
@@ -10,12 +10,14 @@ import style from './MainPage.module.scss';
 import { mockThemes, mockCards } from 'src/utils/mocks';
 
 const MainPage = () => {
-  console.log('hello linter');
+  const [isMenuShown, setMenuShown] = useState(false);
+
   return (
     <div className={style.layout}>
-      <Header />
+      <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
+      <Menu isShown={isMenuShown} />
       <div className={style.main}>
-        <div className={style.contentContainer}>
+        <div className={style.filterBlock}>
           <Chips labels={mockThemes} />
         </div>
         <ul className={style.cards}>
@@ -27,7 +29,7 @@ const MainPage = () => {
             );
           })}
         </ul>
-        <div className={style.contentContainer}>
+        <div className={style.moreContentBlock}>
           <Button title="Ещё" hasIcon={true} />
         </div>
       </div>

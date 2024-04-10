@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Header } from 'src/widgets/Header';
+import { Menu } from 'src/widgets/Menu';
 import { MainInfoEvent } from 'src/widgets/MainInfoEvent';
 import { AboutEvent } from 'src/widgets/AboutEvent';
 import { ProgrammList } from 'src/widgets/ProgrammList';
@@ -10,10 +12,12 @@ import { event } from 'src/widgets/ProgrammList/const/mockData';
 import style from './EventPage.module.scss';
 
 const EventPage = () => {
-  console.log('hello linter');
+  const [isMenuShown, setMenuShown] = useState(false);
+
   return (
     <div className={style.layout}>
-      <Header />
+      <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
+      <Menu isShown={isMenuShown} />
       <div className={style.main}>
         <MainInfoEvent eventInfo={event} />
         <AboutEvent />
