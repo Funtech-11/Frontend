@@ -139,16 +139,17 @@
   @include header-for-all($f-size);
 }
 
-// mixin for active elements style such as chips, buttons etc
+// mixin for typical content blok
 
-@mixin active-style {
-  color: $colorWhitePrimary;
-  fill: $colorWhitePrimary;
-  background-color: $colorAccentPrimary;
-  border-color: transparent;
+@mixin contentBlock {
+  width: 100%;
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: $colorWhiteSecondary;
 }
 
-// mixins for forms of elements such as chips, buttons etc
+// mixin for active elements style such as chips, buttons etc
 
 @mixin active-style {
   color: $colorWhitePrimary;
