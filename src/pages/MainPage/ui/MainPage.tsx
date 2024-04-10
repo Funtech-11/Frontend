@@ -3,6 +3,7 @@ import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
 import { Card } from 'src/widgets/Card';
+import { Button } from 'src/entities/Button';
 import { Footer } from 'src/widgets/Footer';
 import style from './MainPage.module.scss';
 
@@ -16,7 +17,7 @@ const MainPage = () => {
       <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
       <Menu isShown={isMenuShown} />
       <div className={style.main}>
-        <div className={style.contentBlock}>
+        <div className={style.filterBlock}>
           <Chips labels={mockThemes} />
         </div>
         <ul className={style.cards}>
@@ -28,6 +29,9 @@ const MainPage = () => {
             );
           })}
         </ul>
+        <div className={style.moreContentBlock}>
+          <Button title="Ещё" hasIcon={true} />
+        </div>
       </div>
       <Footer />
     </div>

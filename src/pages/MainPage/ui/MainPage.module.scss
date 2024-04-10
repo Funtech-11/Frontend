@@ -14,7 +14,7 @@
   margin-top: 32px;
 }
 
-.contentBlock {
+.filterBlock {
   @include contentBlock;
 }
 
@@ -28,4 +28,10 @@
   gap: 12px;
   box-sizing: border-box;
   padding: 12px 0;
+}
+
+.moreContentBlock {
+  @include contentBlock;
+  display: flex;
+  justify-content: center
 }

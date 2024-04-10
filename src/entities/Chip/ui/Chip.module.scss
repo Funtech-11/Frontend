@@ -7,14 +7,14 @@
   border: 1px solid transparent;
   border-radius: 8px;
   padding: 13px 23.5px;
-  background-color: $colorWhiteSecondary;
+  background-color: $colorWhitePrimary;
 
   &Clickable {
     cursor: pointer;
   }
 
   &Bordered {
-    border-color: $colorBlack;
+    border-color: $colorBlackPrimary;
   }
 
   &Active {
