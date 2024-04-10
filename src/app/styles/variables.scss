@@ -4,7 +4,8 @@ $fontTextPrimary: 'San Francisco Pro Text', Helvetica, Arial, sans-serif;
 $fontTextSecondary: 'San Francisco Pro Display', Helvetica, Arial, sans-serif;
 
 // base colors
-$colorBlack: #1c1c1c;
+$colorBlackPrimary: #1c1c1c;
+$colorBlackSecondary: #444652;
 $colorWhitePrimary: #ffffff;
 $colorWhiteSecondary: #f4f5f7;
 $colorLightGrey: #bbb9ba;
@@ -16,4 +17,4 @@ $colorsuccess: #60ac4d;
 $colorAccentPrimary: #ff5c01;
 
 //btns
-$colorBgBtn: rgba(97, 97, 97, 0.7);
+$colorBgBtn: rgba(#616161, .7);

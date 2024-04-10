@@ -33,7 +33,7 @@
 // typography mixins
 
 @mixin header-for-all($f-size) {
-  color: $colorBlack;
+  color: $colorBlackPrimary;
   font-family: $fontHeaders;
   font-size: $f-size;
   line-height: calc($f-size / 100 * 115);
@@ -117,7 +117,7 @@
 }
 
 @mixin text-secondary-regular-20 {
-  color: $colorBlack;
+  color: $colorBlackPrimary;
   font-family: $fontTextSecondary;
   font-size: 20px;
   font-weight: 400;
