@@ -2,6 +2,7 @@
 @import 'src/app/styles/mixins.scss';
 
 .container {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
@@ -132,4 +133,13 @@
 
 .timerText {
   @include text-header-h3;
+}
+
+.btnWrapper {
+  position: absolute;
+  top: 200px;
+  left: 205px;
+  padding: 12px;
+  background-color: $colorLightGrey;
+  border-radius: 20px;
 }

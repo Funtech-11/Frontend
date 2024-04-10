@@ -7,7 +7,7 @@ import { ProgrammList } from 'src/widgets/ProgrammList';
 import { EventAdressBlock } from 'src/widgets/EventAdressBlock';
 import { Carousel } from 'src/widgets/Carousel';
 
-import { event } from 'src/widgets/ProgrammList/const/mockData';
+import { event } from 'src/utils/mocks/eventsMockData';
 
 import style from './EventPage.module.scss';
 

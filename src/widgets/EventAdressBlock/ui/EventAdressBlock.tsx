@@ -1,3 +1,5 @@
+import { ButtonLink } from 'src/entities/ButtonLink';
+
 import yandexTaxiIcon1x from 'src/assets/icons/yandexTaxi1x.png';
 import yandexTaxiIcon2x from 'src/assets/icons/yandexTaxi2x.png';
 import mapImg from 'src/assets/images/events/Map@2x.png';
@@ -31,7 +33,11 @@ const EventAdressBlock = () => {
               />
             </picture>
           </div>
-          <div>Вызвать такси</div>
+          <ButtonLink
+            title="Вызвать такси"
+            path="https://taxi.yandex.com/en_am/"
+            hasIcon
+          />
         </div>
       </div>
       <div className={`${style.cardWrapper} ${style.mapCardWrapper}`}>

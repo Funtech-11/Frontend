@@ -1,39 +1,61 @@
-import { useState } from 'react';
-
+import { FC, useState } from 'react';
 import { TicketModal } from 'src/entities/Modals';
-import { NavLink } from 'react-router-dom';
 import { QrBtn } from 'src/entities/QrBtn';
+import { Chip } from 'src/entities/Chip';
+import { ButtonLink } from 'src/entities/ButtonLink';
+import { ITicket } from 'src/utils/mocks/ticketData';
+
 import qrCodeImg from 'src/assets/images/qr-code.jpg';
 
 import style from './TicketInfoCard.module.scss';
-import { Chip } from '../../../entities/Chip';
 
-const TicketInfoCard = () => {
+interface ITicketInfoCardProps {
+  ticket: ITicket;
+}
+
+const TicketInfoCard: FC<ITicketInfoCardProps> = ({ ticket }) => {
   const [openModal, setOpenModal] = useState(false);
 
-  const handleOpenModal = () => {
-    setOpenModal(true);
-    console.log('open');
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
+
+  const formatDateString = (dateStr: string) => {
+    const [year, month, day, hours, minutes] = dateStr.split(/[-T:]/);
+    return `${day}/${month}/${year} в ${hours}:${minutes}`;
   };
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
+  const formatDateStringNoTime = (dateStr: string) => {
+    const [year, month, day] = dateStr.split(/[-T:]/);
+    return `${day}/${month}/${year} `;
   };
+
+  const statusCompleted = ticket.status === 'Завершено';
+  const dateLabel = statusCompleted ? 'Завершено' : 'Начало';
+  const dateFormatted = statusCompleted
+    ? formatDateStringNoTime(ticket.date)
+    : formatDateString(ticket.date);
+  const watchLabel = statusCompleted ? 'Смотреть запись' : 'Смотреть онлайн';
+  const buttonAction = statusCompleted ? (
+    <ButtonLink title={watchLabel} path="/" hasIcon />
+  ) : ticket.ticket ? (
+    <QrBtn onClick={() => handleOpenModal()} />
+  ) : (
+    <ButtonLink title="Смотреть онлайн" path="/" hasIcon />
+  );
 
   return (
     <>
       <div className={style.card}>
         <div>
-          <h4 className={style.title}>Онлайн конференция «Войти в IT»</h4>
-          <p className={style.text}>Начало: 20/03/2024 в 19:00</p>
+          <h4 className={style.title}>{ticket.name}</h4>
+          <p className={style.text}>{`${dateLabel}: ${dateFormatted}`}</p>
           <div className={style.infoContainer}>
-            <Chip label="Москва"></Chip>
-            <Chip label="митап"></Chip>
-            <Chip label="разработка"></Chip>
+            <Chip label={ticket.type === 'Онлайн' ? 'Онлайн' : ticket.city} />
+            <Chip label={ticket.format} />
+            <Chip label={ticket.theme} />
           </div>
         </div>
-        <NavLink to="/">Смотреть онлайн</NavLink>
-        <QrBtn onClick={() => handleOpenModal()} />
+        {buttonAction}
       </div>
       {openModal && (
         <TicketModal
@@ -48,7 +70,4 @@ const TicketInfoCard = () => {
 
 export default TicketInfoCard;
 
-// TODO Смотреть запись или Смотреть онлайн
-// TODO код на билеты или ранжевая кнопка в зависимости от онлайн или офлайн
-// TODO Завершено мероприятие
 // TODO чуть едет контент при открытии модалки wtf

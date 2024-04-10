@@ -1,9 +1,10 @@
 import { TicketInfoCard } from 'src/features/TicketInfoCard';
+import { tiketMockData } from 'src/utils/mocks/ticketData';
+import { Loader } from 'src/shared/Loader';
 
 import style from './MyTicketsBlock.module.scss';
 
 const MyTicketsBlock = () => {
-  console.log('hello linter');
   return (
     <section className={style.sectionWrapper}>
       <h2 className={style.title}>Мои билеты</h2>
@@ -11,10 +12,15 @@ const MyTicketsBlock = () => {
         Здесь собраны билеты на Ваши предстоящие ивенты Покажите QR-код на входе
         на мероприятие
       </p>
-      <div className={style.cardsContainer}>
-        <TicketInfoCard />
-        <TicketInfoCard />
-      </div>
+      {tiketMockData ? (
+        <div className={style.cardsContainer}>
+          {tiketMockData.map(ticket => (
+            <TicketInfoCard key={ticket.id} ticket={ticket} />
+          ))}
+        </div>
+      ) : (
+        <Loader />
+      )}
     </section>
   );
 };
