@@ -3,11 +3,16 @@ import type { FC } from 'react';
 import type { TMainInfoEventProps } from '../types/type';
 
 import style from './MainInfoEvent.module.scss';
+import { ButtonLink } from '../../../entities/ButtonLink';
 
 const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
   console.log('hello linter');
   return (
     <section className={style.container}>
+      <div className={style.btnWrapper}>
+        <ButtonLink title="Зарегистрироваться" path="/login" hasIcon />
+      </div>
+
       <div className={`${style.infoItem} ${style.text} ${style.gridPosition1}`}>
         {eventInfo.themes}
       </div>
