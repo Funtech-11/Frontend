@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
 import { Card } from 'src/widgets/Card';
+import { Banner } from 'src/widgets/Banner';
 import { Button } from 'src/entities/Button';
 import { Footer } from 'src/widgets/Footer';
 import style from './MainPage.module.scss';
@@ -23,9 +24,12 @@ const MainPage = () => {
         <ul className={style.cards}>
           {mockCards.map((card, index) => {
             return (
-              <li key={index}>
-                <Card event={card} />
-              </li>
+              <React.Fragment key={index}>
+                {index === 9 && <Banner />}
+                <li>
+                  <Card event={card} />
+                </li>
+              </React.Fragment>
             );
           })}
         </ul>
