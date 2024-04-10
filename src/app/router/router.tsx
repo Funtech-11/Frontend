@@ -6,6 +6,7 @@ import { EventPage } from 'src/pages/EventsPage';
 import { LoginPage } from 'src/pages/LoginPage';
 import { AdminPage } from 'src/pages/AdminPage';
 import { UserAccountPage } from 'src/pages/UserAccountPage';
+import { VideoPlayerPage } from 'src/pages/VideoPlayerPage';
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: 'event/:id',
         element: <EventPage />,
+      },
+      {
+        path: 'video/:id',
+        element: <VideoPlayerPage />,
       },
     ],
   },

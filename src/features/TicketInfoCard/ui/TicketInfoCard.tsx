@@ -36,11 +36,11 @@ const TicketInfoCard: FC<ITicketInfoCardProps> = ({ ticket }) => {
     : formatDateString(ticket.date);
   const watchLabel = statusCompleted ? 'Смотреть запись' : 'Смотреть онлайн';
   const buttonAction = statusCompleted ? (
-    <ButtonLink title={watchLabel} path="/" hasIcon />
+    <ButtonLink title={watchLabel} path="/video/1" hasIcon />
   ) : ticket.ticket ? (
     <QrBtn onClick={() => handleOpenModal()} />
   ) : (
-    <ButtonLink title="Смотреть онлайн" path="/" hasIcon />
+    <ButtonLink title="Смотреть онлайн" path="/video/1" hasIcon />
   );
 
   return (
