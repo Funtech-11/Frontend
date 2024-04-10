@@ -17,6 +17,8 @@ const VideoPlayerPage = () => {
 
   const [timer, setTimer] = useState('');
 
+  const timerT = false;
+
   useEffect(() => {
     const startingTime = new Date(event.date).getTime();
 
@@ -41,10 +43,23 @@ const VideoPlayerPage = () => {
               <div className={style.statusDot}></div>
               <span className={style.statusText}>Идёт подготовка к ивенту</span>
             </div>
-            <div className={style.timerWrapper}>
-              <span className={style.timerTitle}>Старт мероприятия через:</span>
-              <span className={style.timerText}>{timer}</span>
-            </div>
+            {timerT ? (
+              <div className={style.timerWrapper}>
+                <span className={style.timerTitle}>
+                  Старт мероприятия через:
+                </span>
+                <span className={style.timerText}>{timer}</span>
+              </div>
+            ) : (
+              <iframe
+                className={style.videoFrame}
+                width="750" // ширина видео
+                height="515" // высота видео
+                src="https://www.youtube.com/watch?v=YydO_hOJj2c"
+                allow="accelerometr; autoplay; encrypted-media"
+                title="Video Player"
+              ></iframe>
+            )}
           </div>
           <div className={style.chatContainer}>
             <h3 className={style.chatTitle}>Вопросы спикеру</h3>
