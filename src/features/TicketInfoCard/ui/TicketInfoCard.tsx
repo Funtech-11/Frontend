@@ -40,7 +40,7 @@ const TicketInfoCard: FC<ITicketInfoCardProps> = ({ ticket }) => {
   ) : ticket.ticket ? (
     <QrBtn onClick={() => handleOpenModal()} />
   ) : (
-    <ButtonLink title="Смотреть онлайн" path="/video/1" hasIcon />
+    <ButtonLink title="Смотреть онлайн" path="/video/2" hasIcon />
   );
 
   return (

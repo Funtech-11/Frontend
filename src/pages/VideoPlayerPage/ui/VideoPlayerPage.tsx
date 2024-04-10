@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { event } from 'src/utils/mocks/eventsMockData';
@@ -9,15 +11,16 @@ import chatTextIcon from 'src/assets/icons/chat/Text.svg';
 import chatSendImgIcon from 'src/assets/icons/chat/chatImg.svg';
 import chatEmojiIcon from 'src/assets/icons/chat/emoji.svg';
 import chatClipIcon from 'src/assets/icons/chat/paperclip.svg';
+import { Player } from 'src/features/Player';
 
 import style from './VideoPlayerPage.module.scss';
 
 const VideoPlayerPage = () => {
+  const { id } = useParams();
+
   const [isMenuShown, setMenuShown] = useState(false);
 
   const [timer, setTimer] = useState('');
-
-  const timerT = false;
 
   useEffect(() => {
     const startingTime = new Date(event.date).getTime();
@@ -41,9 +44,15 @@ const VideoPlayerPage = () => {
           <div className={style.playerContainer}>
             <div className={style.eventStatusWrapper}>
               <div className={style.statusDot}></div>
-              <span className={style.statusText}>Идёт подготовка к ивенту</span>
+              {id === '2' ? (
+                <span className={style.statusText}>
+                  Идёт подготовка к ивенту
+                </span>
+              ) : (
+                <span className={style.statusText}>Запись сохранена</span>
+              )}
             </div>
-            {timerT ? (
+            {id === '2' ? (
               <div className={style.timerWrapper}>
                 <span className={style.timerTitle}>
                   Старт мероприятия через:
@@ -51,14 +60,7 @@ const VideoPlayerPage = () => {
                 <span className={style.timerText}>{timer}</span>
               </div>
             ) : (
-              <iframe
-                className={style.videoFrame}
-                width="750" // ширина видео
-                height="515" // высота видео
-                src="https://www.youtube.com/watch?v=YydO_hOJj2c"
-                allow="accelerometr; autoplay; encrypted-media"
-                title="Video Player"
-              ></iframe>
+              <Player />
             )}
           </div>
           <div className={style.chatContainer}>
