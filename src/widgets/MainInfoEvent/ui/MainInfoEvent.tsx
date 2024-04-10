@@ -1,12 +1,11 @@
 import type { FC } from 'react';
 
 import type { TMainInfoEventProps } from '../types/type';
+import { ButtonLink } from 'src/entities/ButtonLink';
 
 import style from './MainInfoEvent.module.scss';
-import { ButtonLink } from '../../../entities/ButtonLink';
 
 const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
-  console.log('hello linter');
   return (
     <section className={style.container}>
       <div className={style.btnWrapper}>
