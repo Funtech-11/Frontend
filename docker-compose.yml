@@ -1,0 +1,21 @@
+version: '1.1'
+
+services:
+  frontend:
+    env_file: .env
+    build: . # docker build -t
+    entrypoint: /app/entrypoint.sh
+    volumes:
+      - static:/frontend_static
+
+  # nginx:
+  #   image: _nginx:latest
+  #   env_file: .env
+  #   ports:
+  #     - 8000:80
+  #     - 443:443
+  #   volumes:
+  #     - static:/static/
+
+volumes:
+  static:
