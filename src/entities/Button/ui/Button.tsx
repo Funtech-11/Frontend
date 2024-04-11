@@ -1,9 +1,9 @@
-import { FC, MouseEvent } from 'react';
+import { FC, ButtonHTMLAttributes, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ForwardIcon from 'src/assets/images/components/forward.svg';
 import style from './Button.module.scss';
 
-interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
   path?: string;
   variant?: string; // primary, outlined, text
