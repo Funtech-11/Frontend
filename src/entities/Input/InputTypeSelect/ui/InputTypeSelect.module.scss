@@ -1,0 +1,155 @@
+@import 'src/app/styles/mixins.scss';
+@import 'src/app/styles/variables';
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  position: relative;
+}
+
+.title {
+  @include reset-text;
+  @include text-medium-16;
+}
+
+.select {
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.wraper {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid $colorLightGrey;
+  background-color: $colorWhiteSecondary;
+  box-sizing: border-box;
+  padding: 11px 15px;
+  @include text-regular-16;
+  color: $colorBlackPrimary;
+
+  &::placeholder  {
+    color: $colorBlackSecondary;
+  }
+
+  &:active {
+    border-color: $colorBlackPrimary;
+  }
+
+  &:after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: $colorBlackSecondary;
+    transform: translate(0%, -50%) rotate(45deg);
+    position: absolute;
+    top: 50%;
+    right: 25px;
+  }
+}
+
+.inputOpen {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: $colorBlackSecondary;
+
+  &::after {
+    transform: translate(0%, -50%) rotate(-135deg);
+    top: 54%;
+  }
+}
+
+.text {
+  @include reset-text;
+  @include text-regular-16;
+}
+
+.dropDown {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-sizing: border-box;
+  padding: 4px 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: none;
+  background-color: $colorWhiteSecondary;
+  // box-shadow: 0px 9px 56px 0px #0000001a;
+  position: absolute;
+  top: 100%;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.optionWraper {
+  max-height: calc(44px * 4);
+  overflow: auto;
+}
+
+.optionWraper::-webkit-scrollbar {
+  height: 3px;
+  width: 3px;
+}
+
+.optionWraper::-webkit-scrollbar-track {
+  background: $colorWhiteSecondary;
+}
+
+.optionWraper::-webkit-scrollbar-thumb {
+  background: $colorLightGrey;
+  width: 30%;
+  border-radius: 8px;
+}
+
+.dropDownItem {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $colorLightGrey;
+  }
+
+  &Selected {}
+
+  &Disabled {}
+}
+
+.dropDownItemText {
+  @include reset-text;
+  @include text-regular-16;
+}
+
+.select:focus + .wraper .input {
+  border: 1px solid $colorLightGrey;
+}
+
+.error {
+  @include reset-text;
+  @include text-medium-14;
+  color: $colorError;
+}
+
+.overlay {
+  position: absolute;
+  opacity: .1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
