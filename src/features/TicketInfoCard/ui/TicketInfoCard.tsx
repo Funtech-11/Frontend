@@ -60,7 +60,7 @@ const TicketInfoCard: FC<ITicketInfoCardProps> = ({ ticket }) => {
       {openModal && (
         <TicketModal
           open={openModal}
-          onClose={handleCloseModal}
+          handleClose={handleCloseModal}
           qrImg={qrCodeImg}
         />
       )}

@@ -1,21 +1,23 @@
 import type { FC } from 'react';
-import { Dialog, DialogActions } from '@mui/material';
+import { Button, Dialog, DialogActions } from '@mui/material';
+import { ButtonLink } from 'src/entities/ButtonLink';
+
 import closeBtnIcon from 'src/assets/icons/closeButton.svg';
 
 import style from './TicketModal.module.scss';
 
 type TTicketModalProps = {
   open: boolean;
-  onClose: () => void;
+  handleClose: () => void;
   qrImg: string;
 };
 
-const TicketModal: FC<TTicketModalProps> = ({ open, onClose, qrImg }) => {
+const TicketModal: FC<TTicketModalProps> = ({ open, handleClose, qrImg }) => {
   return (
     <div>
       <Dialog
         open={open}
-        onClose={onClose}
+        onClose={handleClose}
         sx={{
           '& .MuiPaper-root': {
             borderRadius: '20px',
@@ -27,7 +29,7 @@ const TicketModal: FC<TTicketModalProps> = ({ open, onClose, qrImg }) => {
             aria-label="закрыть"
             type="button"
             className={style.closeBtn}
-            onClick={onClose}
+            onClick={handleClose}
           >
             <img src={closeBtnIcon} alt="закрыть" />
           </button>
@@ -49,8 +51,16 @@ const TicketModal: FC<TTicketModalProps> = ({ open, onClose, qrImg }) => {
           </span>
           <div className={style.btnWrapper}>
             <DialogActions>
-              <button>К мероприятию</button>
-              <button>В личный кабинет</button>
+              <ButtonLink
+                title="К мероприятию"
+                path="/event/1"
+                onClick={handleClose}
+              />
+              <ButtonLink
+                title="В личный кабинет"
+                path="/user-accaunt/1"
+                onClick={handleClose}
+              />
             </DialogActions>
           </div>
         </div>
@@ -58,5 +68,7 @@ const TicketModal: FC<TTicketModalProps> = ({ open, onClose, qrImg }) => {
     </div>
   );
 };
+
+// TODO передать id мероприятия
 
 export default TicketModal;

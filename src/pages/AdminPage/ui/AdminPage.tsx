@@ -10,6 +10,12 @@ import calendarImg from 'src/assets/images/admin/calendar.png';
 import adminImg from 'src/assets/images/admin/administration.png';
 import fireIcon from 'src/assets/icons/admin/fire.svg';
 
+import {
+  eventsData,
+  placesData,
+  speakerData,
+} from 'src/utils/mocks/admin/adminTablesData';
+
 import style from './AdminPage.module.scss';
 
 const tabs = ['Ивенты', 'Спикеры', 'Площадки'];
@@ -17,50 +23,58 @@ const tabs = ['Ивенты', 'Спикеры', 'Площадки'];
 const AdminPage = () => {
   const [selectedOption, setSelectedOption] = useState<string>('Ивенты');
 
+  // TODO вынести блок отсюда когда нет мероприятий внутрб админпанели
+
   const renderContent = () => {
     switch (selectedOption) {
       case 'Ивенты':
         return (
           <div>
             <div className={style.tableWrapper}>
-              <AdminPanelTable />
+              <AdminPanelTable type="event" eventsData={eventsData} />
             </div>
-            <div className={style.infoNoDataContainer}>
-              <h2 className={style.subtitle}>У вас еще нет мероприятий</h2>
-              <div>
-                <Button title="Добавить мероприятие" />
+            {eventsData.length == 0 ? (
+              <div className={style.infoNoDataContainer}>
+                <h2 className={style.subtitle}>У вас еще нет мероприятий</h2>
+                <div>
+                  <Button title="Добавить мероприятие" />
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
         );
       case 'Спикеры':
         return (
           <div>
             <div className={style.tableWrapper}>
-              <AdminPanelTable />
+              <AdminPanelTable type="speaker" speakerData={speakerData} />
             </div>
-            <div className={style.infoNoDataContainer}>
-              <h2 className={style.subtitle}>У вас еще нет спикеров</h2>
-              <div>
-                <Button title="Добавить спикера" />
+            {!speakerData ? (
+              <div className={style.infoNoDataContainer}>
+                <h2 className={style.subtitle}>У вас еще нет спикеров</h2>
+                <div>
+                  <Button title="Добавить спикера" />
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
         );
       case 'Площадки':
         return (
           <div>
             <div className={style.tableWrapper}>
-              <AdminPanelTable />
+              <AdminPanelTable type="place" placesData={placesData} />
             </div>
-            <div className={style.infoNoDataContainer}>
-              <h2 className={style.subtitle}>
-                У вас еще нет площадок для ивентов
-              </h2>
-              <div>
-                <Button title="Добавить площадку" />
+            {!placesData ? (
+              <div className={style.infoNoDataContainer}>
+                <h2 className={style.subtitle}>
+                  У вас еще нет площадок для ивентов
+                </h2>
+                <div>
+                  <Button title="Добавить площадку" />
+                </div>
               </div>
-            </div>
+            ) : null}
           </div>
         );
       default:

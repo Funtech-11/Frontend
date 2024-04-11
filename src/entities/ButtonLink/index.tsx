@@ -1,3 +1,3 @@
-import ButtonLink from './ui/Button';
+import ButtonLink from './ui/ButtonLink';
 
 export { ButtonLink };

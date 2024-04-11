@@ -1,0 +1,8 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.editBtn {
+  @include reset-button;
+  width: 24px;
+  height: 24px;
+}

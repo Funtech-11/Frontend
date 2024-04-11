@@ -9,6 +9,7 @@ interface IButtonLinkProps {
   variant?: string; // primary, outlined, text
   hasIcon?: boolean;
   extraClass?: string;
+  onClick?: () => void;
 }
 
 const ButtonLink: FC<IButtonLinkProps> = ({
@@ -17,6 +18,7 @@ const ButtonLink: FC<IButtonLinkProps> = ({
   variant = 'primary',
   hasIcon = false,
   extraClass,
+  onClick,
   ...ButtonHTMLAttributes
 }) => {
   const isInternalPath = !/^https?:\/\//.test(path);
@@ -25,6 +27,7 @@ const ButtonLink: FC<IButtonLinkProps> = ({
     <NavLink
       className={`${style.button} ${style[variant]} ${extraClass}`}
       to={path}
+      onClick={onClick}
       {...ButtonHTMLAttributes}
     >
       <span>{title}</span>
@@ -38,6 +41,7 @@ const ButtonLink: FC<IButtonLinkProps> = ({
     <Link
       className={`${style.button} ${style[variant]} ${extraClass}`}
       to={path}
+      onClick={onClick}
       {...ButtonHTMLAttributes}
       target="_blank"
     >
