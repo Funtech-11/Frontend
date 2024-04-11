@@ -1,18 +1,19 @@
 import type { FC } from 'react';
 import { Dialog, DialogActions } from '@mui/material';
-import { ButtonLink } from 'src/entities/ButtonLink';
+
+import { Button } from 'src/entities/Button';
+
 import closeBtnIcon from 'src/assets/icons/closeButton.svg';
 
-import style from './InfoModal.module.scss';
+import style from './AddItemModal.module.scss';
 
-type TInfoModalProps = {
+type TAddItemModalProps = {
   open: boolean;
   onClose: () => void;
   title: string;
-  content: string;
 };
 
-const InfoModal: FC<TInfoModalProps> = ({ open, onClose, title, content }) => {
+const AddItemModal: FC<TAddItemModalProps> = ({ open, onClose, title }) => {
   return (
     <div>
       <Dialog
@@ -34,15 +35,10 @@ const InfoModal: FC<TInfoModalProps> = ({ open, onClose, title, content }) => {
             <img src={closeBtnIcon} alt="закрыть" />
           </button>
           <h2 className={style.title}>{title}</h2>
-          <span className={style.text}>{content}</span>
+
           <div className={style.btnWrapper}>
             <DialogActions>
-              <ButtonLink title="На главную" path="/" onClick={onClose} />
-              <ButtonLink
-                title="В личный кабинет"
-                path="/user-accaunt/1"
-                onClick={onClose}
-              />
+              <Button title="Добавить спикера" />
             </DialogActions>
           </div>
         </div>
@@ -51,4 +47,4 @@ const InfoModal: FC<TInfoModalProps> = ({ open, onClose, title, content }) => {
   );
 };
 
-export default InfoModal;
+export default AddItemModal;

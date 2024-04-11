@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { useState, type FC } from 'react';
 import {
   Table,
   TableHead,
@@ -10,6 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import TableSortLabel from '@mui/material/TableSortLabel';
 
 import { Button } from 'src/entities/Button';
+import { AddItemModal } from 'src/entities/Modals/AddItemModal';
 
 import draftIcon from 'src/assets/icons/admin/draftFile.svg';
 import savedIcon from 'src/assets/icons/admin/savedFile.svg';
@@ -34,6 +35,26 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
   eventsData,
   placesData,
 }) => {
+  const [isAddSpeakerModalOpen, setIsAddSpeakerModalOpen] = useState(false);
+  const [isAddPlaceModalOpen, setIsAddPlaceModalOpen] = useState(false);
+  const [isAddEventModalOpen, setIsAddEventModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setIsAddSpeakerModalOpen(false);
+    setIsAddPlaceModalOpen(false);
+    setIsAddEventModalOpen(false);
+  };
+
+  const handleAddButtonClick = () => {
+    if (type === 'speaker') {
+      setIsAddSpeakerModalOpen(true);
+    } else if (type === 'event') {
+      setIsAddEventModalOpen(true);
+    } else if (type === 'place') {
+      setIsAddPlaceModalOpen(true);
+    }
+  };
+
   let headers: string[] = [];
 
   if (type === 'event') {
@@ -56,46 +77,77 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
   }
 
   return (
-    <div className={style.container}>
-      <div className={style.btnContainer}>
-        <Button title="Добавить" />
-      </div>
-      <Table sx={{ width: '100%' }}>
-        <TableHead>
-          <TableRow>
-            <TableCell padding="checkbox">
-              <Checkbox />
-            </TableCell>
-            {headers.map((header, index) => (
-              <TableCell key={index}>
-                <TableSortLabel> {header}</TableSortLabel>
+    <>
+      <div className={style.container}>
+        <div className={style.btnContainer}>
+          {type === 'speaker' && (
+            <Button title="Добавить" onClick={handleAddButtonClick} />
+          )}
+          {type === 'event' && (
+            <Button title="Добавить" onClick={handleAddButtonClick} />
+          )}
+          {type === 'place' && (
+            <Button title="Добавить" onClick={handleAddButtonClick} />
+          )}
+        </div>
+        <Table sx={{ width: '100%' }}>
+          <TableHead>
+            <TableRow>
+              <TableCell padding="checkbox">
+                <Checkbox />
               </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {type === 'speaker' && speakerData && (
-            <SpeakerTableBody speakerData={speakerData} />
-          )}
-          {type === 'event' && eventsData && (
-            <EventTableBody eventsData={eventsData} />
-          )}
-          {type === 'place' && placesData && (
-            <PlaceTableBody placesData={placesData} />
-          )}
-        </TableBody>
-      </Table>
-      <div className={style.legendContainer}>
-        <div className={style.legendItem}>
-          <img className={style.legendIcon} src={savedIcon} />
-          <span className={style.legendText}>Сохранено</span>
-        </div>
-        <div className={style.legendItem}>
-          <img className={style.legendIcon} src={draftIcon} />
-          <span className={style.legendText}>Черновик</span>
+              {headers.map((header, index) => (
+                <TableCell key={index}>
+                  <TableSortLabel> {header}</TableSortLabel>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {type === 'speaker' && speakerData && (
+              <SpeakerTableBody speakerData={speakerData} />
+            )}
+            {type === 'event' && eventsData && (
+              <EventTableBody eventsData={eventsData} />
+            )}
+            {type === 'place' && placesData && (
+              <PlaceTableBody placesData={placesData} />
+            )}
+          </TableBody>
+        </Table>
+        <div className={style.legendContainer}>
+          <div className={style.legendItem}>
+            <img className={style.legendIcon} src={savedIcon} />
+            <span className={style.legendText}>Сохранено</span>
+          </div>
+          <div className={style.legendItem}>
+            <img className={style.legendIcon} src={draftIcon} />
+            <span className={style.legendText}>Черновик</span>
+          </div>
         </div>
       </div>
-    </div>
+      {isAddSpeakerModalOpen && (
+        <AddItemModal
+          open={isAddSpeakerModalOpen}
+          title="Добавление спикера"
+          onClose={handleCloseModal}
+        />
+      )}
+      {isAddEventModalOpen && (
+        <AddItemModal
+          open={isAddEventModalOpen}
+          title="Добавление мероприятия"
+          onClose={handleCloseModal}
+        />
+      )}
+      {isAddPlaceModalOpen && (
+        <AddItemModal
+          open={isAddPlaceModalOpen}
+          title="Добавление места"
+          onClose={handleCloseModal}
+        />
+      )}
+    </>
   );
 };
 

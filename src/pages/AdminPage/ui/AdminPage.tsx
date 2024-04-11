@@ -23,6 +23,8 @@ const tabs = ['Ивенты', 'Спикеры', 'Площадки'];
 const AdminPage = () => {
   const [selectedOption, setSelectedOption] = useState<string>('Ивенты');
 
+  // TODO вынести блок отсюда когда нет мероприятий внутрб админпанели
+
   const renderContent = () => {
     switch (selectedOption) {
       case 'Ивенты':
