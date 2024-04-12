@@ -16,7 +16,12 @@ import draftIcon from 'src/assets/images/icons/admin/draftFile.svg';
 import savedIcon from 'src/assets/images/icons/admin/savedFile.svg';
 
 import { EventTableBody, PlaceTableBody, SpeakerTableBody } from '..';
-import { TEvent, TPlace, TSpeaker } from '../types/types';
+
+import {
+  TEvent,
+  TPlace,
+  TSpeaker,
+} from 'src/widgets/AdminPanelTable/types/types';
 
 import style from './AdminPanelTable.module.scss';
 
@@ -131,20 +136,23 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
           open={isAddSpeakerModalOpen}
           title="Добавление спикера"
           onClose={handleCloseModal}
+          btnText="Добавить спикера"
         />
       )}
       {isAddEventModalOpen && (
         <AddItemModal
           open={isAddEventModalOpen}
-          title="Добавление мероприятия"
+          title="Создание мероприятия"
           onClose={handleCloseModal}
+          btnText="Создать мероприятие"
         />
       )}
       {isAddPlaceModalOpen && (
         <AddItemModal
           open={isAddPlaceModalOpen}
-          title="Добавление места"
+          title="Добавление площадки"
           onClose={handleCloseModal}
+          btnText="Добавить площадку"
         />
       )}
     </>

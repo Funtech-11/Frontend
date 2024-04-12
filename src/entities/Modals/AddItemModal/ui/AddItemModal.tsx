@@ -11,9 +11,15 @@ type TAddItemModalProps = {
   open: boolean;
   onClose: () => void;
   title: string;
+  btnText: string;
 };
 
-const AddItemModal: FC<TAddItemModalProps> = ({ open, onClose, title }) => {
+const AddItemModal: FC<TAddItemModalProps> = ({
+  open,
+  onClose,
+  title,
+  btnText,
+}) => {
   return (
     <div>
       <Dialog
@@ -37,8 +43,8 @@ const AddItemModal: FC<TAddItemModalProps> = ({ open, onClose, title }) => {
           <h2 className={style.title}>{title}</h2>
 
           <div className={style.btnWrapper}>
-            <DialogActions>
-              <Button title="Добавить спикера" />
+            <DialogActions sx={{ padding: 0 }}>
+              <Button title={btnText} />
             </DialogActions>
           </div>
         </div>
