@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { TableCell, TableRow } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import editIcon from 'src/assets/icons/admin/edit.svg';
+import editIcon from 'src/assets/images/icons/admin/edit.svg';
 
 import style from './SpeakerTableBody.module.scss';
 import { TSpeaker } from '../types/types';

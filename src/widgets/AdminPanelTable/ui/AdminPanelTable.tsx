@@ -12,8 +12,8 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import { Button } from 'src/entities/Button';
 import { AddItemModal } from 'src/entities/Modals/AddItemModal';
 
-import draftIcon from 'src/assets/icons/admin/draftFile.svg';
-import savedIcon from 'src/assets/icons/admin/savedFile.svg';
+import draftIcon from 'src/assets/images/icons/admin/draftFile.svg';
+import savedIcon from 'src/assets/images/icons/admin/savedFile.svg';
 
 import { EventTableBody, PlaceTableBody, SpeakerTableBody } from '..';
 import { TEvent, TPlace, TSpeaker } from '../types/types';

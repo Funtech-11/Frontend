@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { TableCell, TableRow } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import draftIcon from 'src/assets/icons/admin/draftFile.svg';
-import savedIcon from 'src/assets/icons/admin/savedFile.svg';
-import editIcon from 'src/assets/icons/admin/edit.svg';
+import draftIcon from 'src/assets/images/icons/admin/draftFile.svg';
+import savedIcon from 'src/assets/images/icons/admin/savedFile.svg';
+import editIcon from 'src/assets/images/icons/admin/edit.svg';
 
 import style from './EventTableBody.module.scss';
 import { TEvent } from '../types/types';

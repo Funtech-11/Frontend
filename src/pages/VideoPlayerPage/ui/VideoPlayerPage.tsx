@@ -6,11 +6,11 @@ import { Menu } from 'src/widgets/Menu';
 import { event } from 'src/utils/mocks/eventsMockData';
 import { countdown } from 'src/utils/const/conuntdown';
 
-import chatSendIcon from 'src/assets/icons/chat/chatSend.svg';
-import chatTextIcon from 'src/assets/icons/chat/Text.svg';
-import chatSendImgIcon from 'src/assets/icons/chat/chatImg.svg';
-import chatEmojiIcon from 'src/assets/icons/chat/emoji.svg';
-import chatClipIcon from 'src/assets/icons/chat/paperclip.svg';
+import chatSendIcon from 'src/assets/images/icons/chat/chatSend.svg';
+import chatTextIcon from 'src/assets/images/icons/chat/Text.svg';
+import chatSendImgIcon from 'src/assets/images/icons/chat/chatImg.svg';
+import chatEmojiIcon from 'src/assets/images/icons/chat/emoji.svg';
+import chatClipIcon from 'src/assets/images/icons/chat/paperclip.svg';
 import { Player } from 'src/features/Player';
 
 import style from './VideoPlayerPage.module.scss';

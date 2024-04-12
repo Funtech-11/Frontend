@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AdminPanelTable } from 'src/widgets/AdminPanelTable';
 import { Button } from 'src/entities/Button';
-import admin360Logo from 'src/assets/icons/admin360logo.svg';
+import admin360Logo from 'src/assets/images/icons/admin360logo.svg';
 import mailImg from 'src/assets/images/admin/mail.png';
 import diskImg from 'src/assets/images/admin/disk.png';
 import docImg from 'src/assets/images/admin/doc.png';
 import calendarImg from 'src/assets/images/admin/calendar.png';
 import adminImg from 'src/assets/images/admin/administration.png';
-import fireIcon from 'src/assets/icons/admin/fire.svg';
+import fireIcon from 'src/assets/images/icons/admin/fire.svg';
 
 import {
   eventsData,

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
+import { InputTypeSelect } from 'src/entities/Input/InputTypeSelect';
 import { Card } from 'src/widgets/Card';
 import { Banner } from 'src/widgets/Banner';
 import { Button } from 'src/entities/Button';

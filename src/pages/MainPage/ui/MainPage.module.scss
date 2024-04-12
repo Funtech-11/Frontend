@@ -16,6 +16,9 @@
 
 .filterBlock {
   @include content-block;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .cards {
