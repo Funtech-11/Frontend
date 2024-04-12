@@ -1,11 +1,33 @@
-import type { FC } from 'react';
+import { useState, type FC, useEffect } from 'react';
 
 import type { TMainInfoEventProps } from '../types/type';
 import { ButtonLink } from 'src/entities/ButtonLink';
+import { countdown } from 'src/utils/const/conuntdown';
 
 import style from './MainInfoEvent.module.scss';
 
 const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
+  const [timer, setTimer] = useState('');
+
+  useEffect(() => {
+    const startingTime = new Date(eventInfo.date).getTime();
+
+    const updateCountdown = () => {
+      const newCountdown = countdown(startingTime, setTimer);
+      setTimer(newCountdown);
+    };
+
+    const intervalId = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const [showNewText, setShowNewText] = useState(false);
+
+  const handleClick = () => {
+    setShowNewText(!showNewText);
+  };
+
   return (
     <section className={style.container}>
       <div className={style.btnWrapper}>
@@ -19,16 +41,23 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
         {eventInfo.type}
       </div>
       <div
-        className={`${style.infoItem} ${style.longCard} ${style.gridPositionTitle}`}
+        className={`${style.infoItem} ${style.longCard} ${style.gridPositionTitle} ${style.cardWithHover}`}
+        onClick={handleClick}
       >
-        <h2 className={style.title}>{eventInfo.name}</h2>
-        <span className={style.textSpan}>By Yandex</span>
+        {showNewText ? (
+          <p className={style.textAfterClick}>{eventInfo.information}</p>
+        ) : (
+          <>
+            <h2 className={style.title}>{eventInfo.name}</h2>
+            <span className={style.textSpan}>By Yandex</span>
+          </>
+        )}
       </div>
       <div
         className={`${style.infoItem} ${style.longCard} ${style.gridPositionTimer}`}
       >
         <p className={style.timerTitle}>Старт мероприятия через:</p>
-        <span className={style.timerText}>1 д : 22 ч : 35 мин</span>
+        <span className={style.timerText}>{timer}</span>
       </div>
       <div className={`${style.infoItem} ${style.text} ${style.gridPosition3}`}>
         {eventInfo.location[0].city}
