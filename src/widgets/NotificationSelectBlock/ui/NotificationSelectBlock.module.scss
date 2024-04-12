@@ -1,0 +1,40 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.sectionWrapper {
+  background-color: $colorWhitePrimary;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.title {
+  @include reset-text;
+  margin-bottom: 12px;
+  @include text-header-h3;
+}
+
+.subtitle {
+  @include reset-text;
+  @include text-regular-16;
+  margin-bottom: 20px;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 39px;
+  background-color: $colorWhiteSecondary;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.labelText {
+  @include reset-text;
+  @include text-header-h4;
+}

@@ -7,6 +7,7 @@ import { FilledRegistrationForm } from 'src/widgets/FilledRegistrationForm';
 import { RegistrationForm } from 'src/widgets/RegistrationForm';
 
 import style from './UserAccountPage.module.scss';
+import { NotificationSelectBlock } from '../../../widgets/NotificationSelectBlock';
 
 const UserAccountPage = () => {
   const [isMenuShown, setMenuShown] = useState(false);
@@ -23,6 +24,7 @@ const UserAccountPage = () => {
         <FilledRegistrationForm />
         <PastEventsBlock />
         <RegistrationForm />
+        <NotificationSelectBlock />
       </div>
     </div>
   );
