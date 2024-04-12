@@ -8,19 +8,26 @@
   display: flex;
 }
 
+.infoWrapper {
+  display: flex;
+}
+
 .time {
   @include text-header-h2;
   min-width: 189px;
-}
-
-.infoWrapper {
-  display: flex;
+  transition: color 0.3s ease-in-out;
 }
 
 .title {
   @include text-header-h4;
   max-width: 208px;
   margin-right: 30px;
+  transition: color 0.3s ease-in-out;
+}
+
+.container:hover .time,
+.container:hover .title {
+  color: $colorAccentPrimary;
 }
 
 .infoText {

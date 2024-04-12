@@ -1,7 +1,7 @@
 import { ProgrammListItem } from 'src/entities/ProgramListItem';
 import style from './ProgrammList.module.scss';
 
-import { event } from '../../../utils/mocks/eventsMockData';
+import { event } from 'src/utils/mocks/eventsMockData';
 
 const ProgrammList = () => {
   console.log('hello linter');
