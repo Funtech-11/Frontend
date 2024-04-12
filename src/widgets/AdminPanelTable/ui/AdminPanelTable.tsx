@@ -137,6 +137,7 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
           title="Добавление спикера"
           onClose={handleCloseModal}
           btnText="Добавить спикера"
+          formType="speaker"
         />
       )}
       {isAddEventModalOpen && (
@@ -153,6 +154,7 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
           title="Добавление площадки"
           onClose={handleCloseModal}
           btnText="Добавить площадку"
+          formType="place"
         />
       )}
     </>
