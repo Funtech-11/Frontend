@@ -1,5 +1,6 @@
 #!/bin/sh
 
+npm install
 npm run build
-
-cp -r /app/dist/. /frontend_static/
+mkdir /app/frontend_static/
+cp -r /app/dist/. /app/frontend_static/.
