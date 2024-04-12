@@ -1,0 +1,15 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.title {
+  @include reset-text;
+  margin-bottom: 12px;
+  @include text-header-h3;
+}
+
+.subtitle {
+  @include reset-text;
+  @include text-regular-16;
+  margin-bottom: 20px;
+  max-width: 408px;
+}

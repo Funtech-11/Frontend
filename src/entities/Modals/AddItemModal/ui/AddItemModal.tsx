@@ -1,13 +1,10 @@
 import type { FC } from 'react';
-import { Dialog, DialogActions } from '@mui/material';
-
-import { Button } from 'src/entities/Button';
-
+import { Dialog } from '@mui/material';
+import { AddPlaceForm } from 'src/entities/AddPlaceForm';
+import { AddSpeakerForm } from 'src/entities/AddSpeakerForm';
 import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
 
 import style from './AddItemModal.module.scss';
-import { AddPlaceForm } from '../../../AddPlaceForm';
-import { AddSpeakerForm } from '../../../AddSpeakerForm';
 
 type TAddItemModalProps = {
   open: boolean;

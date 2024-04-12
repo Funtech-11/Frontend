@@ -1,31 +1,35 @@
 import type { FC } from 'react';
-import { Dialog, DialogActions } from '@mui/material';
-import { FilledRegistrationForm } from 'src/widgets/FilledRegistrationForm';
+import { Dialog } from '@mui/material';
+import { FilledRegistrationFormBody } from 'src/widgets/FilledRegistrationForm';
 import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
+import { CheckboxBlock } from 'src/widgets/CheckboxBlock';
+import { personalDataText } from 'src/utils/const/text/personalDataText';
+import { Button } from 'src/entities/Button';
 
 import style from './FormModal.module.scss';
 
 type TFilledFormModalProps = {
   open: boolean;
-  onClose: () => void;
-  title: string;
-  content: string;
+  handleClose: () => void;
+  isRegistered: boolean;
 };
 
 const FilledFormModal: FC<TFilledFormModalProps> = ({
   open,
-  onClose,
-  title,
-  content,
+  handleClose,
+  isRegistered,
 }) => {
   return (
     <div>
       <Dialog
         open={open}
-        onClose={onClose}
+        onClose={handleClose}
         sx={{
           '& .MuiPaper-root': {
             borderRadius: '20px',
+          },
+          '& .MuiDialog-paper': {
+            maxWidth: '870px',
           },
         }}
       >
@@ -34,33 +38,27 @@ const FilledFormModal: FC<TFilledFormModalProps> = ({
             aria-label="закрыть"
             type="button"
             className={style.closeBtn}
-            onClick={onClose}
+            onClick={handleClose}
           >
             <img src={closeBtnIcon} alt="закрыть" />
           </button>
-          <h2 className={style.title}>Регистрация на мероприятие</h2>
-          <span className={style.text}>
-            Заполните форму один раз для быстрой регистрации на любые
-            мероприятия в один клик
-          </span>
-          <FilledRegistrationForm />
-          <span className={style.text}>
-            *Согласие на обработку персональных данных
-          </span>
-          <div>
-            <span>
-              Я даю свое согласие на передачу в ООО «Яндекс» анкеты, содержащей
-              мои персональные, и согласен с тем, что они будут храниться в ООО
-              «Яндекс» в течение 10 лет и будут использованы исключительно для
-              целей приглашения меня к участию в мероприятиях группы компаний
-              «Яндекс» в соответствии с Федеральным законом «О персональных
-              данных».
+
+          <h2 className={style.title}>Форма регистрации участника</h2>
+          {!isRegistered && (
+            <span className={style.text}>
+              Заполните форму один раз для быстрой регистрации на любые
+              мероприятия в один клик
             </span>
-          </div>
+          )}
+          <FilledRegistrationFormBody />
+          <CheckboxBlock
+            label="Согласие на обработку персональных данных"
+            data={personalDataText}
+            required={true}
+            errorText="Согласие на обработку персональных данных обязательно"
+          />
           <div className={style.btnWrapper}>
-            <DialogActions>
-              <button>Зарегистрироваться</button>
-            </DialogActions>
+            <Button title="Зарегистрироваться" disabled />
           </div>
         </div>
       </Dialog>
