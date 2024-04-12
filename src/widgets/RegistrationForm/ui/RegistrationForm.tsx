@@ -3,13 +3,11 @@ import { InputTypeText } from 'src/entities/Input/InputTypeText';
 import { InputTypeSelect } from 'src/entities/Input/InputTypeSelect';
 import { CheckboxBlock } from 'src/widgets/CheckboxBlock';
 import { Button } from 'src/entities/Button';
+import { personalDataText } from 'src/utils/const/text/personalDataText';
 import style from './RegistrationForm.module.scss';
 
 const RegistrationForm = () => {
   const themes = ['Backend', 'Frontend', 'Mobile', 'QA', 'ML', 'Другое'];
-  const personalDataText = [
-    'Я даю свое согласие на передачу в ООО «Яндекс» анкеты, содержащей мои персональные, и согласен с тем, что они будут храниться в ООО «Яндекс» в течение 10 лет и будут использованы исключительно для целей приглашения меня к участию в мероприятиях группы компаний «Яндекс» в соответствии с Федеральным законом «О персональных данных».',
-  ];
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

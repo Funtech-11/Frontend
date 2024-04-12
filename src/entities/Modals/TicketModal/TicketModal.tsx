@@ -33,6 +33,7 @@ const TicketModal: FC<TTicketModalProps> = ({ open, handleClose, qrImg }) => {
           >
             <img src={closeBtnIcon} alt="закрыть" />
           </button>
+
           <h2 className={style.title}>Покажите QR-код на входе</h2>
           <span className={style.text}>
             Администратор на входе попросит Вас показать ему этот QR-код для
