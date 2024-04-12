@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import presentationIcon from 'src/assets/icons/presentation.svg';
-import playIcon from 'src/assets/icons/play.svg';
+import presentationIcon from 'src/assets/images/icons/presentation.svg';
+import playIcon from 'src/assets/images/icons/play.svg';
 
 import type { TContentLinkBtnProps } from '../types/type';
 

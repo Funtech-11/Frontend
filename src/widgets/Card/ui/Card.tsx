@@ -16,7 +16,9 @@ const Card: FC<TCardProps> = ({ event }) => {
         <p className={style.status}>{event.status}</p>
         <div className={style.labels}>
           <Chip label={event.format} hasBorder={false} />
-          <Chip label={event.theme} hasBorder={false} />
+          {event.theme !== 'Другое' && (
+            <Chip label={event.theme} hasBorder={false} />
+          )}
         </div>
       </div>
       <div className={style.info}>

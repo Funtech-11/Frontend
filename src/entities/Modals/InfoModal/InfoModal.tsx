@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { Dialog, DialogActions } from '@mui/material';
 import { ButtonLink } from 'src/entities/ButtonLink';
-import closeBtnIcon from 'src/assets/icons/closeButton.svg';
+import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
 
 import style from './InfoModal.module.scss';
 

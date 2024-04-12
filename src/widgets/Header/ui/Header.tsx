@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import burgerIcon from 'src/assets/icons/burger.svg';
+import burgerIcon from 'src/assets/images/icons/burger.svg';
 import style from './Header.module.scss';
 
 type THeaderProps = {

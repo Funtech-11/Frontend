@@ -3,7 +3,7 @@ import { Dialog, DialogActions } from '@mui/material';
 
 import { Button } from 'src/entities/Button';
 
-import closeBtnIcon from 'src/assets/icons/closeButton.svg';
+import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
 
 import style from './AddItemModal.module.scss';
 

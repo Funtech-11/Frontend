@@ -1,3 +1,4 @@
+import { Button } from 'src/entities/Button';
 import avatarIcon from 'src/assets/images/avatars/4b20ef67ab74659b2552d4e86c81968d.jpeg';
 import style from './FilledRegistrationForm.module.scss';
 
@@ -39,7 +40,7 @@ const FilledRegistrationForm = () => {
             </div>
           </div>
         </div>
-        <button type="button">Редактировать</button>
+        <Button title="Редактировать" variant="outlined" hasIcon={true} />
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import { ButtonLink } from 'src/entities/ButtonLink';
 
-import yandexTaxiIcon1x from 'src/assets/icons/yandexTaxi1x.png';
-import yandexTaxiIcon2x from 'src/assets/icons/yandexTaxi2x.png';
+import yandexTaxiIcon1x from 'src/assets/images/yandexTaxi1x.png';
+import yandexTaxiIcon2x from 'src/assets/images/yandexTaxi2x.png';
 import mapImg from 'src/assets/images/events/Map@2x.png';
 
 import style from './EventAdressBlock.module.scss';
