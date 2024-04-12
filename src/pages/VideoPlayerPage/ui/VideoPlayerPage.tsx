@@ -42,26 +42,36 @@ const VideoPlayerPage = () => {
       <div className={style.container}>
         <div className={style.topContainer}>
           <div className={style.playerContainer}>
-            <div className={style.eventStatusWrapper}>
-              <div className={style.statusDot}></div>
+            <div className={style.payerBg}>
+              <div className={style.bgImgContainer}>
+                <img
+                  className={style.bgImg}
+                  src={event.wallpaper}
+                  alt={event.name}
+                />
+              </div>
+
+              <div className={style.eventStatusWrapper}>
+                <div className={style.statusDot}></div>
+                {id === '2' ? (
+                  <span className={style.statusText}>
+                    Идёт подготовка к ивенту
+                  </span>
+                ) : (
+                  <span className={style.statusText}>Запись сохранена</span>
+                )}
+              </div>
               {id === '2' ? (
-                <span className={style.statusText}>
-                  Идёт подготовка к ивенту
-                </span>
+                <div className={style.timerWrapper}>
+                  <span className={style.timerTitle}>
+                    Старт мероприятия через:
+                  </span>
+                  <span className={style.timerText}>{timer}</span>
+                </div>
               ) : (
-                <span className={style.statusText}>Запись сохранена</span>
+                <Player />
               )}
             </div>
-            {id === '2' ? (
-              <div className={style.timerWrapper}>
-                <span className={style.timerTitle}>
-                  Старт мероприятия через:
-                </span>
-                <span className={style.timerText}>{timer}</span>
-              </div>
-            ) : (
-              <Player />
-            )}
           </div>
           <div className={style.chatContainer}>
             <h3 className={style.chatTitle}>Вопросы спикеру</h3>

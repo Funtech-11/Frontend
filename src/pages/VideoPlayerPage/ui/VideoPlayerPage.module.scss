@@ -24,7 +24,7 @@
 }
 
 .playerContainer {
-  background-color: rgba(97, 97, 97, 0.7);
+  background-color: $colorBlackPrimary;
   border-radius: 20px;
   min-width: 871px;
   display: flex;
@@ -32,7 +32,35 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  position: relative;
 }
+
+.bgImgContainer {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 468px;
+  width: 871px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: $colorAccentPrimary;
+    mix-blend-mode: soft-light;
+    z-index: 10;
+  }
+}
+
+.bgImg {
+  width: 100%;
+  height: 100%;
+}
+
 .eventStatusWrapper {
   position: absolute;
   top: 20px;
@@ -63,16 +91,26 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  background-color: $colorAccentPrimary;
+  border-radius: 20px;
+  padding: 20px;
+  color: $colorWhitePrimary;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .timerTitle {
   @include reset-text;
   @include text-secondary-regular-20;
+  color: $colorWhitePrimary;
 }
 
 .timerText {
   @include reset-text;
   @include text-header-h3;
+  color: $colorWhitePrimary;
 }
 
 .chatContainer {
