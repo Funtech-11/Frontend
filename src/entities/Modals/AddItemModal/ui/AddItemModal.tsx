@@ -6,14 +6,24 @@ import { Button } from 'src/entities/Button';
 import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
 
 import style from './AddItemModal.module.scss';
+import { AddPlaceForm } from '../../../AddPlaceForm';
+import { AddSpeakerForm } from '../../../AddSpeakerForm';
 
 type TAddItemModalProps = {
   open: boolean;
   onClose: () => void;
   title: string;
+  btnText: string;
+  formType?: 'place' | 'speaker';
 };
 
-const AddItemModal: FC<TAddItemModalProps> = ({ open, onClose, title }) => {
+const AddItemModal: FC<TAddItemModalProps> = ({
+  open,
+  onClose,
+  title,
+  btnText,
+  formType,
+}) => {
   return (
     <div>
       <Dialog
@@ -22,6 +32,9 @@ const AddItemModal: FC<TAddItemModalProps> = ({ open, onClose, title }) => {
         sx={{
           '& .MuiPaper-root': {
             borderRadius: '20px',
+          },
+          '& .MuiDialog-paper': {
+            maxWidth: '900px',
           },
         }}
       >
@@ -35,12 +48,13 @@ const AddItemModal: FC<TAddItemModalProps> = ({ open, onClose, title }) => {
             <img src={closeBtnIcon} alt="закрыть" />
           </button>
           <h2 className={style.title}>{title}</h2>
-
-          <div className={style.btnWrapper}>
-            <DialogActions>
-              <Button title="Добавить спикера" />
+          {formType == 'place' && <AddPlaceForm />}
+          {formType == 'speaker' && <AddSpeakerForm />}
+          {/* <div className={style.btnWrapper}>
+            <DialogActions sx={{ padding: 0 }}>
+              <Button title={btnText} type="submit" />
             </DialogActions>
-          </div>
+          </div> */}
         </div>
       </Dialog>
     </div>

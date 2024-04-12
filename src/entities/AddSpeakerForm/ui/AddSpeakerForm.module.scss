@@ -1,0 +1,35 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 642px;
+}
+
+.title {
+  @include reset-text;
+  @include text-header-h4;
+  margin-bottom: 12px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.legend {
+  max-width: 420px;
+  @include reset-text;
+  @include text-regular-16;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+}
+
+.submit {
+  width: 188px;
+}
