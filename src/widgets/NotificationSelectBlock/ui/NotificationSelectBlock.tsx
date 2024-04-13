@@ -8,8 +8,8 @@ const NotificationSelectBlock = () => {
     { id: 'sms', label: 'По СМС', checked: false },
     { id: 'webPush', label: 'Пуш в веб-приложении', checked: false },
     {
-      id: 'webPushWithApp',
-      label: 'Пуш в веб-приложении с приложением',
+      id: 'tg',
+      label: 'В телеграмм-боте',
       checked: false,
     },
   ]);

@@ -5,9 +5,9 @@ import { MyTicketsBlock } from 'src/widgets/MyTicketsBlock';
 import { PastEventsBlock } from 'src/widgets/PastEventsBlock';
 import { FilledRegistrationForm } from 'src/widgets/FilledRegistrationForm';
 import { RegistrationForm } from 'src/widgets/RegistrationForm';
+import { NotificationSelectBlock } from 'src/widgets/NotificationSelectBlock';
 
 import style from './UserAccountPage.module.scss';
-import { NotificationSelectBlock } from '../../../widgets/NotificationSelectBlock';
 
 const UserAccountPage = () => {
   const [isMenuShown, setMenuShown] = useState(false);
