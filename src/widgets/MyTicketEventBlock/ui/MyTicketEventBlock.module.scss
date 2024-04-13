@@ -1,0 +1,24 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $colorWhiteSecondary;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.title {
+  @include reset-text;
+  margin-bottom: 12px;
+  @include text-header-h3;
+}
+
+.text {
+  @include reset-text;
+  @include text-regular-16;
+  margin-bottom: 20px;
+  max-width: 408px;
+}

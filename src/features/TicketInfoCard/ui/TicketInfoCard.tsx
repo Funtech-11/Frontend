@@ -4,6 +4,10 @@ import { QrBtn } from 'src/entities/QrBtn';
 import { Chip } from 'src/entities/Chip';
 import { ButtonLink } from 'src/entities/ButtonLink';
 import { ITicket } from 'src/utils/mocks/ticketData';
+import {
+  formatDateString,
+  formatDateStringNoTime,
+} from 'src/utils/const/formatDate';
 
 import qrCodeImg from 'src/assets/images/qr-code.jpg';
 
@@ -19,22 +23,16 @@ const TicketInfoCard: FC<ITicketInfoCardProps> = ({ ticket }) => {
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
 
-  const formatDateString = (dateStr: string) => {
-    const [year, month, day, hours, minutes] = dateStr.split(/[-T:]/);
-    return `${day}/${month}/${year} в ${hours}:${minutes}`;
-  };
-
-  const formatDateStringNoTime = (dateStr: string) => {
-    const [year, month, day] = dateStr.split(/[-T:]/);
-    return `${day}/${month}/${year} `;
-  };
-
   const statusCompleted = ticket.status === 'Завершено';
+
   const dateLabel = statusCompleted ? 'Завершено' : 'Начало';
+
   const dateFormatted = statusCompleted
     ? formatDateStringNoTime(ticket.date)
     : formatDateString(ticket.date);
+
   const watchLabel = statusCompleted ? 'Смотреть запись' : 'Смотреть онлайн';
+
   const buttonAction = statusCompleted ? (
     <ButtonLink title={watchLabel} path="/video/1" hasIcon />
   ) : ticket.ticket ? (

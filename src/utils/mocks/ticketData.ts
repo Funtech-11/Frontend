@@ -36,6 +36,18 @@ export const tiketMockData: ITicket[] = [
   },
 ];
 
+export const currentTiketMockData: ITicket = {
+  id: 1,
+  name: 'Infra Meetup #3',
+  type: 'Офлайн',
+  city: 'Москва',
+  date: '2024-04-12T10:00:45Z',
+  format: 'Митап',
+  theme: 'Разработка',
+  status: 'Идёт регистрация',
+  ticket: qrCodeImg,
+};
+
 export const tiketFinishedMockData: ITicket[] = [
   {
     id: 3,
