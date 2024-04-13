@@ -1,25 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { event } from 'src/utils/mocks/eventsMockData';
 import { countdown } from 'src/utils/const/conuntdown';
-
+import { Player } from 'src/features/Player';
 import chatSendIcon from 'src/assets/images/icons/chat/chatSend.svg';
 import chatTextIcon from 'src/assets/images/icons/chat/Text.svg';
 import chatSendImgIcon from 'src/assets/images/icons/chat/chatImg.svg';
 import chatEmojiIcon from 'src/assets/images/icons/chat/emoji.svg';
 import chatClipIcon from 'src/assets/images/icons/chat/paperclip.svg';
-import { Player } from 'src/features/Player';
-
 import style from './VideoPlayerPage.module.scss';
 
 const VideoPlayerPage = () => {
   const { id } = useParams();
-
   const [isMenuShown, setMenuShown] = useState(false);
-
   const [timer, setTimer] = useState('');
 
   useEffect(() => {
@@ -35,6 +30,28 @@ const VideoPlayerPage = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  const renderBackgroundImage = () => (
+    <div className={style.bgImgContainer}>
+      <img className={style.bgImg} src={event.wallpaper} alt={event.name} />
+    </div>
+  );
+
+  const renderEventStatus = () => (
+    <div className={style.eventStatusWrapper}>
+      <div className={style.statusDot}></div>
+      <span className={style.statusText}>
+        {id === '2' ? 'Идёт подготовка к ивенту' : 'Запись сохранена'}
+      </span>
+    </div>
+  );
+
+  const renderTimer = () => (
+    <div className={style.timerWrapper}>
+      <span className={style.timerTitle}>Старт мероприятия через:</span>
+      <span className={style.timerText}>{timer}</span>
+    </div>
+  );
+
   return (
     <div className={style.layout}>
       <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
@@ -43,34 +60,9 @@ const VideoPlayerPage = () => {
         <div className={style.topContainer}>
           <div className={style.playerContainer}>
             <div className={style.payerBg}>
-              <div className={style.bgImgContainer}>
-                <img
-                  className={style.bgImg}
-                  src={event.wallpaper}
-                  alt={event.name}
-                />
-              </div>
-
-              <div className={style.eventStatusWrapper}>
-                <div className={style.statusDot}></div>
-                {id === '2' ? (
-                  <span className={style.statusText}>
-                    Идёт подготовка к ивенту
-                  </span>
-                ) : (
-                  <span className={style.statusText}>Запись сохранена</span>
-                )}
-              </div>
-              {id === '2' ? (
-                <div className={style.timerWrapper}>
-                  <span className={style.timerTitle}>
-                    Старт мероприятия через:
-                  </span>
-                  <span className={style.timerText}>{timer}</span>
-                </div>
-              ) : (
-                <Player />
-              )}
+              {id === '2' && renderBackgroundImage()}
+              {renderEventStatus()}
+              {id === '2' ? renderTimer() : <Player />}
             </div>
           </div>
           <div className={style.chatContainer}>
@@ -108,7 +100,6 @@ const VideoPlayerPage = () => {
           </div>
         </div>
       </div>
-
       <div className={style.main}></div>
     </div>
   );
