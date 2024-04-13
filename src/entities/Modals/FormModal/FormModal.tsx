@@ -5,6 +5,7 @@ import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
 import { CheckboxBlock } from 'src/widgets/CheckboxBlock';
 import { personalDataText } from 'src/utils/const/text/personalDataText';
 import { Button } from 'src/entities/Button';
+import { RegistrationForm } from 'src/widgets/RegistrationForm';
 
 import style from './FormModal.module.scss';
 
@@ -45,18 +46,26 @@ const FilledFormModal: FC<TFilledFormModalProps> = ({
 
           <h2 className={style.title}>Форма регистрации участника</h2>
           {!isRegistered && (
-            <span className={style.text}>
-              Заполните форму один раз для быстрой регистрации на любые
-              мероприятия в один клик
-            </span>
+            <>
+              <span className={style.text}>
+                Заполните форму один раз для быстрой регистрации на любые
+                мероприятия в один клик
+              </span>
+              <RegistrationForm />
+            </>
           )}
-          <FilledRegistrationFormBody />
-          <CheckboxBlock
-            label="Согласие на обработку персональных данных"
-            data={personalDataText}
-            required={true}
-            errorText="Согласие на обработку персональных данных обязательно"
-          />
+          {isRegistered && (
+            <div className={style.contentWrapper}>
+              <FilledRegistrationFormBody />
+              <CheckboxBlock
+                label="Согласие на обработку персональных данных"
+                data={personalDataText}
+                required={true}
+                errorText="Согласие на обработку персональных данных обязательно"
+              />
+            </div>
+          )}
+
           <div className={style.btnWrapper}>
             <Button title="Зарегистрироваться" disabled />
           </div>
