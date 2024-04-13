@@ -114,6 +114,13 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
           isRegistered
         />
       )}
+      {/* {openModal && (
+        <FormModal
+          open={openModal}
+          handleClose={handleCloseModal}
+          isRegistered={false}
+        />
+      )} */}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { useState, type FC } from 'react';
+import { useState, FC } from 'react';
 import {
   Table,
   TableHead,
@@ -10,18 +10,16 @@ import Checkbox from '@mui/material/Checkbox';
 import TableSortLabel from '@mui/material/TableSortLabel';
 
 import { Button } from 'src/entities/Button';
-import { AddItemModal } from 'src/entities/Modals/AddItemModal';
-
-import draftIcon from 'src/assets/images/icons/admin/draftFile.svg';
-import savedIcon from 'src/assets/images/icons/admin/savedFile.svg';
-
+import { AddItemModal, DelConfirmModal } from 'src/entities/Modals';
 import { EventTableBody, PlaceTableBody, SpeakerTableBody } from '..';
-
 import {
   TEvent,
   TPlace,
   TSpeaker,
 } from 'src/widgets/AdminPanelTable/types/types';
+
+import draftIcon from 'src/assets/images/icons/admin/draftFile.svg';
+import savedIcon from 'src/assets/images/icons/admin/savedFile.svg';
 
 import style from './AdminPanelTable.module.scss';
 
@@ -40,30 +38,25 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
   eventsData,
   placesData,
 }) => {
-  const [isAddSpeakerModalOpen, setIsAddSpeakerModalOpen] = useState(false);
-  const [isAddPlaceModalOpen, setIsAddPlaceModalOpen] = useState(false);
-  const [isAddEventModalOpen, setIsAddEventModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isDelModalOpen, setIsDelModalOpen] = useState(false);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
 
   const handleCloseModal = () => {
-    setIsAddSpeakerModalOpen(false);
-    setIsAddPlaceModalOpen(false);
-    setIsAddEventModalOpen(false);
+    setIsAddModalOpen(false);
+    setIsDelModalOpen(false);
   };
 
   const handleAddButtonClick = () => {
-    if (type === 'speaker') {
-      setIsAddSpeakerModalOpen(true);
-    } else if (type === 'event') {
-      setIsAddEventModalOpen(true);
-    } else if (type === 'place') {
-      setIsAddPlaceModalOpen(true);
-    }
+    setIsAddModalOpen(true);
   };
 
-  let headers: string[] = [];
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsCheckboxChecked(event.target.checked);
+  };
 
-  if (type === 'event') {
-    headers = [
+  const headers: Record<TableType, string[]> = {
+    event: [
       'НАЗВАНИЕ',
       'СТАТУС',
       'ТЕМАТИКА',
@@ -72,36 +65,48 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
       'ТИП',
       'МОДЕРАЦИЯ',
       '',
-    ];
-  } else if (type === 'speaker') {
-    headers = ['ФИО', 'ДОЛЖНОСТЬ', ''];
-  } else if (type === 'place') {
-    headers = ['НАЗВАНИЕ', 'АДРЕС', 'ГОРОД', 'МЕТРО', ''];
-  } else {
-    headers = [];
-  }
+    ],
+    speaker: ['ФИО', 'ДОЛЖНОСТЬ', ''],
+    place: ['НАЗВАНИЕ', 'АДРЕС', 'ГОРОД', 'МЕТРО', ''],
+  };
+
+  const delModalData: Record<TableType, { title: string; content: string }> = {
+    event: {
+      title: 'Удалить выбранные ивенты?',
+      content:
+        'Выбранные мероприятия будут удалены без возможности восстановления',
+    },
+    speaker: {
+      title: 'Удалить выбранных спикеров?',
+      content: 'Выбранные спикеры будут удалены без возможности восстановления',
+    },
+    place: {
+      title: 'Удалить выбранные площадки?',
+      content:
+        'Выбранные площадки будут удалены без возможности восстановления',
+    },
+  };
 
   return (
     <>
       <div className={style.container}>
         <div className={style.btnContainer}>
-          {type === 'speaker' && (
-            <Button title="Добавить" onClick={handleAddButtonClick} />
+          {isCheckboxChecked && ( // Render Delete button when a checkbox is checked
+            <Button
+              title="Удалить"
+              variant="outlined"
+              onClick={() => setIsDelModalOpen(true)}
+            />
           )}
-          {type === 'event' && (
-            <Button title="Добавить" onClick={handleAddButtonClick} />
-          )}
-          {type === 'place' && (
-            <Button title="Добавить" onClick={handleAddButtonClick} />
-          )}
+          <Button title="Добавить" onClick={handleAddButtonClick} />
         </div>
         <Table sx={{ width: '100%' }}>
           <TableHead>
             <TableRow>
               <TableCell padding="checkbox">
-                <Checkbox />
+                <Checkbox onChange={handleCheckboxChange} />
               </TableCell>
-              {headers.map((header, index) => (
+              {headers[type].map((header, index) => (
                 <TableCell key={index}>
                   <TableSortLabel> {header}</TableSortLabel>
                 </TableCell>
@@ -131,30 +136,21 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
           </div>
         </div>
       </div>
-      {isAddSpeakerModalOpen && (
+      {isAddModalOpen && (
         <AddItemModal
-          open={isAddSpeakerModalOpen}
-          title="Добавление спикера"
+          open={isAddModalOpen}
+          title={`Добавление ${type === 'speaker' ? 'спикера' : type === 'event' ? 'мероприятия' : 'площадки'}`}
           onClose={handleCloseModal}
-          btnText="Добавить спикера"
-          formType="speaker"
+          btnText={`Добавить ${type === 'speaker' ? 'спикера' : type === 'event' ? 'мероприятие' : 'площадку'}`}
+          formType={type}
         />
       )}
-      {isAddEventModalOpen && (
-        <AddItemModal
-          open={isAddEventModalOpen}
-          title="Создание мероприятия"
+      {isDelModalOpen && (
+        <DelConfirmModal
+          open={isDelModalOpen}
+          title={delModalData[type].title}
+          content={delModalData[type].content}
           onClose={handleCloseModal}
-          btnText="Создать мероприятие"
-        />
-      )}
-      {isAddPlaceModalOpen && (
-        <AddItemModal
-          open={isAddPlaceModalOpen}
-          title="Добавление площадки"
-          onClose={handleCloseModal}
-          btnText="Добавить площадку"
-          formType="place"
         />
       )}
     </>
