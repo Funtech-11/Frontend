@@ -10,7 +10,13 @@ type TToggleButtonProps = {
 const ToggleButton: FC<TToggleButtonProps> = ({ id, checked, onChange }) => {
   return (
     <div className={style.checkBox}>
-      <input type="checkbox" id={id} checked={checked} onChange={onChange} />
+      <input
+        className={style.input}
+        type="checkbox"
+        id={id}
+        checked={checked}
+        onChange={onChange}
+      />
       <label htmlFor={id} className={style.checkButton}></label>
     </div>
   );
