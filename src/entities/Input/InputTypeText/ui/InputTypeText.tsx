@@ -5,7 +5,7 @@ import style from './InputTypeText.module.scss';
 interface IInputTypeText extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
-  errorText: string;
+  errorText?: string;
   extraClass?: string;
 }
 

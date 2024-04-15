@@ -50,12 +50,14 @@ const AddSpeakerForm = () => {
       <form className={style.formContainer} onSubmit={handleSubmit}>
         <div className={style.row}>
           <InputTypeText
+            name="name"
             label="Фамилия и Имя"
             type="text"
             placeholder="Иван Иванов"
             required
           />
           <InputTypeText
+            name="job"
             label="Должность"
             type="text"
             placeholder="Бэкенд разработчик"
@@ -69,6 +71,7 @@ const AddSpeakerForm = () => {
                 Добавьте фото спикера
               </span>
               <UploadBtn
+                // name="avatar"
                 component="label"
                 role={undefined}
                 tabIndex={-1}
