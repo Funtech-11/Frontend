@@ -1,18 +1,26 @@
 import { FC, InputHTMLAttributes } from 'react';
+import { useFormContext, Controller } from 'react-hook-form';
 import style from './InputTypeText.module.scss';
 
 interface IInputTypeText extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
   label: string;
   errorText?: string;
   extraClass?: string;
 }
 
 const InputTypeText: FC<IInputTypeText> = ({
+  name,
   label = '',
   errorText = '',
   extraClass = '',
   ...InputHTMLAttributes
 }) => {
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <label
       htmlFor={InputHTMLAttributes.id}
@@ -22,12 +30,23 @@ const InputTypeText: FC<IInputTypeText> = ({
         {InputHTMLAttributes.required && <span>*</span>}
         {label}
       </p>
-      <input
-        type={InputHTMLAttributes.type}
-        {...InputHTMLAttributes}
-        className={style.input}
+      <Controller
+        control={control}
+        name={name}
+        render={({ field: { value, onChange } }) => (
+          <input
+            type={InputHTMLAttributes.type}
+            value={value}
+            onChange={onChange}
+            className={style.input}
+            {...InputHTMLAttributes}
+          />
+        )}
       />
-      <p className={style.error}>{errorText}</p>
+      {errors[name] && (
+        // <p className={style.error}>{`${errors[name]['message']}`}</p>
+        <p className={style.error}>{errorText}</p>
+      )}
     </label>
   );
 };

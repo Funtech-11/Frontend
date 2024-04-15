@@ -15,12 +15,14 @@ const AddPlaceForm = () => {
       <h3 className={style.title}>О площадке</h3>
       <form className={style.formContainer} onSubmit={handleSubmit}>
         <InputTypeText
+          name="builing"
           label="Краткое название площадки"
           type="text"
           placeholder="БЦ «Галерея», «Завод Флакон», иное..."
           required
         />
         <InputTypeText
+          name="address"
           label="Адрес"
           type="text"
           placeholder="Ул. Костюшкина, д. 11"
@@ -28,12 +30,18 @@ const AddPlaceForm = () => {
         />
         <div className={style.row}>
           <InputTypeText
+            name="city"
             label="Город"
             type="text"
             placeholder="Москва"
             required
           />
-          <InputTypeText label="Метро" type="text" placeholder="Метро" />
+          <InputTypeText
+            name="metroStation"
+            label="Метро"
+            type="text"
+            placeholder="Метро"
+          />
         </div>
         <Button
           title="Добавить площадку"

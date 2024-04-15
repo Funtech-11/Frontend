@@ -2,12 +2,24 @@ import type { FC } from 'react';
 import { Dialog } from '@mui/material';
 import { FilledRegistrationFormBody } from 'src/widgets/FilledRegistrationForm';
 import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
-import { CheckboxBlock } from 'src/widgets/CheckboxBlock';
-import { personalDataText } from 'src/utils/const/text/personalDataText';
+import { CheckboxGroup } from 'src/widgets/CheckboxGroup';
+// import { personalDataText } from 'src/utils/const/text/personalDataText';
 import { Button } from 'src/entities/Button';
 import { RegistrationForm } from 'src/widgets/RegistrationForm';
-
+import { personalData } from 'src/widgets/RegistrationForm/utils/utils';
+import { TFormModalValues } from './types/type';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import style from './FormModal.module.scss';
+
+const schema = yup.object().shape({
+  userAgreement: yup
+    .array()
+    .of(yup.number())
+    .defined()
+    .min(1, 'Согласие на обработку персональных данных обязательно'),
+});
 
 type TFilledFormModalProps = {
   open: boolean;
@@ -20,6 +32,18 @@ const FilledFormModal: FC<TFilledFormModalProps> = ({
   handleClose,
   isRegistered,
 }) => {
+  const methods = useForm<TFormModalValues>({
+    resolver: yupResolver<TFormModalValues>(schema),
+  });
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = methods;
+
+  const onSubmit = handleSubmit(data => {
+    console.log(data);
+  });
+
   return (
     <div>
       <Dialog
@@ -43,32 +67,36 @@ const FilledFormModal: FC<TFilledFormModalProps> = ({
           >
             <img src={closeBtnIcon} alt="закрыть" />
           </button>
-
-          <h2 className={style.title}>Форма регистрации участника</h2>
-          {!isRegistered && (
+          {!isRegistered ? (
+            <RegistrationForm />
+          ) : (
             <>
-              <span className={style.text}>
-                Заполните форму один раз для быстрой регистрации на любые
-                мероприятия в один клик
-              </span>
-              <RegistrationForm />
+              <div className={style.contentWrapper}>
+                <h2 className={style.title}>Форма регистрации участника</h2>
+                <FilledRegistrationFormBody />
+                <FormProvider {...methods}>
+                  <form
+                    className={style.formContainer}
+                    onSubmit={onSubmit}
+                    noValidate
+                  >
+                    <CheckboxGroup
+                      label="Согласие на обработку персональных данных"
+                      name="userAgreement"
+                      options={personalData}
+                      required={true}
+                      errorText={`${errors.userAgreement?.message}`}
+                    />
+                    <Button
+                      title="Зарегистрироваться"
+                      type="submit"
+                      extraClass={style.submitBtn}
+                    />
+                  </form>
+                </FormProvider>
+              </div>
             </>
           )}
-          {isRegistered && (
-            <div className={style.contentWrapper}>
-              <FilledRegistrationFormBody />
-              <CheckboxBlock
-                label="Согласие на обработку персональных данных"
-                data={personalDataText}
-                required={true}
-                errorText="Согласие на обработку персональных данных обязательно"
-              />
-            </div>
-          )}
-
-          <div className={style.btnWrapper}>
-            <Button title="Зарегистрироваться" disabled />
-          </div>
         </div>
       </Dialog>
     </div>

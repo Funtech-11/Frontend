@@ -8,6 +8,7 @@ import { selectEvents } from 'src/app/store/reducers/events/model/eventsSlice';
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
+// import { InputTypeFilter } from 'src/entities/Input/InputTypeFilter';
 import { Card } from 'src/widgets/Card';
 import { Banner } from 'src/widgets/Banner';
 import { Button } from 'src/entities/Button';
@@ -34,6 +35,12 @@ const MainPage = () => {
       <div className={style.main}>
         <div className={style.filterBlock}>
           <Chips labels={mockThemes} />
+          {/* <div>
+            <InputTypeFilter
+              title="Тип мероприятия"
+              options={['Онлайн', 'Офлайн']}
+            />
+          </div> */}
         </div>
         <ul className={style.cards}>
           {mockCards.map((card, index) => {
