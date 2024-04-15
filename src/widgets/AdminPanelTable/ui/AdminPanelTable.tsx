@@ -141,7 +141,6 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
           open={isAddModalOpen}
           title={`Добавление ${type === 'speaker' ? 'спикера' : type === 'event' ? 'мероприятия' : 'площадки'}`}
           onClose={handleCloseModal}
-          btnText={`Добавить ${type === 'speaker' ? 'спикера' : type === 'event' ? 'мероприятие' : 'площадку'}`}
           formType={type}
         />
       )}

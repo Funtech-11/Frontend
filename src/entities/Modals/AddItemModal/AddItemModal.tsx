@@ -45,11 +45,6 @@ const AddItemModal: FC<TAddItemModalProps> = ({
           <h2 className={style.title}>{title}</h2>
           {formType == 'place' && <AddPlaceForm />}
           {formType == 'speaker' && <AddSpeakerForm />}
-          {/* <div className={style.btnWrapper}>
-            <DialogActions sx={{ padding: 0 }}>
-              <Button title={btnText} type="submit" />
-            </DialogActions>
-          </div> */}
         </div>
       </Dialog>
     </div>
