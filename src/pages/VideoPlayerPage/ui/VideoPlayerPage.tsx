@@ -21,7 +21,7 @@ const VideoPlayerPage = () => {
     const startingTime = new Date(event.date).getTime();
 
     const updateCountdown = () => {
-      const newCountdown = countdown(startingTime, setTimer);
+      const newCountdown = countdown(startingTime);
       setTimer(newCountdown);
     };
 

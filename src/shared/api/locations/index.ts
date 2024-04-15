@@ -13,8 +13,12 @@ export const getLocations = createAsyncThunk(
       );
 
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
@@ -28,8 +32,12 @@ export const getLocationById = createAsyncThunk(
       );
 
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
@@ -40,8 +48,12 @@ export const deleteLocation = createAsyncThunk(
     try {
       await axios.delete(`${BASE_URL}/api/v1/locations/${id}`);
       return id;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
@@ -55,8 +67,12 @@ export const createLocation = createAsyncThunk(
         location
       );
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
@@ -73,8 +89,12 @@ export const updateLocation = createAsyncThunk(
         location
       );
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );

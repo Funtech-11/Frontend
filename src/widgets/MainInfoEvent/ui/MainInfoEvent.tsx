@@ -14,7 +14,7 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
     const startingTime = new Date(eventInfo.date).getTime();
 
     const updateCountdown = () => {
-      const newCountdown = countdown(startingTime, setTimer);
+      const newCountdown = countdown(startingTime);
       setTimer(newCountdown);
     };
 

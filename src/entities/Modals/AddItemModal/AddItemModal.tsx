@@ -10,7 +10,6 @@ type TAddItemModalProps = {
   open: boolean;
   onClose: () => void;
   title: string;
-  btnText: string;
   formType?: 'event' | 'speaker' | 'place';
 };
 
@@ -18,7 +17,6 @@ const AddItemModal: FC<TAddItemModalProps> = ({
   open,
   onClose,
   title,
-  btnText,
   formType,
 }) => {
   return (
@@ -47,11 +45,6 @@ const AddItemModal: FC<TAddItemModalProps> = ({
           <h2 className={style.title}>{title}</h2>
           {formType == 'place' && <AddPlaceForm />}
           {formType == 'speaker' && <AddSpeakerForm />}
-          {/* <div className={style.btnWrapper}>
-            <DialogActions sx={{ padding: 0 }}>
-              <Button title={btnText} type="submit" />
-            </DialogActions>
-          </div> */}
         </div>
       </Dialog>
     </div>

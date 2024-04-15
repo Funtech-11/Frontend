@@ -9,10 +9,13 @@ export const getEventsCards = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get<IEvent[]>(`${BASE_URL}/api/v1/events/`);
-
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
@@ -24,10 +27,13 @@ export const getEventById = createAsyncThunk(
       const { data } = await axios.get<IEvent>(
         `${BASE_URL}/api/v1/events/${id}`
       );
-
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
@@ -38,8 +44,12 @@ export const deleteEvent = createAsyncThunk(
     try {
       await axios.delete(`${BASE_URL}/api/v1/events/${id}`);
       return id;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
@@ -53,8 +63,12 @@ export const createEvent = createAsyncThunk(
         event
       );
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
@@ -68,8 +82,12 @@ export const updateEvent = createAsyncThunk(
         event
       );
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
