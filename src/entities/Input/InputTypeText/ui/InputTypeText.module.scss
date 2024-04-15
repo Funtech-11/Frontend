@@ -11,6 +11,7 @@
 .title {
   @include reset-text;
   @include text-medium-16;
+  color: $colorBlackSecondary;
 }
 
 .input {
@@ -24,7 +25,7 @@
   color: $colorBlackPrimary;
 
   &::placeholder  {
-    color: $colorBlackSecondary;
+    color: $colorLightGrey;
   }
 
   &:active {

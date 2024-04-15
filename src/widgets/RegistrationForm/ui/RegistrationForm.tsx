@@ -1,95 +1,157 @@
-import { FormEvent } from 'react';
+import { Experience, TFormValues } from '../types/type';
+import { educationPrograms, personalData } from '../utils/utils';
 import { InputTypeText } from 'src/entities/Input/InputTypeText';
 import { InputTypeSelect } from 'src/entities/Input/InputTypeSelect';
-import { CheckboxBlock } from 'src/widgets/CheckboxBlock';
+import { CheckboxGroup } from 'src/widgets/CheckboxGroup';
 import { Button } from 'src/entities/Button';
-import { personalDataText } from 'src/utils/const/text/personalDataText';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import style from './RegistrationForm.module.scss';
 
-const RegistrationForm = () => {
-  const themes = ['Backend', 'Frontend', 'Mobile', 'QA', 'ML', 'Другое'];
+const schema = yup.object().shape({
+  name: yup.string().required('Введите своё полное имя'),
+  surname: yup.string().required('Введите свою фамилию'),
+  phone: yup
+    .number()
+    .typeError('Номер телефона должен содержать только цифры')
+    .required('Введите свой номер телефона')
+    .min(10, 'Номер телефона должен содержать не меньше 10 цифр')
+    .max(11, 'Номер телефона должен содержать не больше 11 цифр'),
+  email: yup
+    .string()
+    .required('Введите почту')
+    .email('Почта введена некорректно'),
+  workPlace: yup
+    .string()
+    .required('Укажите название компании или учебного заведения'),
+  position: yup
+    .string()
+    .required('Укажите свою должность / учебную специальность'),
+  experience: yup
+    .string()
+    .required('Выберите свой опыт работы без учета обучения'),
+  educationPrograms: yup
+    .array()
+    .of(yup.number())
+    .defined()
+    .min(1, 'Не выбран ни один из вариантов'),
+  userAgreement: yup
+    .array()
+    .of(yup.number())
+    .defined()
+    .min(1, 'Согласие на обработку персональных данных обязательно'),
+});
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log('submit');
-  };
+const RegistrationForm = () => {
+  const methods = useForm<TFormValues>({
+    resolver: yupResolver<TFormValues>(schema),
+  });
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = methods;
+
+  const onSubmit = handleSubmit(data => {
+    console.log(data);
+  });
+
+  // useEffect(() => {
+  //   if (formState.isSubmitSuccessful) {
+  //     reset({});
+  //   }
+  // }, [formState, reset]);
 
   return (
     <section className={style.sectionWrapper}>
       <h2 className={style.title}>Форма регистрации участника</h2>
-      <form className={style.formContainer} onSubmit={handleSubmit}>
-        <p className={style.legend}>
-          Заполните форму один раз для быстрой регистрации на любые мероприятия
-          в один клик
-        </p>
-        <div className={style.row}>
-          <InputTypeText
-            label="Имя"
-            type="text"
-            placeholder="Иван"
-            errorText="Введите своё полное имя"
-            required
+      <FormProvider {...methods}>
+        <form className={style.formContainer} onSubmit={onSubmit} noValidate>
+          <p className={style.legend}>
+            Заполните форму один раз для быстрой регистрации на любые
+            мероприятия в один клик
+          </p>
+          <div className={style.row}>
+            <InputTypeText
+              label="Имя"
+              name="name"
+              type="text"
+              placeholder="Иван"
+              errorText={`${errors.name?.message}`}
+              required
+            />
+            <InputTypeText
+              label="Фамилия"
+              name="surname"
+              type="text"
+              placeholder="Иванович"
+              errorText={`${errors.surname?.message}`}
+              required
+            />
+          </div>
+          <div className={style.row}>
+            <InputTypeText
+              label="Телефон"
+              name="phone"
+              type="tel"
+              placeholder="+7 (123) 456-78-90"
+              errorText={`${errors.phone?.message}`}
+              required
+            />
+            <InputTypeText
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="IvanVoronin@yandex.ru"
+              errorText={`${errors.email?.message}`}
+              required
+            />
+          </div>
+          <div className={style.row}>
+            <InputTypeText
+              label="Место работы / учёбы"
+              name="workPlace"
+              type="text"
+              placeholder="ООО «Компания», МГТУ им. Н.Э. Баумана..."
+              errorText={`${errors.workPlace?.message}`}
+              required
+            />
+          </div>
+          <div className={style.row}>
+            <InputTypeText
+              label="Должность"
+              name="position"
+              type="text"
+              placeholder="Разработчик, студент..."
+              errorText={`${errors.position?.message}`}
+              required
+            />
+            <InputTypeSelect
+              label="Опыт работы"
+              name="experience"
+              options={Object.values(Experience) as Experience[]}
+              errorText={`${errors.experience?.message}`}
+              required
+            />
+          </div>
+          <CheckboxGroup
+            label="Ваше направление"
+            name="educationPrograms"
+            options={educationPrograms}
+            required={true}
+            multiple={true}
+            errorText={`${errors.educationPrograms?.message}`}
           />
-          <InputTypeText
-            label="Фамилия"
-            type="text"
-            placeholder="Иванович"
-            errorText="Введите свою фамилию"
-            required
+          <CheckboxGroup
+            label="Согласие на обработку персональных данных"
+            name="userAgreement"
+            options={personalData}
+            required={true}
+            errorText={`${errors.userAgreement?.message}`}
           />
-        </div>
-        <div className={style.row}>
-          <InputTypeText
-            label="Телефон"
-            type="tel"
-            placeholder="+7 (123) 456-78-90"
-            errorText="Введите свой номер телефона"
-            required
-          />
-          <InputTypeText
-            label="Email"
-            type="email"
-            placeholder="IvanVoronin@yandex.ru"
-            errorText="Введите почту"
-            required
-          />
-        </div>
-        <div className={style.row}>
-          <InputTypeText
-            label="Место работы / учёбы"
-            type="text"
-            placeholder="ООО «Компания», МГТУ им. Н.Э. Баумана..."
-            errorText="Укажите название компании или учебного заведения"
-            required
-          />
-        </div>
-        <div className={style.row}>
-          <InputTypeText
-            label="Должность"
-            type="text"
-            placeholder="Разработчик, студент..."
-            errorText="Укажите свою должность / учебную специальность"
-            required
-          />
-          <InputTypeSelect
-            label="Опыт работы"
-            errorText="Выберите свой опыт работы без учета обучения"
-            required
-          >
-            {['Нет опыта', '1 год', '2 года', 'Другое'].map((item, index) => (
-              <option key={`option${index}`}>{item}</option>
-            ))}
-          </InputTypeSelect>
-        </div>
-        <CheckboxBlock label="Ваше направление" data={themes} required={true} />
-        <CheckboxBlock
-          label="Согласие на обработку персональных данных"
-          data={personalDataText}
-          required={true}
-          errorText="Согласие на обработку персональных данных обязательно"
-        />
-        <Button title="Сохранить" type="submit" extraClass={style.submit} />
-      </form>
+          <Button title="Сохранить" type="submit" extraClass={style.submit} />
+        </form>
+      </FormProvider>
     </section>
   );
 };
