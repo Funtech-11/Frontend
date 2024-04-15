@@ -2,13 +2,15 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/const/api';
-import type { IEvent } from './dtos';
+import type { ILocation } from './dtos';
 
-export const getEventsCards = createAsyncThunk(
-  'events/getEventsCards',
+export const getLocations = createAsyncThunk(
+  'locations/getLocations',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get<IEvent[]>(`${BASE_URL}/api/v1/events/`);
+      const { data } = await axios.get<ILocation[]>(
+        `${BASE_URL}/api/v1/locations/`
+      );
 
       return data;
     } catch (e: any) {
@@ -17,12 +19,12 @@ export const getEventsCards = createAsyncThunk(
   }
 );
 
-export const getEventById = createAsyncThunk(
-  'events/getEventById',
+export const getLocationById = createAsyncThunk(
+  'locations/getLocationById',
   async (id: number, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get<IEvent>(
-        `${BASE_URL}/api/v1/events/${id}`
+      const { data } = await axios.get<ILocation>(
+        `${BASE_URL}/api/v1/locations/${id}`
       );
 
       return data;

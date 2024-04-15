@@ -24,10 +24,10 @@ const initialEvent: IEvent = {
   maxParticipants: 0,
   currentParticipants: 0,
   information: '',
-  eventType: 'OFFLINE',
-  eventFormat: 'CONFERENCE',
+  eventType: '',
+  eventFormat: '',
   status: '',
-  activityStatus: 'DRAFT',
+  activityStatus: '',
   wallpaper: '',
   theme: {
     name: '',

@@ -22,10 +22,10 @@ export interface IEvent {
   maxParticipants: number;
   currentParticipants: number;
   information: string;
-  eventType: 'OFFLINE' | 'ONLINE'; // Event type can be online or offline
-  eventFormat: 'CONFERENCE' | 'WORKSHOP' | 'SEMINAR' | 'WEBINAR'; // Event format
-  status: string; // Event status (e.g., "active", "cancelled", etc.)
-  activityStatus: 'DRAFT' | 'PUBLISHED'; // Activity status of the event
+  eventType: 'OFFLINE' | 'ONLINE' | ''; // Event type can be online or offline
+  eventFormat: 'CONFERENCE' | 'MEETUP' | 'NETWORKING' | 'EXCURSION' | ''; // Event format
+  status: 'REGISTRATION_OPEN' | 'REGISTRATION_CLOSE' | 'FINISHED' | ''; // Event status (e.g., "active", "cancelled", etc.)
+  activityStatus: 'DRAFT' | 'ACTIVE_EVENT' | ''; // Activity status of the event
   wallpaper: string; // URL for background image or color scheme
   theme: {
     name: string; // Event theme name
