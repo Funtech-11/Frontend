@@ -10,7 +10,6 @@ type TAddItemModalProps = {
   open: boolean;
   onClose: () => void;
   title: string;
-  btnText: string;
   formType?: 'event' | 'speaker' | 'place';
 };
 
@@ -18,7 +17,6 @@ const AddItemModal: FC<TAddItemModalProps> = ({
   open,
   onClose,
   title,
-  btnText,
   formType,
 }) => {
   return (

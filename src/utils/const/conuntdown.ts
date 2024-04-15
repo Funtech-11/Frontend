@@ -1,7 +1,4 @@
-export const countdown = (
-  startingTime: number,
-  setCountdown: React.Dispatch<React.SetStateAction<string>>
-) => {
+export const countdown = (startingTime: number) => {
   const now = new Date().getTime();
   const distance = startingTime - now;
 

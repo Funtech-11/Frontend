@@ -11,8 +11,12 @@ export const getUserMe = createAsyncThunk(
       const { data } = await axios.get<IUser>(`${BASE_URL}/api/v1/user/me`);
 
       return data;
-    } catch (e: any) {
-      return rejectWithValue(e.message);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
     }
   }
 );
