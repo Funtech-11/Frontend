@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IEvent } from 'src/shared/api/events/dtos';
 import { initialEvent } from './constants';
-import { getEventsCards } from 'src/shared/api/events';
+import { getEventById, getEventsCards } from 'src/shared/api/events';
 
 interface IEventsState {
   events: IEvent[];
@@ -32,6 +32,18 @@ const eventsSlice = createSlice({
         state.error = null;
       })
       .addCase(getEventsCards.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getEventById.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getEventById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.event = action.payload;
+        state.error = null;
+      })
+      .addCase(getEventById.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });

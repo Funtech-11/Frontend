@@ -2,13 +2,15 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/const/api';
-import type { IEvent } from './dtos';
+import type { ISpeaker } from './dtos';
 
-export const getEventsCards = createAsyncThunk(
-  'events/getEventsCards',
+export const getSpeakers = createAsyncThunk(
+  'speakers/getSpeakers',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get<IEvent[]>(`${BASE_URL}/api/v1/events/`);
+      const { data } = await axios.get<ISpeaker[]>(
+        `${BASE_URL}/api/v1/speakers/`
+      );
 
       return data;
     } catch (e: any) {
@@ -17,12 +19,12 @@ export const getEventsCards = createAsyncThunk(
   }
 );
 
-export const getEventById = createAsyncThunk(
-  'events/getEventById',
+export const getSpeakerById = createAsyncThunk(
+  'speakers/getSpeakerById',
   async (id: number, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get<IEvent>(
-        `${BASE_URL}/api/v1/events/${id}`
+      const { data } = await axios.get<ISpeaker>(
+        `${BASE_URL}/api/v1/speakers/${id}`
       );
 
       return data;
