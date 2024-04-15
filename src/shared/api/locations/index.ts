@@ -33,3 +33,48 @@ export const getLocationById = createAsyncThunk(
     }
   }
 );
+
+export const deleteLocation = createAsyncThunk(
+  'locations/deleteLocation',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      await axios.delete(`${BASE_URL}/api/v1/locations/${id}`);
+      return id;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const createLocation = createAsyncThunk(
+  'locations/createLocation',
+  async (location: ILocation, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post<ILocation>(
+        `${BASE_URL}/api/v1/locations/`,
+        location
+      );
+      return data;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const updateLocation = createAsyncThunk(
+  'locations/updateLocation',
+  async (
+    { id, location }: { id: number; location: ILocation },
+    { rejectWithValue }
+  ) => {
+    try {
+      const { data } = await axios.patch<ILocation>(
+        `${BASE_URL}/api/v1/locations/${id}`,
+        location
+      );
+      return data;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);

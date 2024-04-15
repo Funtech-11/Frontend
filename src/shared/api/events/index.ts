@@ -31,3 +31,45 @@ export const getEventById = createAsyncThunk(
     }
   }
 );
+
+export const deleteEvent = createAsyncThunk(
+  'events/deleteEvent',
+  async (id: number, { rejectWithValue }) => {
+    try {
+      await axios.delete(`${BASE_URL}/api/v1/events/${id}`);
+      return id;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const createEvent = createAsyncThunk(
+  'events/createEvent',
+  async (event: IEvent, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post<IEvent>(
+        `${BASE_URL}/api/v1/events/`,
+        event
+      );
+      return data;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const updateEvent = createAsyncThunk(
+  'events/updateEvent',
+  async ({ id, event }: { id: number; event: IEvent }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch<IEvent>(
+        `${BASE_URL}/api/v1/events/${id}`,
+        event
+      );
+      return data;
+    } catch (e: any) {
+      return rejectWithValue(e.message);
+    }
+  }
+);

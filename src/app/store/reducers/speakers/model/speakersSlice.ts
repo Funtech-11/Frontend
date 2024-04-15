@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { ISpeaker } from 'src/shared/api/speakers/dtos';
-import { getSpeakerById, getSpeakers } from 'src/shared/api/speakers';
+import {
+  createSpeaker,
+  deleteSpeaker,
+  getSpeakerById,
+  getSpeakers,
+  updateSpeaker,
+} from 'src/shared/api/speakers';
 import { initialSpeaker } from './constants';
 
 interface ISpeakersState {
@@ -36,6 +42,7 @@ const speakersSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       })
+
       .addCase(getSpeakerById.pending, state => {
         state.isLoading = true;
       })
@@ -47,11 +54,61 @@ const speakersSlice = createSlice({
       .addCase(getSpeakerById.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
+      })
+
+      .addCase(deleteSpeaker.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(deleteSpeaker.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.speakers = state.speakers.filter(
+          speaker => speaker.speakerId !== action.payload
+        );
+        state.error = null;
+      })
+      .addCase(deleteSpeaker.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+
+      .addCase(createSpeaker.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(createSpeaker.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.speakers.push(action.payload);
+        state.error = null;
+      })
+      .addCase(createSpeaker.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+
+      .addCase(updateSpeaker.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(updateSpeaker.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const updatedSpeaker = action.payload;
+        const index = state.speakers.findIndex(
+          speaker => speaker.speakerId === updatedSpeaker.speakerId
+        );
+        if (index !== -1) {
+          state.speakers[index] = updatedSpeaker;
+        }
+        state.error = null;
+      })
+      .addCase(updateSpeaker.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
       });
   },
 });
 
-export const selectEvents = (state: { speakers: ISpeakersState }) =>
+export const selectSpeakers = (state: { speakers: ISpeakersState }) =>
   state.speakers;
 
 export default speakersSlice.reducer;
