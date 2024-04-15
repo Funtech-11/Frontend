@@ -5,6 +5,10 @@
   @include content-block;
 }
 
+.hidden {
+  display: none;
+}
+
 .title {
   @include reset-text;
   @include text-header-h3;
