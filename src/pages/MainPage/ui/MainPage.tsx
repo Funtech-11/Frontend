@@ -12,7 +12,10 @@ import { Card } from 'src/widgets/Card';
 import { Banner } from 'src/widgets/Banner';
 import { Button } from 'src/entities/Button';
 import { Footer } from 'src/widgets/Footer';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
+import { Loader } from 'src/shared/Loader';
 import { mockCards } from 'src/utils/mocks/cardsMockData';
+
 import style from './MainPage.module.scss';
 
 const MainPage = () => {
@@ -24,8 +27,10 @@ const MainPage = () => {
   }, [dispatch]);
 
   const { events, isLoading } = useAppSelector(selectEvents);
+  const { user } = useAppSelector(selectUser);
+  console.log('USER', user);
 
-  // console.log('Получение данных карточек', events);
+  console.log('Получение данных карточек', events);
 
   let cards = mockCards;
 
@@ -71,7 +76,10 @@ const MainPage = () => {
     <div className={style.layout}>
       <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
       <Menu isShown={isMenuShown} />
-      <div className={style.main}>
+      {isLoading ? (
+        <Loader />
+      ) : (
+       <div className={style.main}>
         <div className={style.filterBlock}>
           <Chips
             handleChange={handleChange}
@@ -109,6 +117,7 @@ const MainPage = () => {
           <Button title="Ещё" hasIcon={true} />
         </div>
       </div>
+      )}
       <Footer />
     </div>
   );

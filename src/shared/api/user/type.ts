@@ -4,7 +4,7 @@ type TLoginData = {
 };
 
 type TLoginResponse = {
-  access_token: string;
+  auth_token: string;
 };
 
 export type { TLoginData, TLoginResponse };

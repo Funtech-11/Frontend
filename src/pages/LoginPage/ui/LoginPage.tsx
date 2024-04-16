@@ -8,7 +8,7 @@ import adminIcon from 'src/assets/images/icons/admin-avatar-login.svg';
 import backBtn from 'src/assets/images/icons/solar_arrow-up-outline.svg';
 import { useAppDispatch } from 'src/app/store/hooks';
 import { ILoginUser } from 'src/utils/const/api';
-// import { getUserMe, login } from 'src/shared/api/user';
+import { getUserMe, login } from 'src/shared/api/user';
 
 import style from './LoginPage.module.scss';
 
@@ -17,25 +17,25 @@ type TLoginProps = {
 };
 
 const LoginPage: FC<TLoginProps> = ({ users }) => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async (email: string, password: string) => {
-    // dispatch(login({ email, password })).then(resultAction => {
-    //   if (login.fulfilled.match(resultAction)) {
-    //     const token = localStorage.getItem('token');
-    //     console.log('Token from local storage:', token);
-    //     dispatch(getUserMe());
-    //     navigate('/');
-    //   } else {
-    //     navigate('/404');
-    //   }
-    // });
-    if (email === 'super@user.admin') {
-      navigate('/admin/1');
-    } else {
-      navigate('/');
-    }
+    dispatch(login({ email, password })).then(resultAction => {
+      if (login.fulfilled.match(resultAction)) {
+        const token = localStorage.getItem('token');
+        console.log('Token from local storage:', token);
+        dispatch(getUserMe());
+        navigate('/');
+      } else {
+        navigate('/404');
+      }
+    });
+    // if (email === 'super@user.admin') {
+    //   navigate('/admin/1');
+    // } else {
+    //   navigate('/');
+    // }
   };
 
   return (
