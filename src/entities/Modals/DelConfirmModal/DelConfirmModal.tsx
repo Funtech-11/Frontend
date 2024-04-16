@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { Dialog, DialogActions } from '@mui/material';
-import { ButtonLink } from 'src/entities/ButtonLink';
 import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
 import { Button } from 'src/entities/Button';
 
