@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useState, useEffect } from 'react';
+import { FC, MouseEvent, useState, useEffect, useCallback } from 'react';
 import style from './Chip.module.scss';
 
 type TChip = {
@@ -23,23 +23,26 @@ const Chip: FC<TChip> = ({
     if (activeChip !== label) setActive(false);
   }, [activeChip]);
 
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (clickable) {
-      if (activeChip === null) {
-        setActiveChip(label);
-        setActive(true);
-      }
+  const handleClick = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      if (clickable) {
+        if (activeChip === null) {
+          setActiveChip(label);
+          setActive(true);
+        }
 
-      if (activeChip === label) {
-        setActiveChip(null);
-        setActive(false);
-      }
+        if (activeChip === label) {
+          setActiveChip(null);
+          setActive(false);
+        }
 
-      if (activeChip !== label && activeChip !== null) {
-        setActiveChip(label);
+        if (activeChip !== label && activeChip !== null) {
+          setActiveChip(label);
+        }
       }
-    }
-  };
+    },
+    [setActiveChip, label]
+  );
 
   return (
     <div

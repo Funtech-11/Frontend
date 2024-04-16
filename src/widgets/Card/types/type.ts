@@ -1,12 +1,13 @@
 export type TCard = {
-  id: number;
-  image: string;
+  eventId: number;
+  wallpaper: string;
   status: string;
-  format: string;
+  eventFormat: string;
   theme: string;
   name: string;
-  type: string;
   city: string;
-  date: string;
+  eventType: string;
+  dateTimeStart: string;
+  dateTimeEnd: string;
   information: string;
 };
