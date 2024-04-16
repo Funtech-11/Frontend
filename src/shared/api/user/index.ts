@@ -5,23 +5,6 @@ import { BASE_URL } from 'src/utils/const/api';
 import type { IUser } from './dtos';
 import { TLoginData, TLoginResponse } from './type';
 
-// export const getUserMe = createAsyncThunk(
-//   'user/getUserMe',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const { data } = await axios.get<IUser>(`${BASE_URL}/api/v1/user/me`);
-
-//       return data;
-//     } catch (error: unknown) {
-//       if (axios.isAxiosError(error)) {
-//         return rejectWithValue(error.response?.data ?? 'Unknown error');
-//       } else {
-//         return rejectWithValue('Unknown error');
-//       }
-//     }
-//   }
-// );
-
 export const login = createAsyncThunk<TLoginResponse, TLoginData>(
   'user/login',
   async ({ email, password }, { rejectWithValue }) => {
@@ -51,7 +34,7 @@ export const getUserMe = createAsyncThunk(
         return rejectWithValue('Token is missing');
       }
 
-      const response = await axios.get<IUser>(`${BASE_URL}/api/v1/user/me`, {
+      const response = await axios.get<IUser>(`${BASE_URL}/api/v1/user/me/ `, {
         headers: {
           Authorization: `Token ${token}`,
         },

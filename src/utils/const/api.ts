@@ -1,4 +1,6 @@
-export const BASE_URL = 'http://84.252.73.12';
+export const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL
+  ? import.meta.env.VITE_REACT_APP_BASE_URL
+  : 'http://eventfun.ru';
 
 export interface ILoginUser {
   id?: number;

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { initialUser } from './constants';
-import { login } from 'src/shared/api/user';
+import { getUserMe, login } from 'src/shared/api/user';
 import { IUser } from 'src/shared/api/user/dtos';
 
 interface IUserState {
@@ -30,11 +30,25 @@ const userSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.token = action.payload.access_token;
-        localStorage.setItem('token', action.payload.access_token);
+        state.token = action.payload.auth_token;
+        localStorage.setItem('token', action.payload.auth_token);
         state.error = null;
       })
       .addCase(login.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(getUserMe.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getUserMe.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(getUserMe.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

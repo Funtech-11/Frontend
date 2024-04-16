@@ -13,6 +13,8 @@ import { Card } from 'src/widgets/Card';
 import { Banner } from 'src/widgets/Banner';
 import { Button } from 'src/entities/Button';
 import { Footer } from 'src/widgets/Footer';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
+import { Loader } from 'src/shared/Loader';
 
 import style from './MainPage.module.scss';
 
@@ -25,6 +27,8 @@ const MainPage = () => {
   }, [dispatch]);
 
   const { events, isLoading } = useAppSelector(selectEvents);
+  const { user } = useAppSelector(selectUser);
+  console.log('USER', user);
 
   console.log('Получение данных карточек', events);
 
@@ -32,32 +36,37 @@ const MainPage = () => {
     <div className={style.layout}>
       <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
       <Menu isShown={isMenuShown} />
-      <div className={style.main}>
-        <div className={style.filterBlock}>
-          <Chips labels={mockThemes} />
-          {/* <div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={style.main}>
+          <div className={style.filterBlock}>
+            <Chips labels={mockThemes} />
+            {/* <div>
             <InputTypeFilter
               title="Тип мероприятия"
               options={['Онлайн', 'Офлайн']}
             />
           </div> */}
+          </div>
+          <ul className={style.cards}>
+            {mockCards.map((card, index) => {
+              return (
+                <React.Fragment key={index}>
+                  {index === 9 && <Banner />}
+                  <li>
+                    <Card event={card} />
+                  </li>
+                </React.Fragment>
+              );
+            })}
+          </ul>
+          <div className={style.moreContentBlock}>
+            <Button title="Ещё" hasIcon={true} />
+          </div>
         </div>
-        <ul className={style.cards}>
-          {mockCards.map((card, index) => {
-            return (
-              <React.Fragment key={index}>
-                {index === 9 && <Banner />}
-                <li>
-                  <Card event={card} />
-                </li>
-              </React.Fragment>
-            );
-          })}
-        </ul>
-        <div className={style.moreContentBlock}>
-          <Button title="Ещё" hasIcon={true} />
-        </div>
-      </div>
+      )}
+
       <Footer />
     </div>
   );
