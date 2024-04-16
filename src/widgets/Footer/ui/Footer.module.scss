@@ -33,6 +33,7 @@
 .link {
   @include reset-link;
   @include text-regular-11;
+  cursor: pointer;
 }
 
 .logoLink {

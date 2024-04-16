@@ -2,8 +2,8 @@ import { IUser } from 'src/shared/api/user/dtos';
 
 const initialUser: IUser = {
   id: 0,
-  first_name: '',
-  last_name: '',
+  firstName: '',
+  lastName: '',
   email: '',
   mobile_number: 0,
   photo: '',

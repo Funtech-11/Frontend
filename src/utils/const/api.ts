@@ -28,14 +28,14 @@ export const users: ILoginUser[] = [
     email: 'user1@example.com',
     password: 'passPass123',
   },
-  {
-    id: 6,
-    username: 'User2',
-    first_name: 'Владимир',
-    last_name: 'Кишенев',
-    email: 'user2@example.com',
-    password: 'passPass123',
-  },
+  // {
+  //   id: 6,
+  //   username: 'User2',
+  //   first_name: 'Владимир',
+  //   last_name: 'Кишенев',
+  //   email: 'user2@example.com',
+  //   password: 'passPass123',
+  // },
   {
     id: 7,
     username: 'User3',

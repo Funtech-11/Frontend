@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+
 import App from 'src/app/ui/App';
 import { MainPage } from 'src/pages/MainPage';
 import { ErrorPage } from 'src/pages/ErrorPage/ui/ErrorPage';
@@ -8,8 +9,8 @@ import { AdminPage } from 'src/pages/AdminPage';
 import { UserAccountPage } from 'src/pages/UserAccountPage';
 import { VideoPlayerPage } from 'src/pages/VideoPlayerPage';
 import { Error } from 'src/pages/Error';
-import { error404 } from '../../utils/const/text/error-404';
-import { users } from '../../utils/const/api';
+import { error404 } from 'src/utils/const/text/error-404';
+import { users } from 'src/utils/const/api';
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'admin/:id',
+        path: 'admin',
         element: <AdminPage />,
       },
       {

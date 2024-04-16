@@ -28,9 +28,9 @@ const MainPage = () => {
 
   const { events, isLoading } = useAppSelector(selectEvents);
   const { user } = useAppSelector(selectUser);
-  console.log('USER', user);
+  //console.log('USER', user);
 
-  console.log('Получение данных карточек', events);
+  //console.log('Получение данных карточек', events);
 
   let cards = mockCards;
 
@@ -79,44 +79,44 @@ const MainPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-       <div className={style.main}>
-        <div className={style.filterBlock}>
-          <Chips
-            handleChange={handleChange}
-            name="theme"
-            labels={[
-              'Маркетинг',
-              'Разработка',
-              'Дизайн',
-              'Менеджмент',
-              'Бизнес',
-              'Аналитика',
-              'Другое',
-            ]}
-          />
-          {/* <div>
+        <div className={style.main}>
+          <div className={style.filterBlock}>
+            <Chips
+              handleChange={handleChange}
+              name="theme"
+              labels={[
+                'Маркетинг',
+                'Разработка',
+                'Дизайн',
+                'Менеджмент',
+                'Бизнес',
+                'Аналитика',
+                'Другое',
+              ]}
+            />
+            {/* <div>
             <InputTypeFilter
               title="Тип мероприятия"
               options={['Онлайн', 'Офлайн']}
             />
           </div> */}
+          </div>
+          <ul className={style.cards}>
+            {cards.map((card, index) => {
+              return (
+                <React.Fragment key={index}>
+                  {index === 9 && <Banner />}
+                  <li>
+                    <Card data={card} />
+                  </li>
+                </React.Fragment>
+              );
+            })}
+          </ul>
+          <div className={style.moreContentBlock}>
+            <Button title="Ещё" hasIcon={true} />
+          </div>
         </div>
-        <ul className={style.cards}>
-          {cards.map((card, index) => {
-            return (
-              <React.Fragment key={index}>
-                {index === 9 && <Banner />}
-                <li>
-                  <Card data={card} />
-                </li>
-              </React.Fragment>
-            );
-          })}
-        </ul>
-        <div className={style.moreContentBlock}>
-          <Button title="Ещё" hasIcon={true} />
-        </div>
-      </div>
       )}
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import oneClickImage from 'src/assets/images/banner/one-click.png';
+
 import { Button } from 'src/entities/Button';
+
 import style from './Banner.module.scss';
 
 type TBannerProps = {
@@ -12,11 +13,6 @@ const Banner: FC<TBannerProps> = ({ extraClass = 'banner' }) => {
     <div className={extraClass}>
       <div className={style.container}>
         <div className={style.info}>
-          <img
-            src={oneClickImage}
-            alt="Регистрируйтесь в один клик!"
-            className={style.image}
-          />
           <div className={style.description}>
             <h2 className={style.title}>Регистрируйтесь в один клик!</h2>
             <p className={style.text}>
