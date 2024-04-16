@@ -1,18 +1,11 @@
-type EventTypeDictionary = {
+export type EventTypeDictionary = {
   CONFERENCE: 'Конференция';
   MEETUP: 'Митап';
   NETWORKING: 'Нетворкинг';
   EXCURSION: 'Экскурсия';
 };
 
-export const eventFormatDict: EventTypeDictionary = {
-  CONFERENCE: 'Конференция',
-  MEETUP: 'Митап',
-  NETWORKING: 'Нетворкинг',
-  EXCURSION: 'Экскурсия',
-};
-
-type TThemeDictionary = {
+export type TThemeDictionary = {
   PROGRAMMING: 'Разработка';
   DESIGN: 'Дизайн';
   MANAGEMENT: 'Менеджмент';
@@ -20,6 +13,19 @@ type TThemeDictionary = {
   ANALYTICS: 'Аналитика';
   BUSINESS: 'Бизнес';
   OTHER: 'Другое';
+};
+
+export type EventStatusDictionary = {
+  REGISTRATION_OPEN: string;
+  REGISTRATION_CLOSE: string;
+  FINISHED: string;
+};
+
+export const eventFormatDict: EventTypeDictionary = {
+  CONFERENCE: 'Конференция',
+  MEETUP: 'Митап',
+  NETWORKING: 'Нетворкинг',
+  EXCURSION: 'Экскурсия',
 };
 
 export const themeDict: TThemeDictionary = {
@@ -30,12 +36,6 @@ export const themeDict: TThemeDictionary = {
   ANALYTICS: 'Аналитика',
   BUSINESS: 'Бизнес',
   OTHER: 'Другое',
-};
-
-type EventStatusDictionary = {
-  REGISTRATION_OPEN: string;
-  REGISTRATION_CLOSE: string;
-  FINISHED: string;
 };
 
 export const eventStatus: EventStatusDictionary = {

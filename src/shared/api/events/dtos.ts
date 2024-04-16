@@ -1,4 +1,4 @@
-interface ILocation {
+export interface ILocation {
   locationId: number;
   city: string;
   address: string;
@@ -6,11 +6,11 @@ interface ILocation {
   metroStation: string;
 }
 
-interface ISpeaker {
+export interface ISpeaker {
   speakerId: number;
   name: string;
   job: string;
-  avatar: string | null;
+  avatar: string;
 }
 
 export interface IProgram {
@@ -26,7 +26,7 @@ export interface IEvent {
   eventId: number;
   name: string;
   dateTimeStart: string;
-  dateTimeEnd: string | null;
+  dateTimeEnd: string;
   location: ILocation;
   maxParticipants: number;
   currentParticipants: number;
@@ -44,7 +44,8 @@ export interface IEvent {
       | 'MARKETING'
       | 'ANALYTICS'
       | 'BUSINESS'
-      | 'OTHER';
+      | 'OTHER'
+      | '';
   };
   video: string;
   programs: IProgram[];

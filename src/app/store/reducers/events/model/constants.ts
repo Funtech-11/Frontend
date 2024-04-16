@@ -1,18 +1,32 @@
-import { IEvent, IProgram } from 'src/shared/api/events/dtos';
+import {
+  IEvent,
+  IProgram,
+  ILocation,
+  ISpeaker,
+} from 'src/shared/api/events/dtos';
+
+const initialSpeaker: ISpeaker = {
+  speakerId: 0,
+  name: '',
+  job: '',
+  avatar: '',
+};
 
 const initialProgram: IProgram = {
   programId: 0,
   name: '',
   dateTime: '',
-  speaker: {
-    speakerId: 0,
-    name: '',
-    job: '',
-    avatar: '',
-  },
+  speaker: initialSpeaker,
   information: '',
-  event: 0,
-  material: '',
+  material: null,
+};
+
+const initialLocation: ILocation = {
+  locationId: 0,
+  city: '',
+  address: '',
+  building: '',
+  metroStation: '',
 };
 
 const initialEvent: IEvent = {
@@ -20,7 +34,7 @@ const initialEvent: IEvent = {
   name: '',
   dateTimeStart: '',
   dateTimeEnd: '',
-  location: 0,
+  location: initialLocation,
   maxParticipants: 0,
   currentParticipants: 0,
   information: '',
