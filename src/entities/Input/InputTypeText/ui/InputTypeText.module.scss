@@ -28,8 +28,18 @@
     color: $colorLightGrey;
   }
 
+  &:hover {
+    border-color: $colorAccentPrimary;
+  }
+
   &:active {
-    border-color: $colorBlackPrimary;
+    border: 1px solid $colorAccentPrimary;
+    padding: 10px 14px;
+  }
+
+  &:disabled {
+    border-color: transparent;
+    color: $colorDisabled;
   }
 }
 

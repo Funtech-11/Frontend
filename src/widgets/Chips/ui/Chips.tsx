@@ -7,13 +7,25 @@ import style from './Chips.module.scss';
 type TChips = {
   labels: string[];
   name?: string;
-  handleChange: (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClick: (name: string, value: string) => void;
 };
 
-const Chips: FC<TChips> = ({ labels, name = '', handleChange }) => {
+const Chips: FC<TChips> = ({
+  labels,
+  name = '',
+  handleChange,
+  handleClick,
+}) => {
   const [selected, setSelected] = useState('all');
+
+  // const handleClick = (event: MouseEvent) => {
+  //   if (event.target.value === selected) {
+  //     setSelected('all');
+  //   } else {
+  //     setSelected(event.target.value);
+  //   }
+  // };
   return (
     <div className={style.chips}>
       <RadioGroup
@@ -47,11 +59,13 @@ const Chips: FC<TChips> = ({ labels, name = '', handleChange }) => {
                 value={label}
                 label={label}
                 checked={checked}
+                onClick={() => {
+                  if (label === selected) setSelected('all');
+                  handleClick(name, 'all');
+                }}
                 onChange={event => {
-                  if (event.target.checked) {
-                    setSelected(label);
-                    handleChange(event);
-                  }
+                  if (event.target.checked) setSelected(label);
+                  handleChange(event);
                 }}
                 sx={{
                   width: 'fit-content',

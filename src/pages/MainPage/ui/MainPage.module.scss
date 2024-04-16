@@ -21,6 +21,12 @@
   gap: 20px;
 }
 
+.filters {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
 .cards {
   @include reset-list;
   width: 100%;

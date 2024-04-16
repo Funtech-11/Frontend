@@ -24,7 +24,7 @@
 
   &:disabled {
     cursor: default;
-    background-color: $colorBgBtn;
+    background-color: $colorDisabled;
     color: $colorBlackSecondary;
     fill: $colorBlackSecondary;
   }
