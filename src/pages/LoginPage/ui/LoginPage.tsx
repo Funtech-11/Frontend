@@ -1,13 +1,43 @@
-import { Link, NavLink } from 'react-router-dom';
-import style from './LoginPage.module.scss';
+import { FC } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+
 import yaIcon from 'src/assets/images/icons/ya-id.svg';
 import dotsIcon from 'src/assets/images/icons/dots-vertical.svg';
 import userIcon from 'src/assets/images/icons/user-avatar-login.svg';
 import adminIcon from 'src/assets/images/icons/admin-avatar-login.svg';
 import backBtn from 'src/assets/images/icons/solar_arrow-up-outline.svg';
+import { useAppDispatch } from 'src/app/store/hooks';
+import { ILoginUser } from 'src/utils/const/api';
+// import { getUserMe, login } from 'src/shared/api/user';
 
-const LoginPage = () => {
-  console.log('hello linter');
+import style from './LoginPage.module.scss';
+
+type TLoginProps = {
+  users: ILoginUser[];
+};
+
+const LoginPage: FC<TLoginProps> = ({ users }) => {
+  // const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = async (email: string, password: string) => {
+    // dispatch(login({ email, password })).then(resultAction => {
+    //   if (login.fulfilled.match(resultAction)) {
+    //     const token = localStorage.getItem('token');
+    //     console.log('Token from local storage:', token);
+    //     dispatch(getUserMe());
+    //     navigate('/');
+    //   } else {
+    //     navigate('/404');
+    //   }
+    // });
+    if (email === 'super@user.admin') {
+      navigate('/admin/1');
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <section className={style.container}>
       <div className={style.loginContainer}>
@@ -22,29 +52,33 @@ const LoginPage = () => {
         <p className={style.cardSubtitle}>Выберите аккаунт для входа</p>
         <p className={style.cardText}>Аккаунты, из которых вы вышли</p>
 
-        <NavLink to="/user-accaunt/1" className={style.userBox}>
-          <div className={style.userInfo}>
-            <div className={style.avatarBox}>
-              <img src={userIcon} />
+        {users.map(user => (
+          <div
+            key={user.email}
+            onClick={() => handleLogin(user.email, user.password)}
+            className={style.userBox}
+          >
+            <div className={style.userInfo}>
+              <div className={style.avatarBox}>
+                {user.username === 'ADMIN' ? (
+                  <img src={adminIcon} />
+                ) : (
+                  <img src={userIcon} />
+                )}
+              </div>
+              {user.username === 'ADMIN' ? (
+                <span className={style.userName}>{user.username}</span>
+              ) : (
+                <span
+                  className={style.userName}
+                >{`${user.first_name} ${user.last_name}`}</span>
+              )}
             </div>
-            <span className={style.userName}>UserName</span>
-          </div>
-          <div className={style.dots}>
-            <img src={dotsIcon} />
-          </div>
-        </NavLink>
-        <NavLink to="/admin/1" className={style.userBox}>
-          <div className={style.userInfo}>
-            <div className={style.avatarBox}>
-              <img src={adminIcon} />
+            <div className={style.dots}>
+              <img src={dotsIcon} />
             </div>
-            <span className={style.userName}>ADMIN</span>
           </div>
-          <div>
-            <img src={dotsIcon} />
-          </div>
-        </NavLink>
-
+        ))}
         <button className={style.btn}>Добавить аккаунт</button>
       </div>
 

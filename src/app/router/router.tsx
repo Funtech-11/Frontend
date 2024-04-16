@@ -9,6 +9,7 @@ import { UserAccountPage } from 'src/pages/UserAccountPage';
 import { VideoPlayerPage } from 'src/pages/VideoPlayerPage';
 import { Error } from 'src/pages/Error';
 import { error404 } from '../../utils/const/text/error-404';
+import { users } from '../../utils/const/api';
 
 export const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <LoginPage />,
+        element: <LoginPage users={users} />,
       },
       {
         path: 'event/:id',
