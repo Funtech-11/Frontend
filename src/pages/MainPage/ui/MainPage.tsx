@@ -2,19 +2,18 @@ import React, { useEffect, useState, useMemo, ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { getEventsCards } from 'src/shared/api/events';
 import { selectEvents } from 'src/app/store/reducers/events/model/eventsSlice';
-import { TCard } from 'src/widgets/Card/types/type';
 import { TOption } from '../types/type';
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
-// import { InputTypeFilter } from 'src/entities/Input/InputTypeFilter';
 import { Card } from 'src/widgets/Card';
 import { Banner } from 'src/widgets/Banner';
 import { Button } from 'src/entities/Button';
 import { Footer } from 'src/widgets/Footer';
-import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
 import { Loader } from 'src/shared/Loader';
-import { mockCards } from 'src/utils/mocks/cardsMockData';
+import { IEvent } from 'src/shared/api/events/dtos';
+import { themeDict } from 'src/utils/const/lib';
+import type { TThemeDictionary } from 'src/utils/const/lib';
 
 import style from './MainPage.module.scss';
 
@@ -27,33 +26,12 @@ const MainPage = () => {
   }, [dispatch]);
 
   const { events, isLoading } = useAppSelector(selectEvents);
-  const { user } = useAppSelector(selectUser);
-  //console.log('USER', user);
-
-  //console.log('Получение данных карточек', events);
-
-  let cards = mockCards;
-
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<TOption>({
     theme: 'all',
     eventType: 'all',
     eventFormat: 'all',
     city: 'all',
   });
-
-  const filterCards = (options: TOption, cards: TCard[]) => {
-    const keys = Object.keys(options);
-    return cards.filter(card => {
-      for (let i = 0; i < keys.length; i++) {
-        const field = keys[i];
-        if (options[field] === 'all') return true;
-        if (options[field] !== card[field as keyof TCard]) {
-          return false;
-        }
-        return true;
-      }
-    });
-  };
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -61,16 +39,36 @@ const MainPage = () => {
     const {
       target: { name, value },
     } = event;
-    setFilters({ ...filters, [name]: value });
+
+    const themeEnglish =
+      Object.keys(themeDict).find(
+        key => themeDict[key as keyof TThemeDictionary] === value
+      ) || '';
+
+    setFilters({ ...filters, [name]: themeEnglish });
   };
 
-  cards = useMemo(() => {
-    return filterCards(filters, cards);
-  }, [filters, cards]);
+  const filteredEvents = useMemo(() => {
+    return events.filter(event => {
+      for (const filterKey in filters) {
+        if (filters[filterKey] !== 'all' && filterKey === 'theme') {
+          if (event[filterKey].name !== filters[filterKey]) {
+            return false;
+          }
+        } else {
+          if (
+            filters[filterKey] !== 'all' &&
+            event[filterKey as keyof IEvent] !== filters[filterKey]
+          ) {
+            return false;
+          }
+        }
+      }
+      return true;
+    });
+  }, [events, filters]);
 
-  useEffect(() => {
-    filterCards(filters, cards);
-  }, [filters, cards]);
+  console.log(events);
 
   return (
     <div className={style.layout}>
@@ -94,24 +92,16 @@ const MainPage = () => {
                 'Другое',
               ]}
             />
-            {/* <div>
-            <InputTypeFilter
-              title="Тип мероприятия"
-              options={['Онлайн', 'Офлайн']}
-            />
-          </div> */}
           </div>
           <ul className={style.cards}>
-            {cards.map((card, index) => {
-              return (
-                <React.Fragment key={index}>
-                  {index === 9 && <Banner />}
-                  <li>
-                    <Card data={card} />
-                  </li>
-                </React.Fragment>
-              );
-            })}
+            {filteredEvents.map((card, index) => (
+              <React.Fragment key={index}>
+                {index === 9 && <Banner />}
+                <li>
+                  <Card data={card} />
+                </li>
+              </React.Fragment>
+            ))}
           </ul>
           <div className={style.moreContentBlock}>
             <Button title="Ещё" hasIcon={true} />
