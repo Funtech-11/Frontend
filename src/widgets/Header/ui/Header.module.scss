@@ -22,6 +22,7 @@
 .loginLink {
   @include reset-link;
   @include text-secondary-regular-20;
+  cursor: pointer;
 }
 
 .loginContainer {
@@ -32,4 +33,10 @@
 
 .burgerBtn {
   @include reset-button;
+}
+
+.userInfoBox {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }

@@ -21,6 +21,7 @@ const Footer = () => (
           <Link to="https://yandex.ru/legal/rules/" className={style.link}>
             Пользовательское соглашение
           </Link>
+          <span className={style.link}>Обратная связь</span>
         </div>
         <ul className={style.socials}>
           <li className={style.social}>

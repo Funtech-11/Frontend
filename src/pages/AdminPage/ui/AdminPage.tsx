@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AdminPanelTable } from 'src/widgets/AdminPanelTable';
 import { Button } from 'src/entities/Button';
 import admin360Logo from 'src/assets/images/icons/admin360logo.svg';
@@ -15,13 +15,23 @@ import {
   placesData,
   speakerData,
 } from 'src/utils/mocks/admin/adminTablesData';
+import { useAppDispatch } from 'src/app/store/hooks';
+import { logout } from 'src/shared/api/user';
 
 import style from './AdminPage.module.scss';
 
 const tabs = ['Ивенты', 'Спикеры', 'Площадки'];
 
 const AdminPage = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const [selectedOption, setSelectedOption] = useState<string>('Ивенты');
+
+  const handleLogout = async () => {
+    await dispatch(logout());
+    navigate('/');
+  };
 
   // TODO вынести блок отсюда когда нет мероприятий внутрб админпанели
 
@@ -104,9 +114,9 @@ const AdminPage = () => {
             </div>
           </li>
           <li className={style.listItem}>
-            <NavLink className={style.navLink} to="/login">
+            <div className={style.navLink} onClick={() => handleLogout()}>
               Выход
-            </NavLink>
+            </div>
           </li>
         </ul>
       </div>

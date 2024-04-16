@@ -47,6 +47,7 @@
 .navLink {
   @include reset-link;
   @include text-header-h4;
+  cursor: pointer;
 }
 
 .layout {

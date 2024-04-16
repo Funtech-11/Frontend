@@ -50,3 +50,32 @@ export const getUserMe = createAsyncThunk(
     }
   }
 );
+
+export const logout = createAsyncThunk<void, void>(
+  'user/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return rejectWithValue('Token is missing');
+      }
+
+      await axios.post(
+        `${BASE_URL}/auth/token/logout/`,
+        {},
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+      return;
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
+    }
+  }
+);

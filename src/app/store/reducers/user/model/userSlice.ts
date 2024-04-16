@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { initialUser } from './constants';
-import { getUserMe, login } from 'src/shared/api/user';
+import { getUserMe, login, logout } from 'src/shared/api/user';
 import { IUser } from 'src/shared/api/user/dtos';
 
 interface IUserState {
@@ -49,6 +49,22 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(getUserMe.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(logout.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(logout.fulfilled, state => {
+        state.isLoading = false;
+        state.token = null;
+        localStorage.removeItem('token');
+        state.user = initialUser;
+        state.error = null;
+      })
+      .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
