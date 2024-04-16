@@ -1,35 +1,51 @@
+interface ILocation {
+  locationId: number;
+  city: string;
+  address: string;
+  building: string;
+  metroStation: string;
+}
+
+interface ISpeaker {
+  speakerId: number;
+  name: string;
+  job: string;
+  avatar: string | null;
+}
+
 export interface IProgram {
   programId: number;
-  name: string; // Program name
-  dateTime: string; // ISO date and time format
-  speaker: {
-    speakerId: number;
-    name: string; // Speaker's name
-    job: string; // Speaker's job title
-    avatar: string; // Speaker's avatar URL
-  };
-  information: string; // Program information
-  event: number; // Associated event ID
-  material: string; // Program materials, e.g., URL to presentation or documentation
+  name: string;
+  dateTime: string;
+  speaker: ISpeaker;
+  information: string;
+  material: string | null;
 }
 
 export interface IEvent {
   eventId: number;
   name: string;
-  dateTimeStart: string; // ISO date and time format
-  dateTimeEnd: string; // ISO date and time format
-  location: number; // Location identifier (assumed to be some other object)
+  dateTimeStart: string;
+  dateTimeEnd: string | null;
+  location: ILocation;
   maxParticipants: number;
   currentParticipants: number;
   information: string;
-  eventType: 'OFFLINE' | 'ONLINE' | ''; // Event type can be online or offline
-  eventFormat: 'CONFERENCE' | 'MEETUP' | 'NETWORKING' | 'EXCURSION' | ''; // Event format
-  status: 'REGISTRATION_OPEN' | 'REGISTRATION_CLOSE' | 'FINISHED' | ''; // Event status (e.g., "active", "cancelled", etc.)
-  activityStatus: 'DRAFT' | 'ACTIVE_EVENT' | ''; // Activity status of the event
-  wallpaper: string; // URL for background image or color scheme
+  eventType: 'OFFLINE' | 'ONLINE' | '';
+  eventFormat: 'CONFERENCE' | 'MEETUP' | 'NETWORKING' | 'EXCURSION' | '';
+  status: 'REGISTRATION_OPEN' | 'REGISTRATION_CLOSE' | 'FINISHED' | '';
+  activityStatus: 'DRAFT' | 'ACTIVE_EVENT' | '';
+  wallpaper: string | null;
   theme: {
-    name: string; // Event theme name
+    name:
+      | 'PROGRAMMING'
+      | 'DESIGN'
+      | 'MANAGEMENT'
+      | 'MARKETING'
+      | 'ANALYTICS'
+      | 'BUSINESS'
+      | 'OTHER';
   };
-  video: string; // Video URL or stream (if applicable)
-  programs: IProgram[]; // Array of event programs
+  video: string;
+  programs: IProgram[];
 }

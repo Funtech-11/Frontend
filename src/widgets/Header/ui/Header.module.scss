@@ -1,4 +1,5 @@
 @import 'src/app/styles/mixins.scss';
+@import 'src/app/styles/variables.scss';
 
 .header {
   width: 100%;
@@ -22,6 +23,13 @@
 .loginLink {
   @include reset-link;
   @include text-secondary-regular-20;
+  cursor: pointer;
+}
+
+.logoutLink {
+  @include reset-link;
+  @include text-secondary-regular-20;
+  color: $colorBlackSecondary;
   cursor: pointer;
 }
 

@@ -24,14 +24,9 @@ const Header: FC<THeaderProps> = ({ isMenuShown, setMenuShown }) => {
   };
 
   const { user, token } = useAppSelector(selectUser);
-  console.log('USER HEADER', user);
-  console.log('isLoggedIn', isLoggedIn);
 
   const handleLogout = async () => {
-    console.log('logout click');
     await dispatch(logout());
-    const token = localStorage.getItem('token');
-    console.log('после логаута', token);
     navigate('/');
   };
 
@@ -56,7 +51,7 @@ const Header: FC<THeaderProps> = ({ isMenuShown, setMenuShown }) => {
               to={`/user-accaunt/${user.id}`}
               className={style.loginLink}
             >{`${user.firstName} ${user.lastName}`}</NavLink>
-            <div className={style.loginLink} onClick={() => handleLogout()}>
+            <div className={style.logoutLink} onClick={() => handleLogout()}>
               Выйти
             </div>
           </div>
