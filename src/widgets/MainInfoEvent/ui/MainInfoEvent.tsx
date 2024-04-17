@@ -13,6 +13,7 @@ import {
 } from 'src/utils/const/formatDate';
 import { eventFormatDict, themeDict } from 'src/utils/const/lib';
 import cardImg1 from 'src/assets/images/mock/1.png';
+import { ButtonLink } from '../../../entities/ButtonLink';
 
 const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
   console.log(eventInfo);
@@ -49,11 +50,15 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
     <>
       <section className={style.container}>
         <div className={style.btnWrapper}>
-          <Button
-            title="Зарегистрироваться"
-            hasIcon
-            onClick={handleOpenModal}
-          />
+          {eventInfo.status === 'FINISHED' ? (
+            <ButtonLink title="Cмотреть запись" hasIcon path="/video/1" />
+          ) : (
+            <Button
+              title="Зарегистрироваться"
+              hasIcon
+              onClick={handleOpenModal}
+            />
+          )}
         </div>
         {eventInfo.theme.name ? (
           <div
@@ -98,8 +103,14 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
         <div
           className={`${style.infoItem} ${style.longCard} ${style.gridPositionTimer}`}
         >
-          <p className={style.timerTitle}>Старт мероприятия через:</p>
-          <span className={style.timerText}>{timer}</span>
+          {eventInfo.status === 'FINISHED' ? (
+            <p className={style.timerTitle}>Мероприятие завершено</p>
+          ) : (
+            <p className={style.timerTitle}>Старт мероприятия через:</p>
+          )}
+          {eventInfo.status === 'FINISHED' ? null : (
+            <span className={style.timerText}>{timer}</span>
+          )}
         </div>
         {eventInfo.location ? (
           <div
@@ -137,12 +148,19 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
               src={eventInfo.wallpaper}
               alt="баннер"
             />
-            <div className={style.statusWrapper}>
-              <div className={style.statusDotActive} />
-              <p className={style.statusText}>
-                {`Регистрация открыта до ${formatDateStringReg(eventInfo.dateTimeStart)}`}
-              </p>
-            </div>
+            {eventInfo.status === 'FINISHED' ? (
+              <div className={style.statusWrapper}>
+                <div className={style.statusDotFinished} />
+                <p className={style.statusText}>Завершено</p>
+              </div>
+            ) : (
+              <div className={style.statusWrapper}>
+                <div className={style.statusDotActive} />
+                <p className={style.statusText}>
+                  {`Регистрация открыта до ${formatDateStringReg(eventInfo.dateTimeStart)}`}
+                </p>
+              </div>
+            )}
           </div>
         ) : (
           <div className={`${style.bannerItem} ${style.gridPositionWallpaper}`}>

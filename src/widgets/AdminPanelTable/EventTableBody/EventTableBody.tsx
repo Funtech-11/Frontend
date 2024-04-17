@@ -41,6 +41,7 @@ const EventTableBody: FC<IEventTableBodyProps> = ({ eventsData }) => (
           ) : (
             <div>
               <span>Идёт регистрация</span>
+              <br></br>
               <span>{`${event.registeredNum} / ${event.maxNum}`}</span>
             </div>
           )}

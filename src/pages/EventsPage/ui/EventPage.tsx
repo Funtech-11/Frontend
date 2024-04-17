@@ -13,7 +13,6 @@ import { EventAdressBlock } from 'src/widgets/EventAdressBlock';
 import { Carousel } from 'src/widgets/Carousel';
 import { MyTicketEventBlock } from 'src/widgets/MyTicketEventBlock';
 import { Loader } from 'src/shared/Loader';
-import { currentTiketMockData } from 'src/utils/mocks/ticketData';
 
 import style from './EventPage.module.scss';
 
@@ -40,7 +39,7 @@ const EventPage = () => {
             <AboutEvent type="short" text={event.information} />
           </div> */}
           <ProgrammList eventInfo={event} />
-          {/* <Carousel /> */}
+          {event.status === 'FINISHED' && <Carousel />}
           <EventAdressBlock eventInfo={event} />
         </div>
       </div>
