@@ -95,8 +95,6 @@ const MainPage = () => {
     return filterCards(filters, events);
   }, [filters, events]);
 
-  console.log(events);
-
   return (
     <div className={style.layout}>
       <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />

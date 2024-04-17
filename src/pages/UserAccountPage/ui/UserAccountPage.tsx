@@ -1,4 +1,8 @@
 import { useState } from 'react';
+
+import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
+
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { MyTicketsBlock } from 'src/widgets/MyTicketsBlock';
@@ -10,7 +14,12 @@ import { NotificationSelectBlock } from 'src/widgets/NotificationSelectBlock';
 import style from './UserAccountPage.module.scss';
 
 const UserAccountPage = () => {
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector(selectUser);
+
   const [isMenuShown, setMenuShown] = useState(false);
+
+  console.log('USER LK', user);
 
   return (
     <div className={style.layout}>
