@@ -5,6 +5,8 @@ import { AddSpeakerForm } from 'src/entities/AddSpeakerForm';
 import closeBtnIcon from 'src/assets/images/icons/closeButton.svg';
 
 import style from './AddItemModal.module.scss';
+import { FormProvider, useForm } from 'react-hook-form';
+import { AddEventForm } from 'src/entities/AddEventForm';
 
 type TAddItemModalProps = {
   open: boolean;
@@ -19,6 +21,8 @@ const AddItemModal: FC<TAddItemModalProps> = ({
   title,
   formType,
 }) => {
+  const methods = useForm();
+
   return (
     <div>
       <Dialog
@@ -43,8 +47,11 @@ const AddItemModal: FC<TAddItemModalProps> = ({
             <img src={closeBtnIcon} alt="закрыть" />
           </button>
           <h2 className={style.title}>{title}</h2>
-          {formType == 'place' && <AddPlaceForm />}
-          {formType == 'speaker' && <AddSpeakerForm />}
+          <FormProvider {...methods}>
+            {formType == 'event' && <AddEventForm />}
+            {formType == 'place' && <AddPlaceForm />}
+            {formType == 'speaker' && <AddSpeakerForm />}
+          </FormProvider>
         </div>
       </Dialog>
     </div>

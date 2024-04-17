@@ -129,6 +129,13 @@
   border-radius: 50%;
 }
 
+.statusDotFinished {
+  width: 8px;
+  height: 8px;
+  border: 1px solid $colorBlackSecondary;
+  border-radius: 50%;
+}
+
 .text {
   @include text-regular-16;
   text-transform: capitalize;
