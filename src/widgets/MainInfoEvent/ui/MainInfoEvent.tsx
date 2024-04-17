@@ -1,9 +1,10 @@
 import { useState, type FC, useEffect } from 'react';
 
+import { useAppSelector } from 'src/app/store/hooks';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
+
 import type { TMainInfoEventProps } from '../types/type';
 import { countdown } from 'src/utils/const/conuntdown';
-
-import style from './MainInfoEvent.module.scss';
 import { Button } from 'src/entities/Button';
 import { FormModal } from 'src/entities/Modals';
 import {
@@ -13,10 +14,14 @@ import {
 } from 'src/utils/const/formatDate';
 import { eventFormatDict, themeDict } from 'src/utils/const/lib';
 import cardImg1 from 'src/assets/images/mock/1.png';
-import { ButtonLink } from '../../../entities/ButtonLink';
+import { ButtonLink } from 'src/entities/ButtonLink';
+
+import style from './MainInfoEvent.module.scss';
 
 const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
-  console.log(eventInfo);
+  const { token } = useAppSelector(selectUser);
+  const isLoggedIn = !!token;
+
   const [timer, setTimer] = useState('');
 
   useEffect(() => {
@@ -30,6 +35,7 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
     const intervalId = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line
   }, []);
 
   const [showNewText, setShowNewText] = useState(false);
@@ -52,12 +58,14 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
         <div className={style.btnWrapper}>
           {eventInfo.status === 'FINISHED' ? (
             <ButtonLink title="Cмотреть запись" hasIcon path="/video/1" />
-          ) : (
+          ) : isLoggedIn ? (
             <Button
               title="Зарегистрироваться"
               hasIcon
               onClick={handleOpenModal}
             />
+          ) : (
+            <Button title="Зарегистрироваться" hasIcon path="/login" />
           )}
         </div>
         {eventInfo.theme.name ? (

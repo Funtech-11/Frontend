@@ -60,6 +60,7 @@ const TicketInfoCard: FC<ITicketInfoCardProps> = ({ ticket }) => {
           open={openModal}
           handleClose={handleCloseModal}
           qrImg={qrCodeImg}
+          id={'12'}
         />
       )}
     </>
@@ -67,5 +68,3 @@ const TicketInfoCard: FC<ITicketInfoCardProps> = ({ ticket }) => {
 };
 
 export default TicketInfoCard;
-
-// TODO чуть едет контент при открытии модалки wtf

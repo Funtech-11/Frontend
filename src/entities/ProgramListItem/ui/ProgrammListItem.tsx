@@ -16,7 +16,6 @@ const formatTime = (timeString: string) => {
 };
 
 const ProgrammListItem: FC<TProgramItemProps> = ({ programItem }) => {
-  //console.log(programItem);
   return (
     <div className={style.container}>
       <div className={style.time}>{formatTime(programItem.dateTime)}</div>

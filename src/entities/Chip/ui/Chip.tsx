@@ -6,6 +6,7 @@ type TChip = {
   clickable?: boolean;
   hasBorder?: boolean;
   activeChip?: string | null;
+  // eslint-disable-next-line
   setActiveChip?: React.Dispatch<React.SetStateAction<any>>;
 };
 
@@ -21,9 +22,11 @@ const Chip: FC<TChip> = ({
   useEffect(() => {
     if (activeChip === label) setActive(true);
     if (activeChip !== label) setActive(false);
+    // eslint-disable-next-line
   }, [activeChip]);
 
   const handleClick = useCallback(
+    // eslint-disable-next-line
     (event: MouseEvent<HTMLDivElement>) => {
       if (clickable) {
         if (activeChip === null) {
@@ -41,6 +44,7 @@ const Chip: FC<TChip> = ({
         }
       }
     },
+    // eslint-disable-next-line
     [setActiveChip, label]
   );
 

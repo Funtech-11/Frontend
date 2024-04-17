@@ -59,7 +59,7 @@ const RegistrationForm = () => {
   } = methods;
 
   const onSubmit = handleSubmit(data => {
-    console.log(data);
+    return data;
   });
 
   // useEffect(() => {

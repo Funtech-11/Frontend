@@ -16,7 +16,6 @@ import { InputTypeTextArea } from 'src/entities/Input/InputTypeTextArea';
 const AddPlaceForm = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('submit');
   };
 
   const [filePreview, setFilePreview] = useState<string | undefined>(undefined);

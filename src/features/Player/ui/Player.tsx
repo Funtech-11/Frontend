@@ -28,7 +28,6 @@ declare global {
 
 const Player = () => {
   const id = 'PMYdcJSJHuU';
-  let player;
 
   useEffect(() => {
     if (!window.YT) {
@@ -42,10 +41,12 @@ const Player = () => {
     } else {
       loadVideo();
     }
+    // eslint-disable-next-line
   }, []);
 
   const loadVideo = () => {
-    player = new window.YT!.Player('player', {
+    // eslint-disable-next-line
+    const player = new window.YT!.Player('player', {
       width: 871,
       height: 720,
       videoId: id,
@@ -55,6 +56,7 @@ const Player = () => {
     });
   };
 
+  // eslint-disable-next-line
   const onPlayerReady = (event: any) => {
     event.target.playVideo();
   };

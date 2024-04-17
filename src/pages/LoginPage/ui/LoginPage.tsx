@@ -22,6 +22,7 @@ const LoginPage: FC<TLoginProps> = ({ users }) => {
   const navigate = useNavigate();
   const { user } = useAppSelector(selectUser);
 
+  // eslint-disable-next-line
   const [loadingStates, setLoadingStates] = useState<{
     [key: string]: boolean;
   }>({});
@@ -50,7 +51,6 @@ const LoginPage: FC<TLoginProps> = ({ users }) => {
         navigate('/404');
       }
     } catch (error) {
-      console.error('Error during login:', error);
       navigate('/404');
     } finally {
       setLoadingStates(prevLoadingStates => ({
@@ -68,6 +68,7 @@ const LoginPage: FC<TLoginProps> = ({ users }) => {
         navigate('/');
       }
     }
+    // eslint-disable-next-line
   }, [user]);
 
   return (
