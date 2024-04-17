@@ -4,7 +4,11 @@ import { Chip } from 'src/entities/Chip';
 
 import { IEvent } from 'src/shared/api/events/dtos';
 import { formatDateString } from 'src/utils/const/formatDate';
-import { eventFormatDict, eventStatus, themeDict } from 'src/utils/const/lib';
+import {
+  eventFormatDict,
+  eventStatusDict as eventStatus,
+  themeDict,
+} from 'src/utils/const/lib';
 import cardImg1 from 'src/assets/images/mock/1.png';
 
 import style from './Card.module.scss';
@@ -57,7 +61,7 @@ const Card: FC<TCardProps> = ({ data }) => {
         <div className={style.row}>
           <p className={style.location}>
             {data.eventType === 'ONLINE'
-              ? 'OFLINE'
+              ? 'ONLINE'
               : data.location
                 ? data.location.city || 'Москва'
                 : 'Москва'}

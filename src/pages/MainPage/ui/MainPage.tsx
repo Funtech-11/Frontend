@@ -14,8 +14,12 @@ import { Button } from 'src/entities/Button';
 import { Footer } from 'src/widgets/Footer';
 import { Loader } from 'src/shared/Loader';
 import { IEvent } from 'src/shared/api/events/dtos';
-import { themeDict } from 'src/utils/const/lib';
-import type { TThemeDictionary } from 'src/utils/const/lib';
+import { themeDict, eventTypeDict, eventFormatDict } from 'src/utils/const/lib';
+import type {
+  TThemeDictionary,
+  TEventTypeDictionary,
+  TEventFormatDictionary,
+} from 'src/utils/const/lib';
 import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
 
 import style from './MainPage.module.scss';
@@ -39,17 +43,6 @@ const MainPage = () => {
     city: 'all',
   });
 
-
-  const resetFilters = () => {
-    setFilters({
-      theme: 'all',
-      eventType: 'all',
-      eventFormat: 'all',
-      city: 'all',
-    });
-  };
-
-
   const countPerPage = 12;
   const [visible, setVisible] = useState(countPerPage);
   const showMoreCards = () => {
@@ -57,7 +50,6 @@ const MainPage = () => {
   };
 
   const isButtonHidden = events.length - visible < 0;
-
 
   const filterCards = (options: TOption, cards: IEvent[]) => {
     return cards.filter(card => {
@@ -67,8 +59,8 @@ const MainPage = () => {
             if (card[filterKey].name !== options[filterKey]) {
               return false;
             }
-          } else if (filterKey === 'eventType') {
-            if (card.eventType !== options[filterKey]) {
+          } else if (filterKey === 'city') {
+            if (card.location?.[filterKey] !== options[filterKey]) {
               return false;
             }
           } else {
@@ -89,12 +81,19 @@ const MainPage = () => {
       target: { name, value },
     } = event;
 
-    const themeEnglish =
+    const valueEnglish =
       Object.keys(themeDict).find(
         key => themeDict[key as keyof TThemeDictionary] === value
-      ) || '';
+      ) ||
+      Object.keys(eventTypeDict).find(
+        key => eventTypeDict[key as keyof TEventTypeDictionary] === value
+      ) ||
+      Object.keys(eventFormatDict).find(
+        key => eventFormatDict[key as keyof TEventFormatDictionary] === value
+      ) ||
+      value;
 
-    setFilters({ ...filters, [name]: themeEnglish });
+    setFilters({ ...filters, [name]: valueEnglish });
   };
 
   const handleClick = (name: string, value: string) => {
@@ -117,9 +116,6 @@ const MainPage = () => {
         <div className={style.main}>
           <div className={style.filterBlock}>
             <div className={style.chipsWrapper}>
-              <button onClick={resetFilters} className={style.resetBtn}>
-                Показать все
-              </button>
               <Chips
                 name="theme"
                 labels={[
@@ -146,7 +142,7 @@ const MainPage = () => {
               <InputTypeFilter
                 name="eventFormat"
                 label="Формат"
-                options={['Конференция', 'Встреча', 'Митап', 'Экскурсия']}
+                options={['Конференция', 'Нетворкинг', 'Митап', 'Экскурсия']}
                 handleFilter={handleChange}
               />
               <InputTypeFilter
@@ -168,7 +164,6 @@ const MainPage = () => {
             </div>
           </div>
           <ul className={style.cards}>
-
             {cards.slice(0, visible).map((card, index) => {
               return (
                 <React.Fragment key={index}>
@@ -181,7 +176,6 @@ const MainPage = () => {
                 </React.Fragment>
               );
             })}
-
           </ul>
           <div
             className={`${style.moreContentBlock} ${isButtonHidden && style.hidden}`}
