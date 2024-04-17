@@ -28,7 +28,7 @@ const MainPage = () => {
   const [isMenuShown, setMenuShown] = useState(false);
   const dispatch = useAppDispatch();
 
-  const { token } = useAppSelector(selectUser);
+  const { user, token } = useAppSelector(selectUser);
   const isLoggedIn = !!token;
 
   useEffect(() => {
@@ -167,7 +167,7 @@ const MainPage = () => {
             {cards.slice(0, visible).map((card, index) => {
               return (
                 <React.Fragment key={index}>
-                  {index === 9 && (
+                  {index === 9 && user.id !== 7 && (
                     <Banner path={isLoggedIn ? 'user-accaunt/:id' : 'login'} />
                   )}
                   <li>
