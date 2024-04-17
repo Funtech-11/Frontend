@@ -58,6 +58,27 @@
   height: calc(100vh - 250px);
 }
 
+
+.chipsWrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.resetBtn {
+  @include reset-button;
+  @include text-regular-13;
+  border-radius: 8px;
+  padding: 13px 23.5px;
+  background-color: $colorWhitePrimary;
+  border: 1px solid $colorBlackPrimary;
+
+  &:hover {
+    color: $colorWhitePrimary;
+    background-color: $colorAccentPrimary;
+    border-color: transparent;
+  }
+
 .hidden {
   display: none;
+
 }

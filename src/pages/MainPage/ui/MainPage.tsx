@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { getEventsCards } from 'src/shared/api/events';
 import { selectEvents } from 'src/app/store/reducers/events/model/eventsSlice';
 import { TOption } from '../types/type';
-// import { TCard } from 'src/widgets/Card/types/type';
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
@@ -40,6 +39,17 @@ const MainPage = () => {
     city: 'all',
   });
 
+
+  const resetFilters = () => {
+    setFilters({
+      theme: 'all',
+      eventType: 'all',
+      eventFormat: 'all',
+      city: 'all',
+    });
+  };
+
+
   const countPerPage = 12;
   const [visible, setVisible] = useState(countPerPage);
   const showMoreCards = () => {
@@ -48,20 +58,28 @@ const MainPage = () => {
 
   const isButtonHidden = events.length - visible < 0;
 
-  const filterCards = (options: TOption, cards: IEvent[]) => {
-    const keys = Object.keys(options);
-    for (let i = 0; i < keys.length; i++) {
-      const field = keys[i];
-      cards = cards.filter(card => {
-        if (options[field] === 'all') return true;
-        if (options[field] !== card[field as keyof IEvent]) {
-          return false;
-        }
-        return true;
-      });
-    }
 
-    return cards;
+  const filterCards = (options: TOption, cards: IEvent[]) => {
+    return cards.filter(card => {
+      for (const filterKey in options) {
+        if (options[filterKey] !== 'all') {
+          if (filterKey === 'theme') {
+            if (card[filterKey].name !== options[filterKey]) {
+              return false;
+            }
+          } else if (filterKey === 'eventType') {
+            if (card.eventType !== options[filterKey]) {
+              return false;
+            }
+          } else {
+            if (card[filterKey as keyof IEvent] !== options[filterKey]) {
+              return false;
+            }
+          }
+        }
+      }
+      return true;
+    });
   };
 
   const handleChange = (
@@ -83,27 +101,7 @@ const MainPage = () => {
     setFilters({ ...filters, [name]: value });
   };
 
-  // const cards = useMemo(() => {
-  //   return events.filter(event => {
-  //     for (const filterKey in filters) {
-  //       if (filters[filterKey] !== 'all' && filterKey === 'theme') {
-  //         if (event[filterKey].name !== filters[filterKey]) {
-  //           return false;
-  //         }
-  //       } else {
-  //         if (
-  //           filters[filterKey] !== 'all' &&
-  //           event[filterKey as keyof IEvent] !== filters[filterKey]
-  //         ) {
-  //           return false;
-  //         }
-  //       }
-  //     }
-  //     return true;
-  //   });
-  // }, [events, filters]);
-
-  const eventCards = useMemo(() => {
+  const cards = useMemo(() => {
     return filterCards(filters, events);
   }, [filters, events]);
 
@@ -118,20 +116,26 @@ const MainPage = () => {
       ) : (
         <div className={style.main}>
           <div className={style.filterBlock}>
-            <Chips
-              name="theme"
-              labels={[
-                'Маркетинг',
-                'Разработка',
-                'Дизайн',
-                'Менеджмент',
-                'Бизнес',
-                'Аналитика',
-                'Другое',
-              ]}
-              handleChange={handleChange}
-              handleClick={handleClick}
-            />
+            <div className={style.chipsWrapper}>
+              <button onClick={resetFilters} className={style.resetBtn}>
+                Показать все
+              </button>
+              <Chips
+                name="theme"
+                labels={[
+                  'Маркетинг',
+                  'Разработка',
+                  'Дизайн',
+                  'Менеджмент',
+                  'Бизнес',
+                  'Аналитика',
+                  'Другое',
+                ]}
+                handleChange={handleChange}
+                handleClick={handleClick}
+              />
+            </div>
+
             <div className={style.filters}>
               <InputTypeFilter
                 name="eventType"
@@ -164,7 +168,8 @@ const MainPage = () => {
             </div>
           </div>
           <ul className={style.cards}>
-            {eventCards.slice(0, visible).map((card, index) => {
+
+            {cards.slice(0, visible).map((card, index) => {
               return (
                 <React.Fragment key={index}>
                   {index === 9 && (
@@ -176,6 +181,7 @@ const MainPage = () => {
                 </React.Fragment>
               );
             })}
+
           </ul>
           <div
             className={`${style.moreContentBlock} ${isButtonHidden && style.hidden}`}
