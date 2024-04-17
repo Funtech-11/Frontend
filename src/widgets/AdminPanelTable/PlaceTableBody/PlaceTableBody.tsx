@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { FC } from 'react';
 import { TableCell, TableRow } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import editIcon from 'src/assets/images/icons/admin/edit.svg';
@@ -10,33 +10,44 @@ interface IPlaceTableBodyProps {
   placesData: TPlace[];
 }
 
-const PlaceTableBody: FC<IPlaceTableBodyProps> = ({ placesData }) => (
-  <>
-    {placesData.map(place => (
-      <TableRow key={place.id}>
-        <TableCell padding="checkbox">
-          <Checkbox />
-        </TableCell>
-        <TableCell>{place.name}</TableCell>
-        <TableCell>{place.adress}</TableCell>
-        <TableCell>{place.city}</TableCell>
-        {place.metroStation ? (
-          <TableCell>{place.metroStation}</TableCell>
-        ) : (
-          <TableCell>
-            <div>
-              <span>-</span>
-            </div>
+const PlaceTableBody: FC<IPlaceTableBodyProps> = ({ placesData }) => {
+  const commonCellStyle = {
+    color: '#1C1C1C',
+    fontFamily: 'San Francisco Pro Text',
+    fontWeight: '400',
+    fontSize: '14px',
+    lineHeight: '18px',
+    borderBottom: '1px solid #BBB9BA',
+  };
+
+  return (
+    <>
+      {placesData.map(place => (
+        <TableRow key={place.id}>
+          <TableCell padding="checkbox" style={commonCellStyle}>
+            <Checkbox />
           </TableCell>
-        )}
-        <TableCell>
-          <button className={style.editBtn}>
-            <img src={editIcon} alt="edit" />
-          </button>
-        </TableCell>
-      </TableRow>
-    ))}
-  </>
-);
+          <TableCell style={commonCellStyle}>{place.name}</TableCell>
+          <TableCell style={commonCellStyle}>{place.adress}</TableCell>
+          <TableCell style={commonCellStyle}>{place.city}</TableCell>
+          {place.metroStation ? (
+            <TableCell style={commonCellStyle}>{place.metroStation}</TableCell>
+          ) : (
+            <TableCell style={commonCellStyle}>
+              <div>
+                <span>-</span>
+              </div>
+            </TableCell>
+          )}
+          <TableCell style={commonCellStyle}>
+            <button className={style.editBtn}>
+              <img src={editIcon} alt="edit" />
+            </button>
+          </TableCell>
+        </TableRow>
+      ))}
+    </>
+  );
+};
 
 export default PlaceTableBody;
