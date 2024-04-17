@@ -18,6 +18,11 @@
   background-color: $colorAccentPrimary;
   color: $colorWhitePrimary;
   fill: $colorWhitePrimary;
+  transition: background-color 0.4s ease-in-out;
+
+  &:hover {
+    background-color: $colorBlackPrimary;
+  }
 
   &:active {
     background-color: $colorBlackPrimary;
@@ -36,6 +41,11 @@
   background-color: transparent;
   color: $colorBlackPrimary;
   fill: $colorBlackPrimary;
+  transition: background-color 0.4s ease-in-out;
+
+  &:hover {
+    border-color: $colorBlackPrimary;
+  }
 
   &:active {
     border-color: $colorBlackPrimary;
@@ -43,7 +53,7 @@
 
   &:disabled {
     cursor: default;
-    border-color: rgba($colorBlackPrimary, .8);
+    border-color: rgba($colorBlackPrimary, 0.8);
     color: $colorBlackSecondary;
     fill: $colorBlackSecondary;
   }
