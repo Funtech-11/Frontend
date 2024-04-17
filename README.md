@@ -4,7 +4,7 @@
 
 # О команде
 
-- Наташа - [@UltraNata](https://t.me/UltraNata)
+- Team Lead: Наташа - [@UltraNata](https://t.me/UltraNata)
 - Елизавета - [@lizananeva](https://t.me/lizananeva)
 
 # Ссылка на проект
