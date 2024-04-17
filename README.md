@@ -45,13 +45,19 @@
 Клонировать репозиторий:
 
 ```bash
-git clone
+git clone git@github.com:Funtech-11/Frontend.git
 ```
 
 Установаить зависимости:
 
 ```bash
 npm install
+```
+
+Запуск в режиме разработки:
+
+```bash
+npm run dev
 ```
 
 Собрать проект:
