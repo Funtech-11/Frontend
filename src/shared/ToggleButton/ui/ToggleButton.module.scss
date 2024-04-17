@@ -1,0 +1,52 @@
+@import 'src/app/styles/variables.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  display: none;
+}
+
+.checkButton {
+  width: 60px;
+  height: 30px;
+  border-radius: 65px;
+  border: 1px solid $colorBlackPrimary;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  box-sizing: border-box;
+  background-color: $colorWhitePrimary;
+}
+
+.checkButton::before {
+  position: absolute;
+  content: '';
+  background-color: $colorBlackPrimary;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 2px;
+  transition: 0.3s ease-in-out;
+}
+
+.input:checked + .checkButton::before {
+  transform: translateX(30px);
+  background-color: $colorAccentPrimary;
+}
+
+.checkButton:hover {
+  border-color: $colorAccentPrimary;
+}
+
+.checkButton:hover::before {
+  background-color: $colorAccentPrimary;
+}

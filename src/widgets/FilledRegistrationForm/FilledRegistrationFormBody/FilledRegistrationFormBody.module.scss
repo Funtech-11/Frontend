@@ -1,0 +1,60 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.card {
+  background-color: $colorWhiteSecondary;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.userInfoContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.avatarWrapper {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+}
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  @include reset-text;
+  @include text-header-h4;
+}
+
+.job {
+  @include reset-text;
+  @include text-regular-16;
+  color: $colorDarkGrey;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 20px;
+  column-gap: 32px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  max-width: 180px;
+  gap: 4px;
+}
+
+.text {
+  @include reset-text;
+  @include text-medium-16;
+}

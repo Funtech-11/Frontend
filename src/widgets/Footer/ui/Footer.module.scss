@@ -1,0 +1,70 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.footer {
+  background-color: $colorBgLightGrey;
+}
+
+.outterContainer {
+  max-width: 100%;
+  background-color: $colorLightGrey;
+  padding: 12px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.contentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: $colorWhiteSecondary;
+  border-radius: 20px;
+}
+.textWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.text {
+  @include text-regular-11;
+}
+
+.link {
+  @include reset-link;
+  @include text-regular-11;
+  cursor: pointer;
+}
+
+.logoLink {
+  @include reset-link;
+  @include text-header-h4;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $colorAccentPrimary;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: $colorBlackPrimary;
+  }
+}
+
+.socialLink {
+  @include reset-link;
+}
+
+.socialIcon {
+  display: block;
+}

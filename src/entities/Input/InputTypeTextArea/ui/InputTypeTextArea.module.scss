@@ -1,0 +1,42 @@
+@import 'src/app/styles/mixins.scss';
+@import 'src/app/styles/variables';
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.title {
+  @include reset-text;
+  @include text-medium-16;
+  color: $colorBlackSecondary;
+}
+
+.input {
+  resize: none;
+  width: 100%;
+  height: 150px;
+  border-radius: 12px;
+  border: 1px solid $colorLightGrey;
+  background-color: $colorWhiteSecondary;
+  box-sizing: border-box;
+  padding: 11px 15px;
+  @include text-regular-16;
+  color: $colorBlackPrimary;
+
+  &::placeholder {
+    color: $colorLightGrey;
+  }
+
+  &:active {
+    border-color: $colorBlackPrimary;
+  }
+}
+
+.error {
+  @include reset-text;
+  @include text-medium-14;
+  color: $colorError;
+}

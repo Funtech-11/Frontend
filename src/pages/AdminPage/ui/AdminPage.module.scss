@@ -1,0 +1,165 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.container {
+  display: flex;
+  gap: 32px;
+  max-width: 1440px;
+}
+.sidebar {
+  width: 319px;
+  margin-left: 64px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarHeader {
+  padding-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mainNavList {
+  @include reset-list;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 45px;
+}
+
+.mainNavItem {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background-color: $colorWhiteSecondary;
+  width: 100%;
+  border-radius: 20px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+}
+
+.navText {
+  @include text-header-h4;
+  font-weight: 400;
+}
+
+.logoText {
+  @include reset-text;
+  @include text-header-h1;
+}
+
+.listItem {
+  @include reset-list;
+}
+.navLink {
+  @include reset-link;
+  @include text-header-h4;
+  cursor: pointer;
+}
+
+.layout {
+  width: calc(100vw - 319px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.headerContent {
+  display: flex;
+  gap: 64px;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.imgBox {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgCapture {
+  @include text-regular-16;
+}
+
+.main {
+  background-color: $colorBgLightGrey;
+  border-radius: 20px 0 0 0;
+  padding-top: 36px;
+  padding-left: 32px;
+  padding-right: 64px;
+  flex: 1 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include reset-text;
+  @include text-header-h2;
+  margin-bottom: 32px;
+}
+
+.tableWrapper {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.subtitle {
+  @include reset-text;
+  @include text-header-h4;
+  margin-bottom: 12px;
+}
+
+.infoNoDataContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.navTabsContainer {
+  padding: 8px;
+  background-color: $colorWhitePrimary;
+  width: fit-content;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.tabList {
+  @include reset-list;
+  display: flex;
+}
+
+.navItem {
+  @include reset-button;
+  padding: 14px 0;
+  width: 120px;
+  height: 48px;
+  border-radius: 4px;
+  @include text-medium-15;
+  background-color: transparent;
+
+  &.active {
+    background-color: $colorBlackSecondary;
+    color: $colorWhitePrimary;
+    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
+  }
+}

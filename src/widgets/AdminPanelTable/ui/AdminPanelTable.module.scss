@@ -1,0 +1,36 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnContainer {
+  align-self: flex-end;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.legendContainer {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legendIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.legendText {
+  @include text-regular-16;
+}

@@ -1,0 +1,8 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.sectionWrapper {
+  background-color: $colorWhitePrimary;
+  border-radius: 20px;
+  padding: 20px;
+}

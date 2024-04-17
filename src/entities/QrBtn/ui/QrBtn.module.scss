@@ -1,0 +1,17 @@
+@import 'src/app/styles/mixins.scss';
+
+.btn {
+  width: 94px;
+  height: 94px;
+  @include reset-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

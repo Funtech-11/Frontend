@@ -1,0 +1,40 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.container {
+  @include content-block;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $colorWhiteSecondary;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+
+.description {
+  max-width: 506px;
+  margin-bottom: auto;
+}
+
+.title {
+  @include reset-text;
+  @include text-header-h3;
+  color: $colorAccentPrimary;
+  margin-bottom: 12px;
+}
+
+.text {
+  @include reset-text;
+  @include text-regular-16;
+}

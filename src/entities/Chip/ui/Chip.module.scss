@@ -1,0 +1,28 @@
+@import 'src/app/styles/mixins.scss';
+@import 'src/app/styles/variables.scss';
+
+.chip {
+  width: fit-content;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 13px 23.5px;
+  background-color: $colorWhitePrimary;
+
+  &Clickable {
+    cursor: pointer;
+  }
+
+  &Bordered {
+    border-color: $colorBlackPrimary;
+  }
+
+  &Active {
+    @include active-style;
+  }
+}
+
+.title {
+  @include reset-text;
+  @include text-regular-13;
+}

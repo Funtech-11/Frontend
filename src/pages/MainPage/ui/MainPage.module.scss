@@ -1,0 +1,68 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.layout {
+  padding-bottom: 32px;
+  width: 1336px;
+}
+
+.main {
+  background-color: $colorLightGrey;
+  padding: 12px 12px 0px 12px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-top: 32px;
+}
+
+.filterBlock {
+  @include content-block;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filters {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cards {
+  @include reset-list;
+  width: 100%;
+  min-height: 515px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 429px);
+  grid-template-rows: min-content;
+  grid-auto-rows: min-content;
+  gap: 12px;
+  box-sizing: border-box;
+  padding: 12px 0;
+
+  & div[class='banner'] {
+    display: grid;
+    grid-column: 1 / -1;
+  }
+}
+
+.moreContentBlock {
+  @include content-block;
+  display: flex;
+  justify-content: center;
+}
+
+.loaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 250px);
+}
+
+.chipsWrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.hidden {
+  display: none;
+}

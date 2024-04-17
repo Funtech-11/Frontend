@@ -1,0 +1,29 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.modalContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include reset-text;
+  @include text-header-h3;
+  margin-bottom: 42px;
+}
+
+.text {
+  @include text-regular-16;
+}
+
+.closeBtn {
+  @include reset-button;
+  width: 24px;
+  height: 24px;
+  align-self: flex-end;
+}
+
+.btnWrapper {
+  align-self: flex-start;
+}

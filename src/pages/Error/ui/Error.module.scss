@@ -1,0 +1,32 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 458px;
+}
+
+.codeText {
+  @include reset-text;
+  @include text-404-page;
+}
+.messageText {
+  @include reset-text;
+  @include text-secondary-regular-20;
+  margin-bottom: 20px;
+}
+
+.btnWrapper {
+  width: fit-content;
+  height: 48px;
+}

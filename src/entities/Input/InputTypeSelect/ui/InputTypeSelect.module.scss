@@ -1,0 +1,17 @@
+@import 'src/app/styles/mixins.scss';
+@import 'src/app/styles/variables';
+
+.select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  position: relative;
+}
+
+.error {
+  @include reset-text;
+  @include text-medium-14;
+  color: $colorError;
+}

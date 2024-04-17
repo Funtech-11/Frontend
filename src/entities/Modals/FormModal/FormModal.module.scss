@@ -1,0 +1,37 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.modalContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include reset-text;
+  @include text-header-h3;
+}
+
+.text {
+  @include reset-text;
+  @include text-regular-16;
+  max-width: 416px;
+  width: 100%;
+}
+
+.contentWrapper, .formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.closeBtn {
+  @include reset-button;
+  width: 24px;
+  height: 24px;
+  align-self: flex-end;
+}
+
+.submitBtn {
+  align-self: flex-start;
+}

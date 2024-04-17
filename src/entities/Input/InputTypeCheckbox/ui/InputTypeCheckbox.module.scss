@@ -1,0 +1,48 @@
+@import 'src/app/styles/mixins.scss';
+@import 'src/app/styles/variables';
+
+.label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  background-color: $colorWhiteSecondary;
+  box-sizing: border-box;
+  padding: 11px 15px;
+  border: 1px solid $colorLightGrey;
+  border-radius: 12px;
+}
+
+.wrap {
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  width: 28px;
+  height: 28px;
+  background-image: url('src/assets/images/icons/checkbox-unchecked.svg');
+  cursor: pointer;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+
+  &:checked {
+    background-image: url('src/assets/images/icons/checkbox-checked.svg');
+  }
+
+  &:disabled {}
+
+  &:disabled + .title {
+    color: $colorLightGrey;
+  }
+}
+
+.title {
+  @include reset-text;
+  @include text-regular-16;
+  color: $colorBlackSecondary;
+}

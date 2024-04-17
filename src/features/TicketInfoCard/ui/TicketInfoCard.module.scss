@@ -1,0 +1,28 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.card {
+  background-color: $colorWhiteSecondary;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  @include reset-text;
+  @include text-header-h4;
+  margin-bottom: 12px;
+}
+
+.text {
+  @include reset-text;
+  @include text-regular-16;
+  margin-bottom: 20px;
+}
+
+.infoContainer {
+  display: flex;
+  gap: 12px;
+}

@@ -1,0 +1,7 @@
+@import 'src/app/styles/mixins.scss';
+
+.chips {
+  @include reset-list;
+  display: flex;
+  gap: 12px;
+}

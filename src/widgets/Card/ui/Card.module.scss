@@ -1,0 +1,160 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.card {
+  width: 100%;
+  height: 100%;
+  min-height: 491px;
+  display: block;
+  @include reset-link;
+  background-color: $colorWhiteSecondary;
+  border-radius: 20px;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+
+  &:hover {
+    .picture::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      background-color: $colorAccentPrimary;
+      mix-blend-mode: soft-light;
+      z-index: 10;
+    }
+
+    .pic {
+      transform: scale(1.15);
+    }
+  }
+}
+
+.picture {
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+.statusBox {
+  background-color: $colorWhiteSecondary;
+  padding: 8px 16px;
+  border-radius: 100px;
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  z-index: 100;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.statusText {
+  @include reset-text;
+  @include text-regular-14;
+}
+
+.statusDotOpen {
+  width: 8px;
+  height: 8px;
+  background-color: $colorsuccess;
+  border-radius: 50%;
+}
+
+.statusDotFinished {
+  width: 8px;
+  height: 8px;
+  border: 1px solid $colorBlackSecondary;
+  border-radius: 50%;
+}
+
+.statusDotClosed {
+  width: 8px;
+  height: 8px;
+  border: 1px solid $colorBlackSecondary;
+  border-radius: 50%;
+}
+
+.labels {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  left: 20px;
+  bottom: 12px;
+  z-index: 100;
+}
+
+.info {
+  max-height: 241px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 20px 20px 25px;
+}
+
+.name {
+  @include reset-text;
+  @include text-header-h3;
+  color: $colorAccentPrimary;
+  margin-bottom: 4px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.company,
+.location,
+.date,
+.description {
+  @include reset-text;
+  @include text-regular-14;
+}
+
+.company {
+  margin-bottom: 20px;
+}
+
+.location,
+.date {
+  display: flex;
+  align-items: center;
+
+  &::before {
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+  }
+}
+
+.location {
+  &::before {
+    content: url('src/assets/images/icons/map-pin.svg');
+  }
+}
+
+.date {
+  &::before {
+    content: url('src/assets/images/icons/calendar.svg');
+  }
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

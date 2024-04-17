@@ -1,0 +1,77 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cardWrapper {
+  background-color: $colorWhitePrimary;
+  border-radius: 20px;
+  padding: 20px;
+  min-height: 309px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.adressInfoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  @include reset-text;
+  @include text-header-h2;
+}
+
+.adress {
+  @include reset-text;
+  @include text-regular-16;
+}
+
+.metroWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.metroDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: $colorsuccess;
+}
+
+.metroText {
+  @include text-medium-16;
+}
+
+.callTaxiWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.taxiIconContainer {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.taxiIcon {
+  width: 100%;
+  object-fit: cover;
+}
+
+.mapCardWrapper {
+  padding: 0;
+}
+.mapImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

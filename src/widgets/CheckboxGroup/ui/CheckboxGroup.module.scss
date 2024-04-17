@@ -1,0 +1,14 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.checkname {
+  @include reset-text;
+  @include text-regular-16;
+  color: $colorBlackSecondary;
+}
+
+.error {
+  @include reset-text;
+  @include text-medium-14;
+  color: $colorError;
+}

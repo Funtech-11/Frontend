@@ -1,0 +1,159 @@
+@import './variables.scss';
+
+// reset style mixins
+
+@mixin reset-list {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@mixin reset-text {
+  margin: 0;
+}
+
+@mixin reset-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+@mixin reset-button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@mixin reset-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+// typography mixins
+
+@mixin header-for-all($f-size) {
+  color: $colorBlackPrimary;
+  font-family: $fontHeaders;
+  font-size: $f-size;
+  line-height: calc($f-size / 100 * 115);
+}
+
+@mixin text-header-h1 {
+  $f-size: 48px;
+  @include header-for-all($f-size);
+}
+
+@mixin text-header-h2 {
+  $f-size: 36px;
+  @include header-for-all($f-size);
+}
+
+@mixin text-header-h3 {
+  $f-size: 28px;
+  @include header-for-all($f-size);
+}
+
+@mixin text-header-h4 {
+  $f-size: 20px;
+  @include header-for-all($f-size);
+}
+
+@mixin text-for-all {
+  color: inherit;
+  font-family: $fontTextPrimary;
+  font-weight: 400;
+}
+
+@mixin text-regular-16 {
+  @include text-for-all;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -.32px;
+}
+
+@mixin text-medium-16 {
+  @include text-regular-16;
+  font-weight: 500;
+}
+
+@mixin text-medium-15 {
+  @include text-for-all;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -.24px;
+}
+
+@mixin text-regular-14 {
+  @include text-for-all;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -.154px;
+}
+
+@mixin text-medium-14 {
+  @include text-regular-14;
+  font-weight: 500;
+}
+
+@mixin text-regular-13 {
+  @include text-for-all;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: -.078px;
+}
+
+@mixin text-medium-13 {
+  @include text-regular-13;
+  font-weight: 500;
+}
+
+@mixin text-regular-11 {
+  @include text-for-all;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: .06px;
+}
+
+@mixin text-secondary-regular-20 {
+  color: $colorBlackPrimary;
+  font-family: $fontTextSecondary;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: .38px;
+}
+
+@mixin text-secondary-medium-20 {
+  @include text-secondary-regular-20;
+  font-weight: 500;
+}
+
+@mixin text-button {
+  @include text-medium-15;
+}
+
+@mixin text-404-page {
+  $f-size: 200px;
+  @include header-for-all($f-size);
+}
+
+// mixin for typical content blok
+
+@mixin content-block {
+  width: 100%;
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: $colorWhitePrimary;
+}
+
+// mixin for active elements style such as chips, buttons etc
+
+@mixin active-style {
+  color: $colorWhitePrimary;
+  fill: $colorWhitePrimary;
+  background-color: $colorAccentPrimary;
+  border-color: transparent;
+}

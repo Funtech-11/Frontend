@@ -1,0 +1,22 @@
+@import 'src/app/styles/variables.scss';
+@import 'src/app/styles/mixins.scss';
+
+.container {
+  width: 40px;
+  height: 40px;
+  background-color: $colorDisabled;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $colorAccentPrimary;
+  }
+}
+
+.downloadBtn {
+  @include reset-button;
+  background: transparent;
+}

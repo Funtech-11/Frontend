@@ -1,0 +1,74 @@
+@import 'src/app/styles/mixins.scss';
+@import 'src/app/styles/variables';
+
+.button {
+  @include reset-link;
+  @include text-medium-15;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  box-sizing: border-box;
+  padding: 13px 19px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.primary {
+  background-color: $colorAccentPrimary;
+  color: $colorWhitePrimary;
+  fill: $colorWhitePrimary;
+  transition: background-color 0.4s ease-in-out;
+
+  &:hover {
+    background-color: $colorBlackPrimary;
+  }
+
+  &:active {
+    background-color: $colorBlackPrimary;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: $colorDisabled;
+    color: $colorBlackSecondary;
+    fill: $colorBlackSecondary;
+  }
+}
+
+.outlined {
+  border-color: $colorAccentPrimary;
+  background-color: transparent;
+  color: $colorBlackPrimary;
+  fill: $colorBlackPrimary;
+  transition: background-color 0.4s ease-in-out;
+
+  &:hover {
+    border-color: $colorBlackPrimary;
+  }
+
+  &:active {
+    border-color: $colorBlackPrimary;
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: rgba($colorBlackPrimary, 0.8);
+    color: $colorBlackSecondary;
+    fill: $colorBlackSecondary;
+  }
+}
+
+.text {
+  color: $colorBlackPrimary;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.icon * {
+  width: 16px;
+  height: 12.8px;
+  fill: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
