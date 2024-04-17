@@ -22,7 +22,6 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/joy": "^5.0.0-beta.32",
     "@mui/material": "^5.15.15",
-    "@mui/x-data-grid": "^7.1.1",
     "@reduxjs/toolkit": "^2.2.3",
     "axios": "^1.6.8",
     "normalize.css": "^8.0.1",
@@ -56,7 +55,8 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "npx prettier --write"
+      "npx prettier --write",
+      "npx eslint --fix"
     ]
   }
 }

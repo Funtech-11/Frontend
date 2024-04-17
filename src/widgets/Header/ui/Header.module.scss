@@ -24,13 +24,23 @@
   @include reset-link;
   @include text-secondary-regular-20;
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: $colorAccentPrimary;
+  }
 }
 
 .logoutLink {
   @include reset-link;
   @include text-secondary-regular-20;
   color: $colorBlackSecondary;
+  transition: color 0.3s ease-in-out;
   cursor: pointer;
+
+  &:hover {
+    color: $colorAccentPrimary;
+  }
 }
 
 .loginContainer {
@@ -45,7 +55,7 @@
 
 .userInfoBox {
   display: flex;
-  gap: 12px;
+  gap: 20px;
   align-items: center;
 }
 
