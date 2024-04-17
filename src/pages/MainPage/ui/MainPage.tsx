@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo, ChangeEvent } from 'react';
+import { SelectChangeEvent } from '@mui/material/Select';
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { getEventsCards } from 'src/shared/api/events';
 import { selectEvents } from 'src/app/store/reducers/events/model/eventsSlice';
@@ -6,6 +7,7 @@ import { TOption } from '../types/type';
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
+import { InputTypeFilter } from 'src/entities/Input/InputTypeFilter';
 import { Card } from 'src/widgets/Card';
 import { Banner } from 'src/widgets/Banner';
 import { Button } from 'src/entities/Button';
@@ -33,8 +35,24 @@ const MainPage = () => {
     city: 'all',
   });
 
+  const filterCards = (options: TOption, cards: TCard[]) => {
+    const keys = Object.keys(options);
+    for (let i = 0; i < keys.length; i++) {
+      const field = keys[i];
+      cards = cards.filter(card => {
+        if (options[field] === 'all') return true;
+        if (options[field] !== card[field as keyof TCard]) {
+          return false;
+        }
+        return true;
+      });
+    }
+
+    return cards;
+  };
+
   const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    event: ChangeEvent<HTMLInputElement> | SelectChangeEvent<string>
   ) => {
     const {
       target: { name, value },
@@ -46,6 +64,10 @@ const MainPage = () => {
       ) || '';
 
     setFilters({ ...filters, [name]: themeEnglish });
+  };
+
+  const handleClick = (name: string, value: string) => {
+    setFilters({ ...filters, [name]: value });
   };
 
   const filteredEvents = useMemo(() => {
@@ -80,7 +102,6 @@ const MainPage = () => {
         <div className={style.main}>
           <div className={style.filterBlock}>
             <Chips
-              handleChange={handleChange}
               name="theme"
               labels={[
                 'Маркетинг',
@@ -91,17 +112,51 @@ const MainPage = () => {
                 'Аналитика',
                 'Другое',
               ]}
+              handleChange={handleChange}
+              handleClick={handleClick}
             />
+            <div className={style.filters}>
+              <InputTypeFilter
+                name="eventType"
+                label="Тип мероприятия"
+                options={['Онлайн', 'Офлайн']}
+                handleFilter={handleChange}
+              />
+              <InputTypeFilter
+                name="eventFormat"
+                label="Формат"
+                options={['Конференция', 'Встреча', 'Митап', 'Экскурсия']}
+                handleFilter={handleChange}
+              />
+              <InputTypeFilter
+                name="city"
+                label="Город"
+                options={[
+                  'Москва',
+                  'Санкт-Петербург',
+                  'Белград',
+                  'Новосибирск',
+                  'Казань',
+                  'Екатеринбург',
+                  'Нижний Новгород',
+                  'Сочи',
+                  'Ереван',
+                ]}
+                handleFilter={handleChange}
+              />
+            </div>
           </div>
           <ul className={style.cards}>
-            {filteredEvents.map((card, index) => (
-              <React.Fragment key={index}>
-                {index === 9 && <Banner />}
-                <li>
-                  <Card data={card} />
-                </li>
-              </React.Fragment>
-            ))}
+            {cards.map((card, index) => {
+              return (
+                <React.Fragment key={index}>
+                  {index === 9 && <Banner />}
+                  <li>
+                    <Card data={card} />
+                  </li>
+                </React.Fragment>
+              );
+            })}
           </ul>
           <div className={style.moreContentBlock}>
             <Button title="Ещё" hasIcon={true} />
