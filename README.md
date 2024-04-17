@@ -35,6 +35,9 @@
   <img src="https://img.shields.io/badge/vscode-%23404d59?style=for-the-badge&logo=vscode&logoColor=white" alt="VScode Badge" />
   
 ### Ссылки на сторонние библиотеки
+- [MUI](https://mui.com/material-ui/)
+- [yup](https://github.com/jquense/yup)
+- [react-hook-form](https://react-hook-form.com/get-started)
 
 # Установка
 
