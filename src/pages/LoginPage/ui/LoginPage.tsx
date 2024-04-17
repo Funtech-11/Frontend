@@ -38,20 +38,20 @@ const LoginPage: FC<TLoginProps> = ({ users }) => {
       const loginResult = await dispatch(loginAction);
 
       if (login.rejected.match(loginResult)) {
-        navigate('/404');
+        navigate('/error500');
       } else if (login.fulfilled.match(loginResult)) {
         const userDataResult = await dispatch(getUserMe());
 
         if (getUserMe.fulfilled.match(userDataResult)) {
           // Navigation occurs only after receiving user data
         } else {
-          navigate('/404');
+          navigate('/error500');
         }
       } else {
-        navigate('/404');
+        navigate('/error500');
       }
     } catch (error) {
-      navigate('/404');
+      navigate('/error500');
     } finally {
       setLoadingStates(prevLoadingStates => ({
         ...prevLoadingStates,

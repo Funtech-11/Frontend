@@ -32,6 +32,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: '/error500',
+        element: <ErrorPage />,
+      },
+      {
         path: 'admin',
         element: <AdminPage />,
       },
