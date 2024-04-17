@@ -13,12 +13,16 @@ const EventAdressBlock: FC<TEventAdressBlockProps> = ({ eventInfo }) => {
     <section className={style.container}>
       <div className={style.cardWrapper}>
         <div className={style.adressInfoContainer}>
-          {eventInfo.location.city && eventInfo.location.building ? (
-            <h2
-              className={style.title}
-            >{`${eventInfo.location.city}, ${eventInfo.location.building}`}</h2>
-          ) : null}
-
+          <div>
+            {eventInfo.location.city ? (
+              <h2 className={style.title}>{`${eventInfo.location.city}`}</h2>
+            ) : null}
+            {eventInfo.location.building ? (
+              <h2
+                className={style.title}
+              >{`, ${eventInfo.location.building}`}</h2>
+            ) : null}
+          </div>
           {eventInfo.location.address ? (
             <p className={style.adress}>{eventInfo.location.address}</p>
           ) : null}
@@ -26,7 +30,6 @@ const EventAdressBlock: FC<TEventAdressBlockProps> = ({ eventInfo }) => {
           {eventInfo.location.metroStation ? (
             <div className={style.metroWrapper}>
               <div className={style.metroDot} />
-
               <span className={style.metroText}>Автозаводская</span>
             </div>
           ) : null}

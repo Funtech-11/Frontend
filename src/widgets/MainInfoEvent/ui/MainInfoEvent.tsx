@@ -19,7 +19,8 @@ import { ButtonLink } from 'src/entities/ButtonLink';
 import style from './MainInfoEvent.module.scss';
 
 const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
-  const { token } = useAppSelector(selectUser);
+  const { user, token } = useAppSelector(selectUser);
+
   const isLoggedIn = !!token;
 
   const [timer, setTimer] = useState('');
@@ -182,20 +183,20 @@ const MainInfoEvent: FC<TMainInfoEventProps> = ({ eventInfo }) => {
           </div>
         )}
       </section>
-      {openModal && (
+      {user.id === 7 && openModal && (
         <FormModal
           open={openModal}
           handleClose={handleCloseModal}
           isRegistered
         />
       )}
-      {/* {openModal && (
+      {user.id === 5 && openModal && (
         <FormModal
           open={openModal}
           handleClose={handleCloseModal}
           isRegistered={false}
         />
-      )} */}
+      )}
     </>
   );
 };
