@@ -58,6 +58,7 @@
   height: calc(100vh - 250px);
 }
 
+
 .chipsWrapper {
   display: flex;
   gap: 12px;
@@ -76,4 +77,8 @@
     background-color: $colorAccentPrimary;
     border-color: transparent;
   }
+
+.hidden {
+  display: none;
+
 }

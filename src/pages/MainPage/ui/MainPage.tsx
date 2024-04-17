@@ -16,12 +16,16 @@ import { Loader } from 'src/shared/Loader';
 import { IEvent } from 'src/shared/api/events/dtos';
 import { themeDict } from 'src/utils/const/lib';
 import type { TThemeDictionary } from 'src/utils/const/lib';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
 
 import style from './MainPage.module.scss';
 
 const MainPage = () => {
   const [isMenuShown, setMenuShown] = useState(false);
   const dispatch = useAppDispatch();
+
+  const { token } = useAppSelector(selectUser);
+  const isLoggedIn = !!token;
 
   useEffect(() => {
     dispatch(getEventsCards());
@@ -35,6 +39,7 @@ const MainPage = () => {
     city: 'all',
   });
 
+
   const resetFilters = () => {
     setFilters({
       theme: 'all',
@@ -43,6 +48,16 @@ const MainPage = () => {
       city: 'all',
     });
   };
+
+
+  const countPerPage = 12;
+  const [visible, setVisible] = useState(countPerPage);
+  const showMoreCards = () => {
+    setVisible(prevValue => prevValue + 12);
+  };
+
+  const isButtonHidden = events.length - visible < 0;
+
 
   const filterCards = (options: TOption, cards: IEvent[]) => {
     return cards.filter(card => {
@@ -153,17 +168,25 @@ const MainPage = () => {
             </div>
           </div>
           <ul className={style.cards}>
-            {cards.map((card, index) => (
-              <React.Fragment key={index}>
-                {index === 9 && <Banner />}
-                <li>
-                  <Card data={card} />
-                </li>
-              </React.Fragment>
-            ))}
+
+            {cards.slice(0, visible).map((card, index) => {
+              return (
+                <React.Fragment key={index}>
+                  {index === 9 && (
+                    <Banner path={isLoggedIn ? 'user-accaunt/:id' : 'login'} />
+                  )}
+                  <li>
+                    <Card data={card} />
+                  </li>
+                </React.Fragment>
+              );
+            })}
+
           </ul>
-          <div className={style.moreContentBlock}>
-            <Button title="Ещё" hasIcon={true} />
+          <div
+            className={`${style.moreContentBlock} ${isButtonHidden && style.hidden}`}
+          >
+            <Button title="Ещё" hasIcon={true} onClick={showMoreCards} />
           </div>
         </div>
       )}
