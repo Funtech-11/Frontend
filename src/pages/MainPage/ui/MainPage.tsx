@@ -17,12 +17,16 @@ import { Loader } from 'src/shared/Loader';
 import { IEvent } from 'src/shared/api/events/dtos';
 import { themeDict } from 'src/utils/const/lib';
 import type { TThemeDictionary } from 'src/utils/const/lib';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
 
 import style from './MainPage.module.scss';
 
 const MainPage = () => {
   const [isMenuShown, setMenuShown] = useState(false);
   const dispatch = useAppDispatch();
+
+  const { token } = useAppSelector(selectUser);
+  const isLoggedIn = !!token;
 
   useEffect(() => {
     dispatch(getEventsCards());
@@ -35,6 +39,14 @@ const MainPage = () => {
     eventFormat: 'all',
     city: 'all',
   });
+
+  const countPerPage = 12;
+  const [visible, setVisible] = useState(countPerPage);
+  const showMoreCards = () => {
+    setVisible(prevValue => prevValue + 12);
+  };
+
+  const isButtonHidden = events.length - visible < 0;
 
   const filterCards = (options: TOption, cards: IEvent[]) => {
     const keys = Object.keys(options);
@@ -91,7 +103,7 @@ const MainPage = () => {
   //   });
   // }, [events, filters]);
 
-  const cards = useMemo(() => {
+  const eventCards = useMemo(() => {
     return filterCards(filters, events);
   }, [filters, events]);
 
@@ -152,10 +164,12 @@ const MainPage = () => {
             </div>
           </div>
           <ul className={style.cards}>
-            {cards.map((card, index) => {
+            {eventCards.slice(0, visible).map((card, index) => {
               return (
                 <React.Fragment key={index}>
-                  {index === 9 && <Banner />}
+                  {index === 9 && (
+                    <Banner path={isLoggedIn ? 'user-accaunt/:id' : 'login'} />
+                  )}
                   <li>
                     <Card data={card} />
                   </li>
@@ -163,8 +177,10 @@ const MainPage = () => {
               );
             })}
           </ul>
-          <div className={style.moreContentBlock}>
-            <Button title="Ещё" hasIcon={true} />
+          <div
+            className={`${style.moreContentBlock} ${isButtonHidden && style.hidden}`}
+          >
+            <Button title="Ещё" hasIcon={true} onClick={showMoreCards} />
           </div>
         </div>
       )}
