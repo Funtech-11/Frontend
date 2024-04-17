@@ -9,8 +9,11 @@ import { RegistrationForm } from 'src/widgets/RegistrationForm';
 import { NotificationSelectBlock } from 'src/widgets/NotificationSelectBlock';
 
 import style from './UserAccountPage.module.scss';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
+import { useAppSelector } from 'src/app/store/hooks';
 
 const UserAccountPage = () => {
+  const { user } = useAppSelector(selectUser);
   const [isMenuShown, setMenuShown] = useState(false);
 
   return (
@@ -21,10 +24,10 @@ const UserAccountPage = () => {
         <section className={style.titleWrapper}>
           <h2 className={style.pageTitle}>Личный кабинет</h2>
         </section>
+        {user.id === 7 && <FilledRegistrationForm />}
         <MyTicketsBlock />
-        <FilledRegistrationForm />
         <PastEventsBlock />
-        <RegistrationForm />
+        {user.id === 5 && <RegistrationForm />}
         <NotificationSelectBlock />
       </div>
     </div>
