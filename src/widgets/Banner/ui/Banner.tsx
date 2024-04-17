@@ -5,10 +5,11 @@ import { Button } from 'src/entities/Button';
 import style from './Banner.module.scss';
 
 type TBannerProps = {
+  path: string;
   extraClass?: string;
 };
 
-const Banner: FC<TBannerProps> = ({ extraClass = 'banner' }) => {
+const Banner: FC<TBannerProps> = ({ path, extraClass = 'banner' }) => {
   return (
     <div className={extraClass}>
       <div className={style.container}>
@@ -21,7 +22,11 @@ const Banner: FC<TBannerProps> = ({ extraClass = 'banner' }) => {
             </p>
           </div>
         </div>
-        <Button title="Заполнить форму регистрации" hasIcon={true} />
+        <Button
+          title="Заполнить форму регистрации"
+          path={path}
+          hasIcon={true}
+        />
       </div>
     </div>
   );
