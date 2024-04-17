@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { getEventsCards } from 'src/shared/api/events';
 import { selectEvents } from 'src/app/store/reducers/events/model/eventsSlice';
 import { TOption } from '../types/type';
-import { TCard } from 'src/widgets/Card/types/type';
+// import { TCard } from 'src/widgets/Card/types/type';
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';

@@ -15,13 +15,11 @@ const schema = yup.object().shape({
   phone: yup
     .number()
     .typeError('Номер телефона должен содержать только цифры')
-    .required('Введите свой номер телефона')
-    .min(10, 'Номер телефона должен содержать не меньше 10 цифр')
-    .max(11, 'Номер телефона должен содержать не больше 11 цифр'),
+    .required('Введите свой номер телефона'),
   email: yup
     .string()
-    .required('Введите почту')
-    .email('Почта введена некорректно'),
+    .email('Почта введена некорректно')
+    .required('Введите почту'),
   workPlace: yup
     .string()
     .required('Укажите название компании или учебного заведения'),
@@ -45,6 +43,14 @@ const schema = yup.object().shape({
 
 const RegistrationForm = () => {
   const methods = useForm<TFormValues>({
+    defaultValues: {
+      name: '',
+      surname: '',
+      phone: '',
+      email: '',
+      workPlace: '',
+      position: '',
+    },
     resolver: yupResolver<TFormValues>(schema),
   });
   const {

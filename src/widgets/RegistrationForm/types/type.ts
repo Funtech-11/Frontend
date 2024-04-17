@@ -8,7 +8,7 @@ export enum Experience {
 export type TFormValues = {
   name: string;
   surname: string;
-  phone: number;
+  phone: number | string;
   email: string;
   workPlace: string;
   position: string;
