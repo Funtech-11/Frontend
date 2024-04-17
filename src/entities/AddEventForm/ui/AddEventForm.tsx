@@ -125,6 +125,9 @@ const AddPlaceForm = () => {
                       fontSize: '15px',
                       padding: '14px 20px',
                       fontWeight: '500',
+                      '&:hover': {
+                        border: '1px solid #1C1C1C',
+                      },
                     }}
                   >
                     Выбрать файл
@@ -250,6 +253,7 @@ const AddPlaceForm = () => {
         <Button
           title="Добавить выступление"
           type="button"
+          variant="outlined"
           onClick={() => append({})}
           extraClass={style.outfilledBtn}
         />
@@ -280,6 +284,9 @@ const AddPlaceForm = () => {
                   fontSize: '15px',
                   padding: '14px 20px',
                   fontWeight: '500',
+                  '&:hover': {
+                    border: '1px solid #1C1C1C',
+                  },
                 }}
               >
                 Выбрать файл
@@ -322,11 +329,13 @@ const AddPlaceForm = () => {
           <Button
             title="Создать мероприятие"
             type="submit"
+            variant="primary"
             extraClass={style.submit}
           />
           <Button
             title="Сохранить как черновик"
             type="submit"
+            variant="outlined"
             extraClass={style.outfilledBtn}
           />
         </div>
