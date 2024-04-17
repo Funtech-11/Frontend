@@ -68,8 +68,6 @@ const MainPage = () => {
     });
   }, [events, filters]);
 
-  console.log(events);
-
   return (
     <div className={style.layout}>
       <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />

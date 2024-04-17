@@ -39,9 +39,6 @@ const LoginPage: FC<TLoginProps> = ({ users }) => {
       if (login.rejected.match(loginResult)) {
         navigate('/404');
       } else if (login.fulfilled.match(loginResult)) {
-        const token = localStorage.getItem('token');
-        console.log('Token from local storage:', token);
-
         const userDataResult = await dispatch(getUserMe());
 
         if (getUserMe.fulfilled.match(userDataResult)) {

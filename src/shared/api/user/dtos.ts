@@ -20,3 +20,60 @@ export interface IUser {
     user: number;
   }[];
 }
+
+export interface IUserTicket {
+  userEventId: {
+    userEventId: number;
+    event: {
+      eventId: number;
+      name: string;
+      dateTimeStart: string;
+      dateTimeEnd: string;
+      location: {
+        locationId: number;
+        city: string;
+      };
+      eventType: 'OFFLINE' | 'ONLINE' | '';
+      eventFormat: 'CONFERENCE' | 'MEETUP' | 'NETWORKING' | 'EXCURSION' | '';
+      theme: {
+        name:
+          | 'PROGRAMMING'
+          | 'DESIGN'
+          | 'MANAGEMENT'
+          | 'MARKETING'
+          | 'ANALYTICS'
+          | 'BUSINESS'
+          | 'OTHER'
+          | '';
+      };
+      video: string;
+    };
+    agree: boolean;
+  };
+  user: {
+    id: number;
+  };
+  event: {
+    eventId: number;
+    name: string;
+    dateTimeStart: string;
+    dateTimeEnd: string;
+    location: { locationId: number; city: string };
+    eventType: 'OFFLINE' | 'ONLINE' | '';
+    eventFormat: 'CONFERENCE' | 'MEETUP' | 'NETWORKING' | 'EXCURSION' | '';
+    theme: {
+      name:
+        | 'PROGRAMMING'
+        | 'DESIGN'
+        | 'MANAGEMENT'
+        | 'MARKETING'
+        | 'ANALYTICS'
+        | 'BUSINESS'
+        | 'OTHER'
+        | '';
+    };
+    video: string;
+  };
+  agree: boolean;
+  qrCode: string;
+}

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import { BASE_URL } from 'src/utils/const/api';
-import type { IUser } from './dtos';
+import type { IUser, IUserTicket } from './dtos';
 import { TLoginData, TLoginResponse } from './type';
 
 export const login = createAsyncThunk<TLoginResponse, TLoginData>(
@@ -70,6 +70,35 @@ export const logout = createAsyncThunk<void, void>(
         }
       );
       return;
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.response?.data ?? 'Unknown error');
+      } else {
+        return rejectWithValue('Unknown error');
+      }
+    }
+  }
+);
+
+export const getUserTickets = createAsyncThunk(
+  'user/getUserTickets',
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return rejectWithValue('Token is missing');
+      }
+
+      const response = await axios.get<IUserTicket[]>(
+        `${BASE_URL}/api/v1/user/me/tickets/`,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      return response.data;
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         return rejectWithValue(error.response?.data ?? 'Unknown error');
