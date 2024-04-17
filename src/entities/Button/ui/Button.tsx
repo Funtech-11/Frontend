@@ -21,6 +21,7 @@ const Button: FC<IButtonProps> = ({
 }) => {
   const navigate = useNavigate();
 
+  // eslint-disable-next-line
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     if (path) {
       navigate(path);

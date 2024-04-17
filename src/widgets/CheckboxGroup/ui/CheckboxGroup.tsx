@@ -32,8 +32,10 @@ const CheckboxGroup: FC<ICheckboxGroup> = ({
   required = false,
   multiple = true,
   errorText = '',
+  // eslint-disable-next-line
   ...rest
 }) => {
+  // eslint-disable-next-line
   const config = { label: 'label', value: 'value' };
   const {
     field: { ref, value, onChange, ...inputProps },

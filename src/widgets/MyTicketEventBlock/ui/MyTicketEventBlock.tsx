@@ -6,12 +6,14 @@ import { TicketModal } from 'src/entities/Modals';
 import { formatDateString } from 'src/utils/const/formatDate';
 
 import style from './MyTicketEventBlock.module.scss';
+import { useParams } from 'react-router-dom';
 
 type TMyTicketEventBlock = {
   ticket: ITicket;
 };
 
 const MyTicketEventBlock: FC<TMyTicketEventBlock> = ({ ticket }) => {
+  const { id } = useParams();
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => setOpenModal(true);
@@ -33,6 +35,7 @@ const MyTicketEventBlock: FC<TMyTicketEventBlock> = ({ ticket }) => {
           open={openModal}
           handleClose={handleCloseModal}
           qrImg={ticket.ticket}
+          id={id}
         />
       )}
     </>

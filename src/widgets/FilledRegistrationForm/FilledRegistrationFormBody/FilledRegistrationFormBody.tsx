@@ -12,7 +12,7 @@ const FilledRegistrationFormBody = () => {
             <img className={style.avatar} src={avatarIcon} alt="аватар" />
           </div>
           <div className={style.infoWrapper}>
-            <p className={style.name}>Александр Васильев</p>
+            <p className={style.name}>Александр Кочевой</p>
             <p className={style.job}>Тимлид в ЗАО «КРОК»</p>
           </div>
         </div>

@@ -13,11 +13,15 @@ import { EventAdressBlock } from 'src/widgets/EventAdressBlock';
 import { Carousel } from 'src/widgets/Carousel';
 import { MyTicketEventBlock } from 'src/widgets/MyTicketEventBlock';
 import { Loader } from 'src/shared/Loader';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
+import { currentTiketMockData } from 'src/utils/mocks/ticketData';
 
 import style from './EventPage.module.scss';
 
 const EventPage = () => {
   const { id } = useParams();
+  const { token } = useAppSelector(selectUser);
+  const isLoggedIn = !!token;
 
   const { events, isLoading } = useAppSelector(selectEvents);
   const event = events.find(event => event.eventId === parseInt(String(id)));
@@ -33,11 +37,16 @@ const EventPage = () => {
         <Menu isShown={isMenuShown} />
         <div className={style.main}>
           <MainInfoEvent eventInfo={event} />
-          <AboutEvent type="long" text={event.information} />
-          {/* <div className={style.twoColContainer}>
-            <MyTicketEventBlock ticket={currentTiketMockData} />
-            <AboutEvent type="short" text={event.information} />
-          </div> */}
+
+          {isLoggedIn ? (
+            <div className={style.twoColContainer}>
+              <MyTicketEventBlock ticket={currentTiketMockData} />
+              <AboutEvent type="short" text={event.information} />
+            </div>
+          ) : (
+            <AboutEvent type="long" text={event.information} />
+          )}
+
           <ProgrammList eventInfo={event} />
           {event.status === 'FINISHED' && <Carousel />}
           <EventAdressBlock eventInfo={event} />

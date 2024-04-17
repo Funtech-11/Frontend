@@ -10,9 +10,15 @@ type TTicketModalProps = {
   open: boolean;
   handleClose: () => void;
   qrImg: string;
+  id?: string;
 };
 
-const TicketModal: FC<TTicketModalProps> = ({ open, handleClose, qrImg }) => {
+const TicketModal: FC<TTicketModalProps> = ({
+  open,
+  handleClose,
+  qrImg,
+  id,
+}) => {
   return (
     <div>
       <Dialog
@@ -52,11 +58,20 @@ const TicketModal: FC<TTicketModalProps> = ({ open, handleClose, qrImg }) => {
           </span>
           <div className={style.btnWrapper}>
             <DialogActions>
-              <ButtonLink
-                title="К мероприятию"
-                path="/event/1"
-                onClick={handleClose}
-              />
+              {id ? (
+                <ButtonLink
+                  title="К мероприятию"
+                  path={`/event/${id}`}
+                  onClick={handleClose}
+                />
+              ) : (
+                <ButtonLink
+                  title="К мероприятию"
+                  path={`/`}
+                  onClick={handleClose}
+                />
+              )}
+
               <ButtonLink
                 title="В личный кабинет"
                 path="/user-accaunt/1"
@@ -69,7 +84,5 @@ const TicketModal: FC<TTicketModalProps> = ({ open, handleClose, qrImg }) => {
     </div>
   );
 };
-
-// TODO передать id мероприятия
 
 export default TicketModal;

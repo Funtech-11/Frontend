@@ -24,7 +24,7 @@ const InputTypeCheckbox: FC<IInputTypeCheckbox> = ({
           type="checkbox"
           checked={isChecked}
           onChange={handleChange}
-          className={style.checkbox}
+          className={`${style.checkbox} ${extraClass}`}
           {...InputHTMLAttributes}
         />
       </span>

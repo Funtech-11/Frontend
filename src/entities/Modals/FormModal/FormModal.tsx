@@ -41,7 +41,7 @@ const FilledFormModal: FC<TFilledFormModalProps> = ({
   } = methods;
 
   const onSubmit = handleSubmit(data => {
-    console.log(data);
+    return data;
   });
 
   return (

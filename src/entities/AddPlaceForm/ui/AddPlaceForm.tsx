@@ -7,7 +7,6 @@ import style from './AddPlaceForm.module.scss';
 const AddPlaceForm = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('submit');
   };
 
   return (

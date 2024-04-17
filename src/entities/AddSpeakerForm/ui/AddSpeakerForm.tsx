@@ -11,7 +11,6 @@ import { VisuallyHiddenInput } from './styled';
 const AddSpeakerForm = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('submit');
   };
 
   const [filePreview, setFilePreview] = useState<string | undefined>(undefined);
