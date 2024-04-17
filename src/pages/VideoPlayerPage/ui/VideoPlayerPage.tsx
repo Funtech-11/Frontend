@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { event } from 'src/utils/mocks/eventsMockData';
 import { countdown } from 'src/utils/const/conuntdown';
 import { Player } from 'src/features/Player';
-import chatSendIcon from 'src/assets/images/icons/chat/chatSend.svg';
-import chatTextIcon from 'src/assets/images/icons/chat/Text.svg';
-import chatSendImgIcon from 'src/assets/images/icons/chat/chatImg.svg';
-import chatEmojiIcon from 'src/assets/images/icons/chat/emoji.svg';
-import chatClipIcon from 'src/assets/images/icons/chat/paperclip.svg';
+import { Chat } from 'src/widgets/Chat';
+
 import style from './VideoPlayerPage.module.scss';
 
 const VideoPlayerPage = () => {
   const { id } = useParams();
+
   const [isMenuShown, setMenuShown] = useState(false);
   const [timer, setTimer] = useState('');
 
@@ -65,30 +64,8 @@ const VideoPlayerPage = () => {
               {id === '2' ? renderTimer() : <Player />}
             </div>
           </div>
-          <div className={style.chatContainer}>
-            <h3 className={style.chatTitle}>Вопросы спикеру</h3>
-            <div className={style.chatDialogBox}>
-              <span className={style.chatInfoText}>
-                Обсуждение начнётся после начала ивента
-              </span>
-            </div>
-            <div>
-              <div className={style.chatInputContainer}>
-                <input
-                  className={style.chatInput}
-                  placeholder="Написать"
-                  disabled
-                />
-                <img src={chatSendIcon} />
-              </div>
-              <div className={style.chatIconsContainer}>
-                <img src={chatClipIcon} />
-                <img src={chatSendImgIcon} />
-                <img src={chatEmojiIcon} />
-                <img src={chatTextIcon} />
-              </div>
-            </div>
-          </div>
+          {id === '2' && <Chat type="dialog" />}
+          {id === '1' && <Chat type="timecodes" />}
         </div>
         <div className={style.infoContainer}>
           <div className={style.eventWallpaperWrapper}>
