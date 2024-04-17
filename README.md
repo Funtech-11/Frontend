@@ -67,3 +67,4 @@ npm run start
 ```
 
 # Архив со скриншотами
+[Яндекс диск](https://disk.yandex.ru/d/uztrHQTEobwBgw)
