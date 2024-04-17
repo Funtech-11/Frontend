@@ -5,9 +5,9 @@ import avatar4 from 'src/assets/images/avatars/c7e56b3d6a0f8ad4e6b4cf7512d26f21.
 import avatar5 from 'src/assets/images/avatars/d5416a40d7827c291258f6bb352a2076.jpeg';
 import banner from 'src/assets/images/events/banner@2x.png';
 
-import type { TEvent } from '../../widgets/ProgrammList/types/type';
+import type { TEventMock } from '../../widgets/ProgrammList/types/type';
 
-export const event: TEvent = {
+export const event: TEventMock = {
   id: 1,
   name: 'Infra Meetup',
   date: '2024-05-01T09:00:45Z',
