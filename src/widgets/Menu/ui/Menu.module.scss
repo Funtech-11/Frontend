@@ -31,4 +31,9 @@
   @include reset-link;
   @include text-secondary-regular-20;
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: $colorAccentPrimary;
+  }
 }
