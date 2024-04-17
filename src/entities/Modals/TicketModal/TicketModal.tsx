@@ -76,6 +76,7 @@ const TicketModal: FC<TTicketModalProps> = ({
                 title="В личный кабинет"
                 path="/user-accaunt/1"
                 onClick={handleClose}
+                variant="outlined"
               />
             </DialogActions>
           </div>

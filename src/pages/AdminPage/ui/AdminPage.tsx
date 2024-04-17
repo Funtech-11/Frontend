@@ -101,22 +101,21 @@ const AdminPage = () => {
         </div>
         <ul className={style.mainNavList}>
           <li className={style.listItem}>
-            <div>Vasiliy_Ivanov@yandex.ru</div>
+            <div>admin@yandex.ru</div>
           </li>
           <li className={style.listItem}>
             <div className={style.mainNavItem}>
               <div>
                 <img src={fireIcon} alt="иконка" />
               </div>
-              <span>Мероприятия</span>
+              <span className={style.navText}>Мероприятия</span>
             </div>
           </li>
-          <li className={style.listItem}>
-            <div className={style.navLink} onClick={() => handleLogout()}>
-              Выход
-            </div>
-          </li>
+          <li className={style.listItem}></li>
         </ul>
+        <div className={style.navLink} onClick={() => handleLogout()}>
+          Выход
+        </div>
       </div>
 
       <div className={style.layout}>

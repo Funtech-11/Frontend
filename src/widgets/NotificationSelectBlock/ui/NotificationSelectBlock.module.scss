@@ -23,7 +23,7 @@
 .cardsContainer {
   display: flex;
   flex-direction: column;
-  gap: 39px;
+  gap: 32px;
   background-color: $colorWhiteSecondary;
   padding: 20px;
   border-radius: 20px;
@@ -31,7 +31,7 @@
 
 .container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -39,3 +39,38 @@
   @include reset-text;
   @include text-header-h4;
 }
+
+.togglerWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expandedText {
+  @include reset-text;
+  @include text-regular-16;
+  max-width: 490px;
+  padding-top: 12px;
+}
+
+// /* Вы будете получать уведомления о Ваших мероприятиях на адрес электронной почты, указанной при регистрации */
+
+// width: 489px;
+// height: 40px;
+
+// /* SF Headline Regular */
+// font-family: 'SF Pro Text';
+// font-style: normal;
+// font-weight: 400;
+// font-size: 16px;
+// line-height: 20px;
+// /* or 125% */
+// letter-spacing: -0.32px;
+
+// color: #444652;
+
+// /* Inside auto layout */
+// flex: none;
+// order: 1;
+// flex-grow: 0;
