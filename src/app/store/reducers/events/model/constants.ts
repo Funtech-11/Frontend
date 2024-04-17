@@ -18,7 +18,7 @@ const initialProgram: IProgram = {
   dateTime: '',
   speaker: initialSpeaker,
   information: '',
-  material: null,
+  material: '',
 };
 
 const initialLocation: ILocation = {

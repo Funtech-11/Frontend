@@ -46,7 +46,17 @@ const Header: FC<THeaderProps> = ({ isMenuShown, setMenuShown }) => {
           </NavLink>
         ) : (
           <div className={style.userInfoBox}>
-            <img src={userIcon} />
+            <div className={style.userAvatarBox}>
+              {user.photo ? (
+                <img
+                  src={user.photo}
+                  className={style.userAvatar}
+                  alt="avatar"
+                />
+              ) : (
+                <img src={userIcon} className={style.userAvatar} alt="avatar" />
+              )}
+            </div>
             <NavLink
               to={`/user-accaunt/${user.id}`}
               className={style.loginLink}

@@ -1,7 +1,7 @@
 import { IEvent } from 'src/shared/api/events/dtos';
 
-type TMainInfoEventProps = {
+type TEventAdressBlockProps = {
   eventInfo: IEvent;
 };
 
-export type { TMainInfoEventProps };
+export type { TEventAdressBlockProps };

@@ -1,3 +1,4 @@
+import { IEvent } from 'src/shared/api/events/dtos';
 // Type for Speaker
 type TSpeaker = {
   name: string;
@@ -37,7 +38,7 @@ type TLocation = {
 };
 
 // Type for the event
-type TEvent = {
+type TEventMock = {
   id: number;
   name: string;
   date: string; // Date and time of the event are represented in ISO 8601 string format
@@ -53,4 +54,8 @@ type TEvent = {
   programs: TProgram[];
 };
 
-export type { TEvent, TProgram };
+type TProgrammListProps = {
+  eventInfo: IEvent;
+};
+
+export type { TEventMock, TProgrammListProps };

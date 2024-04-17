@@ -6,10 +6,12 @@
   padding-bottom: 20px;
   border-top: 1px solid $colorLightGrey;
   display: flex;
+  gap: 20px;
 }
 
 .infoWrapper {
   display: flex;
+  gap: 20px;
 }
 
 .time {
@@ -20,8 +22,7 @@
 
 .title {
   @include text-header-h4;
-  max-width: 208px;
-  margin-right: 30px;
+  width: 308px;
   transition: color 0.3s ease-in-out;
 }
 
@@ -33,13 +34,12 @@
 .infoText {
   @include text-regular-14;
   max-width: 209px;
-  margin-right: 30px;
 }
 
 .speakerInfoWrapper {
   display: flex;
   gap: 8px;
-  min-width: 409px;
+  width: 420px;
 }
 
 .avatarBox {
@@ -75,5 +75,5 @@
   display: flex;
   gap: 12px;
   justify-content: flex-end;
-  min-width: 200px;
+  width: 255px;
 }
