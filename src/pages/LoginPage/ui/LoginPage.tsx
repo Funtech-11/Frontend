@@ -3,15 +3,15 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import yaIcon from 'src/assets/images/icons/ya-id.svg';
 import dotsIcon from 'src/assets/images/icons/dots-vertical.svg';
-import userIcon from 'src/assets/images/icons/user-avatar-login.svg';
 import adminIcon from 'src/assets/images/icons/admin-avatar-login.svg';
 import backBtn from 'src/assets/images/icons/solar_arrow-up-outline.svg';
+
 import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { ILoginUser } from 'src/utils/const/api';
 import { getUserMe, login } from 'src/shared/api/user';
+import { selectUser } from 'src/app/store/reducers/user/model/userSlice';
 
 import style from './LoginPage.module.scss';
-import { selectUser } from '../../../app/store/reducers/user/model/userSlice';
 
 type TLoginProps = {
   users: ILoginUser[];
@@ -98,7 +98,13 @@ const LoginPage: FC<TLoginProps> = ({ users }) => {
                 {user.username === 'ADMIN' ? (
                   <img src={adminIcon} />
                 ) : (
-                  <img src={userIcon} />
+                  <div className={style.userAvatarBox}>
+                    <img
+                      src={user.avatar}
+                      className={style.userAvatar}
+                      alt="avatar"
+                    />
+                  </div>
                 )}
               </div>
               {user.username === 'ADMIN' ? (

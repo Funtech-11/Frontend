@@ -75,7 +75,9 @@ const MainPage = () => {
       <Header isMenuShown={isMenuShown} setMenuShown={setMenuShown} />
       <Menu isShown={isMenuShown} />
       {isLoading ? (
-        <Loader />
+        <div className={style.loaderWrapper}>
+          <Loader />
+        </div>
       ) : (
         <div className={style.main}>
           <div className={style.filterBlock}>

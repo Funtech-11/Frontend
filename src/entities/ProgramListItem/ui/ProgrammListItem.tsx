@@ -1,12 +1,13 @@
 import type { FC } from 'react';
 
 import { ContentLinkBtn } from 'src/features/ContentLinkBtn';
-import type { TProgram } from 'src/widgets/ProgrammList/types/type';
+import userIcon from 'src/assets/images/avatars/d5416a40d7827c291258f6bb352a2076.jpeg';
 
 import style from './ProgrammListItem.module.scss';
+import { IProgram } from 'src/shared/api/events/dtos';
 
 type TProgramItemProps = {
-  programItem: TProgram;
+  programItem: IProgram;
 };
 
 const formatTime = (timeString: string) => {
@@ -18,29 +19,33 @@ const ProgrammListItem: FC<TProgramItemProps> = ({ programItem }) => {
   //console.log(programItem);
   return (
     <div className={style.container}>
-      <div className={style.time}>{formatTime(programItem.time)}</div>
+      <div className={style.time}>{formatTime(programItem.dateTime)}</div>
       <div className={style.infoWrapper}>
         <div className={style.title}>{programItem.name}</div>
         <div className={style.infoText}>{programItem.information}</div>
         {programItem.speaker && (
           <div className={style.speakerInfoWrapper}>
             <div className={style.avatarBox}>
-              <img
-                src={programItem.speaker[0].avatar}
-                alt="avatar"
-                className={style.avatarImg}
-              />
+              {programItem.speaker.avatar ? (
+                <img
+                  src={programItem.speaker.avatar}
+                  alt="avatar"
+                  className={style.avatarImg}
+                />
+              ) : (
+                <img src={userIcon} alt="avatar" className={style.avatarImg} />
+              )}
             </div>
             <div className={style.speakerInfoContainer}>
-              <h4 className={style.name}>{programItem.speaker[0].name}</h4>
-              <p className={style.job}>{programItem.speaker[0].job}</p>
+              <h4 className={style.name}>{programItem.speaker.name}</h4>
+              <p className={style.job}>{programItem.speaker.job}</p>
             </div>
           </div>
         )}
       </div>
       <div className={style.btnWrapper}>
-        {programItem.materials && <ContentLinkBtn type="button" />}
-        {programItem.video && <ContentLinkBtn type="link" />}
+        {programItem.speaker && <ContentLinkBtn type="button" />}
+        {programItem.speaker && <ContentLinkBtn type="link" />}
       </div>
     </div>
   );

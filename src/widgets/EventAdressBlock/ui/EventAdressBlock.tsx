@@ -5,21 +5,31 @@ import yandexTaxiIcon2x from 'src/assets/images/yandexTaxi2x.png';
 import mapImg from 'src/assets/images/events/Map@2x.png';
 
 import style from './EventAdressBlock.module.scss';
+import { FC } from 'react';
+import { TEventAdressBlockProps } from '../types/type';
 
-const EventAdressBlock = () => {
-  console.log('hello linter');
-  return (
+const EventAdressBlock: FC<TEventAdressBlockProps> = ({ eventInfo }) => {
+  return eventInfo.location ? (
     <section className={style.container}>
       <div className={style.cardWrapper}>
         <div className={style.adressInfoContainer}>
-          <h2 className={style.title}>Москва, LOFT HALL</h2>
-          <p className={style.adress}>
-            ул. Ленинская Слобода, 26, строение 11, Loft 2
-          </p>
-          <div className={style.metroWrapper}>
-            <div className={style.metroDot} />
-            <span className={style.metroText}>Автозаводская</span>
-          </div>
+          {eventInfo.location.city && eventInfo.location.building ? (
+            <h2
+              className={style.title}
+            >{`${eventInfo.location.city}, ${eventInfo.location.building}`}</h2>
+          ) : null}
+
+          {eventInfo.location.address ? (
+            <p className={style.adress}>{eventInfo.location.address}</p>
+          ) : null}
+
+          {eventInfo.location.metroStation ? (
+            <div className={style.metroWrapper}>
+              <div className={style.metroDot} />
+
+              <span className={style.metroText}>Автозаводская</span>
+            </div>
+          ) : null}
         </div>
         <div className={style.callTaxiWrapper}>
           <div className={style.taxiIconContainer}>
@@ -44,7 +54,7 @@ const EventAdressBlock = () => {
         <img className={style.mapImg} src={mapImg} alt="карта" />
       </div>
     </section>
-  );
+  ) : null;
 };
 
 export default EventAdressBlock;

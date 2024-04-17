@@ -25,6 +25,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .textSpan {
@@ -61,6 +62,7 @@
 }
 
 .bannerItem {
+  max-height: 349px;
   background-color: $colorWhitePrimary;
   border-radius: 20px;
   display: flex;
@@ -126,13 +128,23 @@
   background-color: $colorsuccess;
   border-radius: 50%;
 }
+
 .text {
   @include text-regular-16;
+  text-transform: capitalize;
 }
+
 .title {
   @include reset-text;
-  @include text-header-h1;
+  @include text-header-h2;
   color: $colorAccentPrimary;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
 
 .gridPosition1 {

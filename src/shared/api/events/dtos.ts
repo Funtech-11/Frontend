@@ -19,7 +19,7 @@ export interface IProgram {
   dateTime: string;
   speaker: ISpeaker;
   information: string;
-  material: string | null;
+  material: string;
 }
 
 export interface IEvent {
