@@ -1,10 +1,3 @@
-export type EventTypeDictionary = {
-  CONFERENCE: 'Конференция';
-  MEETUP: 'Митап';
-  NETWORKING: 'Нетворкинг';
-  EXCURSION: 'Экскурсия';
-};
-
 export type TThemeDictionary = {
   PROGRAMMING: 'Разработка';
   DESIGN: 'Дизайн';
@@ -15,17 +8,22 @@ export type TThemeDictionary = {
   OTHER: 'Другое';
 };
 
-export type EventStatusDictionary = {
+export type TEventTypeDictionary = {
+  OFFLINE: 'Офлайн';
+  ONLINE: 'Онлайн';
+};
+
+export type TEventFormatDictionary = {
+  CONFERENCE: 'Конференция';
+  MEETUP: 'Митап';
+  NETWORKING: 'Нетворкинг';
+  EXCURSION: 'Экскурсия';
+};
+
+export type TEventStatusDictionary = {
   REGISTRATION_OPEN: string;
   REGISTRATION_CLOSE: string;
   FINISHED: string;
-};
-
-export const eventFormatDict: EventTypeDictionary = {
-  CONFERENCE: 'Конференция',
-  MEETUP: 'Митап',
-  NETWORKING: 'Нетворкинг',
-  EXCURSION: 'Экскурсия',
 };
 
 export const themeDict: TThemeDictionary = {
@@ -38,7 +36,19 @@ export const themeDict: TThemeDictionary = {
   OTHER: 'Другое',
 };
 
-export const eventStatus: EventStatusDictionary = {
+export const eventTypeDict: TEventTypeDictionary = {
+  OFFLINE: 'Офлайн',
+  ONLINE: 'Онлайн',
+};
+
+export const eventFormatDict: TEventFormatDictionary = {
+  CONFERENCE: 'Конференция',
+  MEETUP: 'Митап',
+  NETWORKING: 'Нетворкинг',
+  EXCURSION: 'Экскурсия',
+};
+
+export const eventStatusDict: TEventStatusDictionary = {
   REGISTRATION_OPEN: 'Регистрация открыта',
   REGISTRATION_CLOSE: 'Регистрация закрыта',
   FINISHED: 'Завершено',
