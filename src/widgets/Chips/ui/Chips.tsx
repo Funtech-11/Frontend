@@ -47,7 +47,9 @@ const Chips: FC<TChips> = ({
                   borderColor: 'transparent',
                 },
                 '& span.MuiRadio-root:hover': {
-                  padding: '12px 22.5px',
+                  color: '#FFFFFF',
+                  backgroundColor: '#FF5C01',
+                  borderColor: 'transparent',
                 },
                 '& span.Mui-checked.MuiRadio-root:hover': {
                   borderColor: '#FFFFFF',
