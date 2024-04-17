@@ -87,6 +87,15 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
     },
   };
 
+  const headerCellStyle = {
+    color: '#1C1C1C',
+    fontFamily: 'San Francisco Pro Text',
+    fontWeight: '500',
+    fontSize: '14px',
+    lineHeight: '18px',
+    borderBottom: '1px solid #444652',
+  };
+
   return (
     <>
       <div className={style.container}>
@@ -103,11 +112,11 @@ const AdminPanelTable: FC<AdminPanelTableProps> = ({
         <Table sx={{ width: '100%' }}>
           <TableHead>
             <TableRow>
-              <TableCell padding="checkbox">
+              <TableCell padding="checkbox" style={headerCellStyle}>
                 <Checkbox onChange={handleCheckboxChange} />
               </TableCell>
               {headers[type].map((header, index) => (
-                <TableCell key={index}>
+                <TableCell key={index} style={headerCellStyle}>
                   <TableSortLabel> {header}</TableSortLabel>
                 </TableCell>
               ))}
