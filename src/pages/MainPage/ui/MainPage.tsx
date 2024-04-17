@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from 'src/app/store/hooks';
 import { getEventsCards } from 'src/shared/api/events';
 import { selectEvents } from 'src/app/store/reducers/events/model/eventsSlice';
 import { TOption } from '../types/type';
+import { TCard } from 'src/widgets/Card/types/type';
 import { Header } from 'src/widgets/Header';
 import { Menu } from 'src/widgets/Menu';
 import { Chips } from 'src/widgets/Chips';
@@ -35,13 +36,13 @@ const MainPage = () => {
     city: 'all',
   });
 
-  const filterCards = (options: TOption, cards: TCard[]) => {
+  const filterCards = (options: TOption, cards: IEvent[]) => {
     const keys = Object.keys(options);
     for (let i = 0; i < keys.length; i++) {
       const field = keys[i];
       cards = cards.filter(card => {
         if (options[field] === 'all') return true;
-        if (options[field] !== card[field as keyof TCard]) {
+        if (options[field] !== card[field as keyof IEvent]) {
           return false;
         }
         return true;
@@ -70,25 +71,29 @@ const MainPage = () => {
     setFilters({ ...filters, [name]: value });
   };
 
-  const filteredEvents = useMemo(() => {
-    return events.filter(event => {
-      for (const filterKey in filters) {
-        if (filters[filterKey] !== 'all' && filterKey === 'theme') {
-          if (event[filterKey].name !== filters[filterKey]) {
-            return false;
-          }
-        } else {
-          if (
-            filters[filterKey] !== 'all' &&
-            event[filterKey as keyof IEvent] !== filters[filterKey]
-          ) {
-            return false;
-          }
-        }
-      }
-      return true;
-    });
-  }, [events, filters]);
+  // const cards = useMemo(() => {
+  //   return events.filter(event => {
+  //     for (const filterKey in filters) {
+  //       if (filters[filterKey] !== 'all' && filterKey === 'theme') {
+  //         if (event[filterKey].name !== filters[filterKey]) {
+  //           return false;
+  //         }
+  //       } else {
+  //         if (
+  //           filters[filterKey] !== 'all' &&
+  //           event[filterKey as keyof IEvent] !== filters[filterKey]
+  //         ) {
+  //           return false;
+  //         }
+  //       }
+  //     }
+  //     return true;
+  //   });
+  // }, [events, filters]);
+
+  const cards = useMemo(() => {
+    return filterCards(filters, events);
+  }, [filters, events]);
 
   console.log(events);
 
